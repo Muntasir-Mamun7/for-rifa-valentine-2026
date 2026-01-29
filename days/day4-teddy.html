@@ -797,6 +797,19 @@
         </div>
     </div>
 
+    <!-- Crop Modal -->
+    <div class="crop-modal" id="cropModal">
+        <div class="crop-container">
+            <img id="cropImage" src="" alt="Crop">
+            <div class="crop-controls">
+                <button class="btn-save" onclick="saveCroppedImage()">Save</button>
+                <button class="btn-cancel" onclick="cancelCrop()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+
     <script>
         // Photo upload and cropping functionality
         let cropper = null;
@@ -1019,19 +1032,6 @@
             teddy.style.transform = 'scale(' + (0.95 + Math.random() * 0.1) + ')';
         }, 3000);
     </script>
-
-    <!-- Crop Modal -->
-    <div class="crop-modal" id="cropModal">
-        <div class="crop-container">
-            <img id="cropImage" src="" alt="Crop">
-            <div class="crop-controls">
-                <button class="btn-save" onclick="saveCroppedImage()">Save</button>
-                <button class="btn-cancel" onclick="cancelCrop()">Cancel</button>
-            </div>
-        </div>
-    </div>
-
-    <input type="file" id="fileInput" accept="image/*" style="display: none;">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
 </body>
