@@ -645,6 +645,9 @@
     <div class="swipe-indicator">← Swipe left to go back</div>
 
     <script>
+        // Constants
+        const NAVIGATION_URL = '../main.html';
+        
         // Reveal hidden messages
         function revealMessage(element) {
             element.classList.add('revealed');
@@ -664,43 +667,51 @@
             // audio.pause();
         }
 
-        // 3D rose interaction - pause rotation on hover/touch
+        // 3D rose interaction - toggle animation on click
         const rose3d = document.getElementById('rose3d');
+        let isAnimationPaused = false;
+        
         rose3d.addEventListener('click', function() {
-            if (this.style.animationPlayState === 'paused') {
-                this.style.animationPlayState = 'running';
-            } else {
-                this.style.animationPlayState = 'paused';
-            }
+            isAnimationPaused = !isAnimationPaused;
+            this.style.animationPlayState = isAnimationPaused ? 'paused' : 'running';
         });
 
         // Swipe gesture support for navigation
         let touchStartX = 0;
+        let touchStartY = 0;
         let touchEndX = 0;
+        let touchEndY = 0;
 
         function handleSwipe() {
-            const swipeThreshold = 100; // Minimum distance for a swipe
-            const swipeDistance = touchEndX - touchStartX;
+            const swipeDistanceX = touchEndX - touchStartX;
+            const swipeDistanceY = Math.abs(touchEndY - touchStartY);
             
-            // Swipe left (go back)
-            if (swipeDistance < -swipeThreshold) {
-                window.location.href = '../main.html';
+            // Responsive threshold based on screen width (10% of screen width, min 50px, max 150px)
+            const swipeThreshold = Math.max(50, Math.min(150, window.innerWidth * 0.1));
+            
+            // Only trigger if horizontal swipe is dominant (not vertical scroll)
+            if (Math.abs(swipeDistanceX) > swipeDistanceY && swipeDistanceX < -swipeThreshold) {
+                window.location.href = NAVIGATION_URL;
             }
         }
 
         document.addEventListener('touchstart', function(e) {
             touchStartX = e.changedTouches[0].screenX;
-        }, false);
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
 
         document.addEventListener('touchend', function(e) {
             touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
             handleSwipe();
-        }, false);
+        }, { passive: true });
 
         // Keyboard support: Escape or Left Arrow to go back
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' || e.key === 'ArrowLeft') {
-                window.location.href = '../main.html';
+            // Only navigate if not typing in an input field
+            if ((e.key === 'Escape' || e.key === 'ArrowLeft') && 
+                !['INPUT', 'TEXTAREA'].includes(e.target.tagName)) {
+                window.location.href = NAVIGATION_URL;
             }
         });
     </script>
