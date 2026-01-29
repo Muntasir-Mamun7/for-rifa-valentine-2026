@@ -461,23 +461,23 @@
             <p>I know how much you love chocolate! Each piece in this virtual box represents a sweet memory, a loving thought, a moment that made my heart melt just like chocolate on a warm day.</p>
         </div>
 
-        <button class="unwrap-button" onclick="openBox()">🎁 Unwrap the Box</button>
+        <button class="unwrap-button" onclick="openBox()">Unwrap the Box</button>
 
         <div class="chocolate-box-container">
             <div class="chocolate-box" id="chocolateBox">
                 <div class="box-lid">
-                    <span>🎀</span>
+                    <span></span>
                 </div>
                 <div class="box-base">
-                    <div class="chocolate-piece" onclick="showMessage(0)">🍫</div>
-                    <div class="chocolate-piece" onclick="showMessage(1)">🍬</div>
-                    <div class="chocolate-piece" onclick="showMessage(2)">🍫</div>
-                    <div class="chocolate-piece" onclick="showMessage(3)">🍬</div>
-                    <div class="chocolate-piece" onclick="showMessage(4)">🍫</div>
-                    <div class="chocolate-piece" onclick="showMessage(5)">🍬</div>
-                    <div class="chocolate-piece" onclick="showMessage(6)">🍫</div>
-                    <div class="chocolate-piece" onclick="showMessage(7)">🍬</div>
-                    <div class="chocolate-piece" onclick="showMessage(8)">🍫</div>
+                    <div class="chocolate-piece" onclick="showMessage(0)"></div>
+                    <div class="chocolate-piece" onclick="showMessage(1)"></div>
+                    <div class="chocolate-piece" onclick="showMessage(2)"></div>
+                    <div class="chocolate-piece" onclick="showMessage(3)"></div>
+                    <div class="chocolate-piece" onclick="showMessage(4)"></div>
+                    <div class="chocolate-piece" onclick="showMessage(5)"></div>
+                    <div class="chocolate-piece" onclick="showMessage(6)"></div>
+                    <div class="chocolate-piece" onclick="showMessage(7)"></div>
+                    <div class="chocolate-piece" onclick="showMessage(8)"></div>
                 </div>
             </div>
         </div>
@@ -490,10 +490,10 @@
         </div>
 
         <div class="polaroid-section">
-            <h2>✨ Captured Moment ✨</h2>
+            <h2>Captured Moment</h2>
             <div class="polaroid-container">
                 <div class="polaroid">
-                    <div class="polaroid-image">🍫</div>
+                    <div class="polaroid-image">[Photo]</div>
                     <div class="polaroid-caption">
                         Chocolate Day 2026
                         <div class="polaroid-date">February 9, 2026 • Sweet Moments</div>
@@ -506,33 +506,33 @@
         </div>
 
         <div class="gallery-section">
-            <h2>🎭 Magical Memory Gallery 🎭</h2>
+            <h2>Magical Memory Gallery</h2>
             <p style="text-align: center; color: rgba(212, 175, 55, 0.8); margin-bottom: 20px;">
                 Our enchanted collection of moments, waiting to be filled with love
             </p>
             <div class="gallery-grid">
                 <div class="photo-frame">
-                    <div class="photo-placeholder">🍫</div>
+                    <div class="photo-placeholder">[Photo]</div>
                     <div class="frame-label">Sweet Beginnings</div>
                 </div>
                 <div class="photo-frame">
-                    <div class="photo-placeholder">💝</div>
+                    <div class="photo-placeholder">[Photo]</div>
                     <div class="frame-label">Chocolate Hearts</div>
                 </div>
                 <div class="photo-frame">
-                    <div class="photo-placeholder">✨</div>
+                    <div class="photo-placeholder">[Photo]</div>
                     <div class="frame-label">Golden Memories</div>
                 </div>
                 <div class="photo-frame">
-                    <div class="photo-placeholder">🌟</div>
+                    <div class="photo-placeholder">[Photo]</div>
                     <div class="frame-label">Precious Moments</div>
                 </div>
                 <div class="photo-frame">
-                    <div class="photo-placeholder">🎁</div>
+                    <div class="photo-placeholder">[Photo]</div>
                     <div class="frame-label">Sweet Gifts</div>
                 </div>
                 <div class="photo-frame">
-                    <div class="photo-placeholder">💖</div>
+                    <div class="photo-placeholder">[Photo]</div>
                     <div class="frame-label">Forever Love</div>
                 </div>
             </div>
@@ -541,7 +541,7 @@
 
     <div class="modal" id="messageModal">
         <div class="modal-content">
-            <h3 id="modalTitle">💝 Sweet Message</h3>
+            <h3 id="modalTitle">Sweet Message</h3>
             <p id="modalMessage"></p>
             <button class="close-modal" onclick="closeModal()">Close</button>
         </div>
@@ -549,15 +549,15 @@
 
     <script>
         const messages = [
-            "Your smile is sweeter than the finest Belgian chocolate! 🍫",
-            "Like cocoa beans need time to become chocolate, our love grows richer every day. ❤️",
-            "You're the perfect blend - sweet, warm, and absolutely irresistible! 😍",
-            "Just like chocolate, you make everything better! 🌟",
-            "Missing you is bittersweet, like dark chocolate - intense but beautiful. 💔💕",
-            "When we're together again, it'll be sweeter than any dessert in the world! 🎂",
-            "You're my favorite flavor in this life - pure sweetness! 🍬",
-            "Like chocolate melts on the tongue, you melt my heart every single day. 💖",
-            "No chocolate can compete with the joy you bring to my life! ✨"
+            "Your smile is sweeter than the finest Belgian chocolate!",
+            "Like cocoa beans need time to become chocolate, our love grows richer every day.",
+            "You're the perfect blend - sweet, warm, and absolutely irresistible!",
+            "Just like chocolate, you make everything better!",
+            "Missing you is bittersweet, like dark chocolate - intense but beautiful.",
+            "When we're together again, it'll be sweeter than any dessert in the world!",
+            "You're my favorite flavor in this life - pure sweetness!",
+            "Like chocolate melts on the tongue, you melt my heart every single day.",
+            "No chocolate can compete with the joy you bring to my life!"
         ];
 
         function openBox() {
