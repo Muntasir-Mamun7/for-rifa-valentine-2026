@@ -961,22 +961,22 @@
         // Photo upload and cropping functionality
         let cropper = null;
         let currentTarget = null;
-        const fileInput2 = document.getElementById('fileInput');
-        const cropModal2 = document.getElementById('cropModal');
-        const cropImage2 = document.getElementById('cropImage');
+        const fileInput = document.getElementById('fileInput');
+        const cropModal = document.getElementById('cropModal');
+        const cropImage = document.getElementById('cropImage');
 
         function uploadPhoto(target) {
             currentTarget = target;
-            fileInput2.click();
+            fileInput.click();
         }
 
-        fileInput2.addEventListener('change', function(e) {
+        fileInput.addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (file && file.type.startsWith('image/')) {
                 const reader = new FileReader();
                 reader.onload = function(event) {
-                    cropImage2.src = event.target.result;
-                    cropModal2.classList.add('active');
+                    cropImage.src = event.target.result;
+                    cropModal.classList.add('active');
                     
                     // Initialize cropper
                     if (cropper) {
@@ -984,7 +984,7 @@
                     }
                     
                     const aspectRatio = currentTarget === 'polaroid' ? 1 : 3/4;
-                    cropper = new Cropper(cropImage2, {
+                    cropper = new Cropper(cropImage, {
                         aspectRatio: aspectRatio,
                         viewMode: 1,
                         autoCropArea: 1,
@@ -994,7 +994,7 @@
                 };
                 reader.readAsDataURL(file);
             }
-            fileInput2.value = ''; // Reset input
+            fileInput.value = ''; // Reset input
         });
 
         function saveCroppedImage() {
@@ -1003,6 +1003,13 @@
                     maxWidth: 800,
                     maxHeight: 800
                 });
+                
+                // Check if canvas was successfully created
+                if (!canvas) {
+                    console.error('Failed to create canvas from cropped image');
+                    cancelCrop();
+                    return;
+                }
                 
                 canvas.toBlob(function(blob) {
                     const reader = new FileReader();
@@ -1029,7 +1036,7 @@
         }
 
         function cancelCrop() {
-            cropModal2.classList.remove('active');
+            cropModal.classList.remove('active');
             if (cropper) {
                 cropper.destroy();
                 cropper = null;
@@ -1056,7 +1063,7 @@
             }
         }
 
-        function loadSavedPhotos2() {
+        function loadSavedPhotos() {
             // Load polaroid
             const polaroidData = localStorage.getItem('day5-polaroid');
             if (polaroidData) {
@@ -1073,7 +1080,7 @@
         }
 
         // Load saved photos on page load
-        document.addEventListener('DOMContentLoaded', loadSavedPhotos2);
+        document.addEventListener('DOMContentLoaded', loadSavedPhotos);
 
         // Parallax effect
         const parallaxContainer = document.getElementById('parallaxContainer');

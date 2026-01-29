@@ -587,6 +587,13 @@
                     maxHeight: 800
                 });
                 
+                // Check if canvas was successfully created
+                if (!canvas) {
+                    console.error('Failed to create canvas from cropped image');
+                    cancelCrop();
+                    return;
+                }
+                
                 canvas.toBlob(function(blob) {
                     const reader = new FileReader();
                     reader.onload = function(e) {

@@ -1607,7 +1607,7 @@
                         cropper.destroy();
                     }
                     
-                    const aspectRatio = currentTarget === 'polaroid' ? 3/4 : 3/4;
+                    const aspectRatio = currentTarget === 'polaroid' ? 1 : 3/4;
                     cropper = new Cropper(cropImage, {
                         aspectRatio: aspectRatio,
                         viewMode: 1,
@@ -1627,6 +1627,13 @@
                     maxWidth: 800,
                     maxHeight: 800
                 });
+                
+                // Check if canvas was successfully created
+                if (!canvas) {
+                    console.error('Failed to create canvas from cropped image');
+                    cancelCrop();
+                    return;
+                }
                 
                 canvas.toBlob(function(blob) {
                     const reader = new FileReader();
