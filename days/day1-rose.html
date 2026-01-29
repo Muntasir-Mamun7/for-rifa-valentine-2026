@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1 - Rose Day 🌹</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #FF6B9D 0%, #C41E3A 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: white;
+            text-align: center;
+            font-size: 3rem;
+            margin: 2rem 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInDown 1s ease;
+        }
+
+        .date-badge {
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .rose-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 400px;
+            position: relative;
+            margin: 3rem 0;
+        }
+
+        .rose {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            animation: bloom 3s ease-in-out infinite;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .rose:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes bloom {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.05) rotate(5deg); }
+        }
+
+        .petal {
+            position: absolute;
+            width: 80px;
+            height: 120px;
+            background: radial-gradient(ellipse at center, #FF6B9D 0%, #C41E3A 100%);
+            border-radius: 50% 50% 50% 0;
+            transform-origin: bottom right;
+            animation: petalOpen 2s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes petalOpen {
+            to { opacity: 1; }
+        }
+
+        .petal:nth-child(1) { transform: rotate(-90deg) translate(40px, 40px); animation-delay: 0.1s; }
+        .petal:nth-child(2) { transform: rotate(-45deg) translate(40px, 40px); animation-delay: 0.2s; }
+        .petal:nth-child(3) { transform: rotate(0deg) translate(40px, 40px); animation-delay: 0.3s; }
+        .petal:nth-child(4) { transform: rotate(45deg) translate(40px, 40px); animation-delay: 0.4s; }
+        .petal:nth-child(5) { transform: rotate(90deg) translate(40px, 40px); animation-delay: 0.5s; }
+        .petal:nth-child(6) { transform: rotate(135deg) translate(40px, 40px); animation-delay: 0.6s; }
+
+        .rose-center {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: #FFD700;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            animation: centerGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes centerGlow {
+            0%, 100% { box-shadow: 0 0 20px #FFD700; }
+            50% { box-shadow: 0 0 40px #FFD700; }
+        }
+
+        .falling-petals {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .falling-petal {
+            position: absolute;
+            width: 20px;
+            height: 30px;
+            background: linear-gradient(135deg, #FF6B9D, #FFB6C1);
+            border-radius: 50% 0 50% 0;
+            opacity: 0.7;
+            animation: fall 10s linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotateZ(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(110vh) rotateZ(360deg);
+                opacity: 0;
+            }
+        }
+
+        .message-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            animation: fadeInUp 1s ease;
+        }
+
+        .message-card h2 {
+            font-family: 'Playfair Display', serif;
+            color: #C41E3A;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .message-card p {
+            color: #333;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .map-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .map-section h3 {
+            font-family: 'Playfair Display', serif;
+            color: #C41E3A;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .journey-map {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .location {
+            text-align: center;
+            padding: 1rem;
+            background: linear-gradient(135deg, #FFB6C1, #FF69B4);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            animation: pulse 2s ease-in-out infinite;
+            flex: 1;
+            min-width: 150px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .location-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .location-name {
+            font-weight: 600;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .arrow {
+            font-size: 3rem;
+            color: #C41E3A;
+            animation: moveArrow 1.5s ease-in-out infinite;
+        }
+
+        @keyframes moveArrow {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+        }
+
+        .interactive-petals {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .secret-petal {
+            background: linear-gradient(135deg, #FF6B9D, #C41E3A);
+            border-radius: 50% 0 50% 0;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .secret-petal:hover {
+            transform: rotate(5deg) scale(1.05);
+            box-shadow: 0 10px 30px rgba(196, 30, 58, 0.4);
+        }
+
+        .secret-petal.revealed {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+        }
+
+        .petal-emoji {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .petal-text {
+            color: white;
+            font-weight: 600;
+        }
+
+        .secret-message {
+            display: none;
+            color: #C41E3A;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            padding: 1rem;
+        }
+
+        .secret-petal.revealed .petal-emoji,
+        .secret-petal.revealed .petal-text {
+            display: none;
+        }
+
+        .secret-petal.revealed .secret-message {
+            display: block;
+        }
+
+        .music-player {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .music-player p {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        /* Music player controls placeholder */
+        .player-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .control-btn {
+            background: linear-gradient(135deg, #FF6B9D, #C41E3A);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .control-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            border: 2px solid white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            font-size: 1rem;
+            font-weight: 600;
+            z-index: 100;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: translateX(-5px);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .rose {
+                width: 150px;
+                height: 150px;
+            }
+
+            .message-card h2 {
+                font-size: 1.5rem;
+            }
+
+            .journey-map {
+                flex-direction: column;
+            }
+
+            .arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="falling-petals" id="fallingPetals"></div>
+    
+    <a href="../main.html" class="back-button">← Back to Days</a>
+
+    <div class="container">
+        <div style="text-align: center;">
+            <span class="date-badge">February 7, 2026</span>
+        </div>
+        <h1>🌹 Rose Day 🌹</h1>
+        
+        <div class="rose-container">
+            <div class="rose" id="mainRose">
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="rose-center"></div>
+            </div>
+        </div>
+
+        <div class="message-card">
+            <h2>The First Bloom of Our Love</h2>
+            <p>November 30th, 2025 - A day that changed everything. At Gulou Metro Station in Nanjing, our paths crossed for the very first time. Who knew that a simple meeting would bloom into something so beautiful?</p>
+            <p>From that metro station, we journeyed together to Purple Mountain, where we witnessed the most breathtaking sunset. As the sun painted the sky in shades of pink and gold, I realized that this was just the beginning of our story.</p>
+            <p>Every rose begins as a tiny bud, and like this flower, our love has blossomed beautifully. Today, I give you not just a rose, but my heart. 🌹</p>
+        </div>
+
+        <div class="map-section">
+            <h3>Our First Journey Together</h3>
+            <div class="journey-map">
+                <div class="location">
+                    <div class="location-icon">🚇</div>
+                    <div class="location-name">Gulou Metro</div>
+                    <div style="font-size: 0.8rem; color: rgba(255,255,255,0.9); margin-top: 0.5rem;">Where we met</div>
+                </div>
+                <div class="arrow">→</div>
+                <div class="location">
+                    <div class="location-icon">🏔️</div>
+                    <div class="location-name">Purple Mountain</div>
+                    <div style="font-size: 0.8rem; color: rgba(255,255,255,0.9); margin-top: 0.5rem;">Sunset together</div>
+                </div>
+                <div class="arrow">→</div>
+                <div class="location">
+                    <div class="location-icon">❤️</div>
+                    <div class="location-name">Forever</div>
+                    <div style="font-size: 0.8rem; color: rgba(255,255,255,0.9); margin-top: 0.5rem;">Our destiny</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="message-card">
+            <h2>Discover Hidden Messages 💌</h2>
+            <p style="text-align: center; color: #C41E3A; font-weight: 600; margin-bottom: 1.5rem;">Click on each rose petal to reveal a special message!</p>
+            <div class="interactive-petals">
+                <div class="secret-petal" onclick="revealMessage(this)">
+                    <span class="petal-emoji">🌹</span>
+                    <span class="petal-text">Tap Me!</span>
+                    <div class="secret-message">"Your smile brightens my darkest days like the morning sun."</div>
+                </div>
+                <div class="secret-petal" onclick="revealMessage(this)">
+                    <span class="petal-emoji">💕</span>
+                    <span class="petal-text">Tap Me!</span>
+                    <div class="secret-message">"Every moment with you feels like a beautiful dream I never want to wake from."</div>
+                </div>
+                <div class="secret-petal" onclick="revealMessage(this)">
+                    <span class="petal-emoji">✨</span>
+                    <span class="petal-text">Tap Me!</span>
+                    <div class="secret-message">"You are the poetry I could never write, but always feel in my heart."</div>
+                </div>
+                <div class="secret-petal" onclick="revealMessage(this)">
+                    <span class="petal-emoji">🌸</span>
+                    <span class="petal-text">Tap Me!</span>
+                    <div class="secret-message">"In a garden of a thousand flowers, I would still choose you every time."</div>
+                </div>
+                <div class="secret-petal" onclick="revealMessage(this)">
+                    <span class="petal-emoji">💖</span>
+                    <span class="petal-text">Tap Me!</span>
+                    <div class="secret-message">"Distance means nothing when someone means everything."</div>
+                </div>
+                <div class="secret-petal" onclick="revealMessage(this)">
+                    <span class="petal-emoji">🌺</span>
+                    <span class="petal-text">Tap Me!</span>
+                    <div class="secret-message">"You are my today and all of my tomorrows. Forever and always."</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="music-player">
+            <h2 style="font-family: 'Playfair Display', serif; color: #C41E3A; margin-bottom: 1rem;">♫ Romantic Melodies</h2>
+            <p>🎵 Music placeholder - Add your favorite romantic song here</p>
+            <!-- TODO: Add audio element here -->
+            <!-- <audio id="musicPlayer" src="../assets/music/rose-day.mp3"></audio> -->
+            <div class="player-controls">
+                <button class="control-btn" onclick="playMusic()">▶</button>
+                <button class="control-btn" onclick="pauseMusic()">⏸</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create falling petals animation
+        function createFallingPetal() {
+            const petal = document.createElement('div');
+            petal.className = 'falling-petal';
+            petal.style.left = Math.random() * 100 + '%';
+            petal.style.animationDuration = (Math.random() * 5 + 8) + 's';
+            petal.style.animationDelay = Math.random() * 3 + 's';
+            document.getElementById('fallingPetals').appendChild(petal);
+            
+            setTimeout(() => petal.remove(), 15000);
+        }
+
+        // Create petals continuously
+        setInterval(createFallingPetal, 500);
+        for(let i = 0; i < 20; i++) {
+            setTimeout(createFallingPetal, i * 300);
+        }
+
+        // Reveal hidden messages
+        function revealMessage(element) {
+            element.classList.add('revealed');
+        }
+
+        // Music player functions (placeholders)
+        function playMusic() {
+            // TODO: Implement music playback
+            // const audio = document.getElementById('musicPlayer');
+            // audio.play();
+            alert('🎵 Music player placeholder - Add your audio file to enable playback');
+        }
+
+        function pauseMusic() {
+            // TODO: Implement music pause
+            // const audio = document.getElementById('musicPlayer');
+            // audio.pause();
+        }
+
+        // Main rose interaction
+        document.getElementById('mainRose').addEventListener('click', function() {
+            this.style.animation = 'none';
+            setTimeout(() => {
+                this.style.animation = 'bloom 3s ease-in-out infinite';
+            }, 10);
+        });
+    </script>
+</body>
+</html>

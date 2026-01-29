@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 5 - Promise Day 🤝</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #7B68EE 0%, #6A5ACD 50%, #483D8B 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: #FFD700;
+            text-align: center;
+            font-size: 3rem;
+            margin: 2rem 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInDown 1s ease;
+        }
+
+        .date-badge {
+            background: rgba(255, 215, 0, 0.3);
+            color: #FFD700;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .message-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease;
+        }
+
+        .message-card h2 {
+            font-family: 'Playfair Display', serif;
+            color: #483D8B;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .message-card p {
+            color: #333;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .tree-container {
+            position: relative;
+            min-height: 600px;
+            margin: 3rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .tree-trunk {
+            width: 60px;
+            height: 200px;
+            background: linear-gradient(135deg, #654321, #8B4513);
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .tree-branches {
+            position: absolute;
+            width: 600px;
+            height: 500px;
+            bottom: 150px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .branch {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.3s;
+            animation: growBranch 1s ease-out forwards;
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        @keyframes growBranch {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .branch:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 255, 255, 0.9));
+        }
+
+        .branch-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+            text-align: center;
+        }
+
+        .branch-title {
+            font-weight: 600;
+            color: #483D8B;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .branch-promise {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .branch:nth-child(1) { left: 50%; top: 0; transform: translateX(-50%); animation-delay: 0.2s; }
+        .branch:nth-child(2) { left: 20%; top: 100px; animation-delay: 0.4s; }
+        .branch:nth-child(3) { right: 15%; top: 100px; animation-delay: 0.6s; }
+        .branch:nth-child(4) { left: 10%; top: 230px; animation-delay: 0.8s; }
+        .branch:nth-child(5) { right: 5%; top: 230px; animation-delay: 1s; }
+        .branch:nth-child(6) { left: 30%; top: 360px; animation-delay: 1.2s; }
+        .branch:nth-child(7) { right: 25%; top: 360px; animation-delay: 1.4s; }
+
+        .landmarks-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .landmarks-section h3 {
+            font-family: 'Playfair Display', serif;
+            color: #483D8B;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+
+        .landmarks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .landmark-card {
+            background: linear-gradient(135deg, #7B68EE, #6A5ACD);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .landmark-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .landmark-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .landmark-name {
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .landmark-memory {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .promise-lock {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(123, 104, 238, 0.2));
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .promise-lock h3 {
+            font-family: 'Playfair Display', serif;
+            color: #FFD700;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .lock-icon {
+            font-size: 5rem;
+            margin: 1rem 0;
+            animation: swing 2s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes swing {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        .lock-message {
+            color: white;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-top: 1rem;
+        }
+
+        .parallax-container {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+
+        .parallax-layer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.1s ease-out;
+        }
+
+        .layer-1 {
+            background: linear-gradient(135deg, rgba(123, 104, 238, 0.5), rgba(106, 90, 205, 0.5));
+        }
+
+        .layer-2 {
+            background: linear-gradient(135deg, rgba(72, 61, 139, 0.3), rgba(75, 0, 130, 0.3));
+        }
+
+        .parallax-content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: white;
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            font-size: 1rem;
+            font-weight: 600;
+            z-index: 101;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: translateX(-5px);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .tree-branches {
+                width: 100%;
+                height: 700px;
+            }
+
+            .branch {
+                width: 80%;
+                left: 10% !important;
+                right: auto !important;
+            }
+
+            .branch:nth-child(1) { top: 0; }
+            .branch:nth-child(2) { top: 110px; }
+            .branch:nth-child(3) { top: 220px; }
+            .branch:nth-child(4) { top: 330px; }
+            .branch:nth-child(5) { top: 440px; }
+            .branch:nth-child(6) { top: 550px; }
+            .branch:nth-child(7) { top: 660px; }
+        }
+    </style>
+</head>
+<body>
+    <a href="../main.html" class="back-button">← Back to Days</a>
+
+    <div class="container">
+        <div style="text-align: center;">
+            <span class="date-badge">February 11, 2026</span>
+        </div>
+        <h1>🤝 Promise Day 🤝</h1>
+
+        <div class="message-card">
+            <h2>Promises That Last Forever</h2>
+            <p>Today, I plant a tree of promises - each branch represents a vow I make to you. Watch as our promise tree grows, just like our love grows stronger each day.</p>
+            <p>These aren't just words; they're commitments from my heart to yours, sealed with all the love I have. 💕</p>
+        </div>
+
+        <div class="tree-container">
+            <div class="tree-branches">
+                <div class="branch">
+                    <span class="branch-icon">💝</span>
+                    <div class="branch-title">I Promise</div>
+                    <div class="branch-promise">To love you unconditionally, in every moment, through every season of life.</div>
+                </div>
+                <div class="branch">
+                    <span class="branch-icon">🌟</span>
+                    <div class="branch-title">I Promise</div>
+                    <div class="branch-promise">To support your dreams of becoming a doctor and healing the world.</div>
+                </div>
+                <div class="branch">
+                    <span class="branch-icon">🤗</span>
+                    <div class="branch-title">I Promise</div>
+                    <div class="branch-promise">To be there for you, whether you're in Nanjing or Bangladesh, near or far.</div>
+                </div>
+                <div class="branch">
+                    <span class="branch-icon">😊</span>
+                    <div class="branch-title">I Promise</div>
+                    <div class="branch-promise">To make you smile every single day, even when miles apart.</div>
+                </div>
+                <div class="branch">
+                    <span class="branch-icon">🌈</span>
+                    <div class="branch-title">I Promise</div>
+                    <div class="branch-promise">To create beautiful memories together, just like our Purple Mountain sunset.</div>
+                </div>
+                <div class="branch">
+                    <span class="branch-icon">💪</span>
+                    <div class="branch-title">I Promise</div>
+                    <div class="branch-promise">To be your strength when you're tired, your comfort when you're sad.</div>
+                </div>
+                <div class="branch">
+                    <span class="branch-icon">♾️</span>
+                    <div class="branch-title">I Promise</div>
+                    <div class="branch-promise">Forever. That's how long I'll love you. Forever and always.</div>
+                </div>
+            </div>
+            <div class="tree-trunk"></div>
+        </div>
+
+        <div class="landmarks-section">
+            <h3>Our Special Places in Nanjing</h3>
+            <p style="text-align: center; color: #666; margin-bottom: 2rem;">Every location holds a piece of our story ❤️</p>
+            <div class="landmarks-grid">
+                <div class="landmark-card">
+                    <div class="landmark-icon">🚇</div>
+                    <div class="landmark-name">Gulou Metro</div>
+                    <div class="landmark-memory">Where our story began - Nov 30, 2025</div>
+                </div>
+                <div class="landmark-card">
+                    <div class="landmark-icon">🏔️</div>
+                    <div class="landmark-name">Purple Mountain</div>
+                    <div class="landmark-memory">Our magical sunset together</div>
+                </div>
+                <div class="landmark-card">
+                    <div class="landmark-icon">🎓</div>
+                    <div class="landmark-name">NJUPT</div>
+                    <div class="landmark-memory">Where I study CS, dreaming of you</div>
+                </div>
+                <div class="landmark-card">
+                    <div class="landmark-icon">🏥</div>
+                    <div class="landmark-name">NMU Jiangning</div>
+                    <div class="landmark-memory">Where you're becoming a healer</div>
+                </div>
+                <div class="landmark-card">
+                    <div class="landmark-icon">🏙️</div>
+                    <div class="landmark-name">Xinjiekou</div>
+                    <div class="landmark-memory">Shopping and laughter together</div>
+                </div>
+                <div class="landmark-card">
+                    <div class="landmark-icon">🍜</div>
+                    <div class="landmark-name">Shangsanjie</div>
+                    <div class="landmark-memory">Delicious food, sweeter company</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="parallax-container" id="parallaxContainer">
+            <div class="parallax-layer layer-1"></div>
+            <div class="parallax-layer layer-2"></div>
+            <div class="parallax-content">
+                "Together we'll create a thousand more memories"
+            </div>
+        </div>
+
+        <div class="promise-lock">
+            <h3>Our Virtual Promise Lock</h3>
+            <div class="lock-icon">🔒</div>
+            <div class="lock-message">
+                Like the love locks on bridges around the world, this lock symbolizes our promises locked together forever. No key can unlock it, no time can break it. Our promises are eternal. 💕
+            </div>
+        </div>
+
+        <div class="message-card">
+            <h2>A Special Promise</h2>
+            <p style="font-size: 1.2rem; color: #483D8B; text-align: center; font-weight: 600;">
+                "I promise that no matter where life takes us - whether you're at NMU saving lives or I'm at NJUPT writing code - we'll always find our way back to each other."
+            </p>
+            <p style="text-align: center; margin-top: 2rem; font-size: 1.3rem; color: #C41E3A;">
+                These promises are written in my heart. Forever yours. 💝
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Parallax effect
+        const parallaxContainer = document.getElementById('parallaxContainer');
+        
+        parallaxContainer.addEventListener('mousemove', (e) => {
+            const rect = parallaxContainer.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width;
+            const y = (e.clientY - rect.top) / rect.height;
+            
+            const layers = document.querySelectorAll('.parallax-layer');
+            layers[0].style.transform = `translate(${x * 20}px, ${y * 20}px)`;
+            layers[1].style.transform = `translate(${x * 40}px, ${y * 40}px)`;
+        });
+
+        // Add touch support for mobile
+        parallaxContainer.addEventListener('touchmove', (e) => {
+            const touch = e.touches[0];
+            const rect = parallaxContainer.getBoundingClientRect();
+            const x = (touch.clientX - rect.left) / rect.width;
+            const y = (touch.clientY - rect.top) / rect.height;
+            
+            const layers = document.querySelectorAll('.parallax-layer');
+            layers[0].style.transform = `translate(${x * 20}px, ${y * 20}px)`;
+            layers[1].style.transform = `translate(${x * 40}px, ${y * 40}px)`;
+        });
+    </script>
+</body>
+</html>
