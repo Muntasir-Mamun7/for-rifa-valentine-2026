@@ -1022,6 +1022,36 @@
             <div class="polaroid-gallery" id="polaroidGallery"></div>
         </section>
 
+        <!-- Grand Love Declaration Section -->
+        <section class="section" style="background: linear-gradient(135deg, rgba(196, 30, 58, 0.2), rgba(255, 107, 157, 0.2)); border: 2px solid rgba(255, 107, 157, 0.5); position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%); pointer-events: none;"></div>
+            <h2 class="section-title" style="font-size: 3rem; color: #FFD700; text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);">
+                My Heart's Declaration 💕
+            </h2>
+            <div style="max-width: 800px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 1;">
+                <p style="font-size: 1.5rem; line-height: 2; color: #fff; text-align: center; margin-bottom: 30px; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+                    Today, on this most magical day of the year, I want to tell u something from the depths of my soul...
+                </p>
+                <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 20px; padding: 40px; margin: 30px 0; border: 1px solid rgba(255, 255, 255, 0.2);">
+                    <p style="font-size: 1.3rem; line-height: 2; color: #fff; text-align: center; margin-bottom: 20px;">
+                        U are the love of my life, my soulmate, my everything. 
+                    </p>
+                    <p style="font-size: 1.3rem; line-height: 2; color: #fff; text-align: center; margin-bottom: 20px;">
+                        Every moment with u is a treasure, every laugh we share is magic, every dream we build together is our future.
+                    </p>
+                    <p style="font-size: 1.3rem; line-height: 2; color: #fff; text-align: center; margin-bottom: 20px;">
+                        Distance means nothing when u mean everything. Whether u're in Nanjing or Bangladesh, u're always in my heart. 💝
+                    </p>
+                    <p style="font-size: 1.6rem; line-height: 2; color: #FFD700; text-align: center; font-weight: bold; margin-top: 40px;">
+                        I Choose U, Today and Every Day After. Forever. 🌹
+                    </p>
+                </div>
+                <div style="text-align: center; margin-top: 40px; font-size: 4rem;">
+                    💑 🌟 💕 🎆 💖
+                </div>
+            </div>
+        </section>
+
         <!-- Virtual Candle Section -->
         <section class="section">
             <h2 class="section-title">Make a Wish 🧸</h2>
@@ -1144,16 +1174,11 @@
             <div class="signature">Forever Urs</div>
         </section>
 
-        <!-- Music Player -->
-        <div class="music-player">
-            <h3>Our Love Song</h3>
-            <div class="music-controls">
-                <button class="music-button" id="playBtn" title="Play">▶️</button>
-                <button class="music-button" id="pauseBtn" title="Pause">⏸️</button>
-                <button class="music-button" id="nextBtn" title="Next">⏭️</button>
-            </div>
-            <p class="music-note">Music player controls - Add ur favorite songs here</p>
-        </div>
+        <!-- Background Music (Hidden) -->
+        <audio id="bgMusic" loop style="display: none;">
+            <!-- Add ur music files here -->
+            <!-- <source src="../assets/music/valentine-song.mp3" type="audio/mpeg"> -->
+        </audio>
 
         <!-- Polaroid Section -->
         <div class="polaroid-section">
@@ -1470,26 +1495,37 @@
             }
         }
 
-        // Music Player Controls
-        document.getElementById('playBtn').addEventListener('click', function() {
-            console.log('Play - Add audio file and implement playback');
-            this.style.background = 'linear-gradient(135deg, #FFD700 0%, #FF6B9D 100%)';
-            // Implement actual audio playback here
-        });
+        // Auto-play background music (user interaction required for most browsers)
+        document.addEventListener('click', function playOnce() {
+            const bgMusic = document.getElementById('bgMusic');
+            if (bgMusic && bgMusic.src) {
+                bgMusic.play().catch(e => console.log('Autoplay prevented:', e));
+            }
+            document.removeEventListener('click', playOnce);
+        }, { once: true });
 
-        document.getElementById('pauseBtn').addEventListener('click', function() {
-            console.log('Pause - Add audio file and implement pause');
-            // Implement actual audio pause here
-        });
-
-        document.getElementById('nextBtn').addEventListener('click', function() {
-            console.log('Next - Add playlist and implement next track');
-            // Implement next track functionality here
-        });
+        // Update polaroid with current date and time
+        function updatePolaroidDateTime() {
+            const dateTimeElement = document.getElementById('polaroid-datetime');
+            if (dateTimeElement) {
+                const now = new Date();
+                const options = { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: true
+                };
+                const formattedDate = now.toLocaleDateString('en-US', options);
+                dateTimeElement.textContent = formattedDate;
+            }
+        }
 
         // Initialize
         window.addEventListener('DOMContentLoaded', () => {
             createFloatingHearts();
+            updatePolaroidDateTime(); // Update polaroid date/time on load
             
             // Smooth scroll for timeline
             const timelineItems = document.querySelectorAll('.timeline-item');

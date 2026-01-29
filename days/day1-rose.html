@@ -1187,16 +1187,11 @@
             </div>
         </div>
 
-        <div class="music-player">
-            <h2 style="font-family: 'Playfair Display', serif; margin-bottom: 1rem;">Romantic Melodies</h2>
-            <p>Music placeholder - Add ur favorite romantic song here</p>
-            <!-- TODO: Add audio element here -->
-            <!-- <audio id="musicPlayer" src="../assets/music/rose-day.mp3"></audio> -->
-            <div class="player-controls">
-                <button class="control-btn" onclick="playMusic()">▶</button>
-                <button class="control-btn" onclick="pauseMusic()">⏸</button>
-            </div>
-        </div>
+        <!-- Background Music (Hidden) -->
+        <audio id="bgMusic" loop style="display: none;">
+            <!-- Add ur music files here -->
+            <!-- <source src="../assets/music/rose-day.mp3" type="audio/mpeg"> -->
+        </audio>
     </div>
 
     <div class="swipe-indicator">← Swipe left to go back</div>
@@ -1215,19 +1210,14 @@
             }
         }
 
-        // Music player functions (placeholders)
-        function playMusic() {
-            // TODO: Implement music playback
-            // const audio = document.getElementById('musicPlayer');
-            // audio.play();
-            alert('Music player placeholder - Add ur audio file to enable playback');
-        }
-
-        function pauseMusic() {
-            // TODO: Implement music pause
-            // const audio = document.getElementById('musicPlayer');
-            // audio.pause();
-        }
+        // Auto-play background music (user interaction required for most browsers)
+        document.addEventListener('click', function playOnce() {
+            const bgMusic = document.getElementById('bgMusic');
+            if (bgMusic && bgMusic.src) {
+                bgMusic.play().catch(e => console.log('Autoplay prevented:', e));
+            }
+            document.removeEventListener('click', playOnce);
+        }, { once: true });
 
         // 3D rose interaction - toggle animation on click
         const rose3d = document.getElementById('rose3d');
