@@ -1156,101 +1156,137 @@
         });
 
         function handleFiles(files) {
+            const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB limit
+            
             Array.from(files).forEach(file => {
-                if (file.type.startsWith('image/')) {
-                    createPolaroid(file);
+                if (!file.type.startsWith('image/')) {
+                    return;
                 }
+                
+                if (file.size > MAX_FILE_SIZE) {
+                    console.warn(`File ${file.name} is too large (${(file.size / 1024 / 1024).toFixed(2)}MB). Maximum size is 10MB.`);
+                    return;
+                }
+                
+                createPolaroid(file);
             });
         }
 
         function createPolaroid(file) {
+            const POLAROID_WIDTH = 400;
+            const POLAROID_HEIGHT = 480;
+            const IMAGE_HEIGHT = 360;
+            
             const reader = new FileReader();
             
+            reader.onerror = function() {
+                console.error('Error reading file:', file.name);
+            };
+            
             reader.onload = function(e) {
-                const img = new Image();
-                img.onload = function() {
-                    // Create canvas for Polaroid effect
-                    const canvas = document.createElement('canvas');
-                    const ctx = canvas.getContext('2d');
+                try {
+                    const img = new Image();
                     
-                    // Set canvas size (Polaroid dimensions)
-                    const polaroidWidth = 400;
-                    const polaroidHeight = 480;
-                    canvas.width = polaroidWidth;
-                    canvas.height = polaroidHeight;
-                    
-                    // Calculate image dimensions to fit in Polaroid
-                    const imageHeight = 360;
-                    const imageWidth = polaroidWidth;
-                    const scale = Math.min(imageWidth / img.width, imageHeight / img.height);
-                    const scaledWidth = img.width * scale;
-                    const scaledHeight = img.height * scale;
-                    const x = (imageWidth - scaledWidth) / 2;
-                    const y = (imageHeight - scaledHeight) / 2;
-                    
-                    // White background
-                    ctx.fillStyle = '#fff';
-                    ctx.fillRect(0, 0, polaroidWidth, polaroidHeight);
-                    
-                    // Draw image
-                    ctx.drawImage(img, x, y, scaledWidth, scaledHeight);
-                    
-                    // Apply vintage sepia filter
-                    const imageData = ctx.getImageData(0, 0, polaroidWidth, imageHeight);
-                    const data = imageData.data;
-                    
-                    for (let i = 0; i < data.length; i += 4) {
-                        const r = data[i];
-                        const g = data[i + 1];
-                        const b = data[i + 2];
-                        
-                        // Sepia formula
-                        data[i] = Math.min(255, (r * 0.393) + (g * 0.769) + (b * 0.189));
-                        data[i + 1] = Math.min(255, (r * 0.349) + (g * 0.686) + (b * 0.168));
-                        data[i + 2] = Math.min(255, (r * 0.272) + (g * 0.534) + (b * 0.131));
-                        
-                        // Warm filter (add red/yellow tint)
-                        data[i] = Math.min(255, data[i] + 20);
-                        data[i + 1] = Math.min(255, data[i + 1] + 10);
-                    }
-                    
-                    ctx.putImageData(imageData, 0, 0);
-                    
-                    // Create polaroid element
-                    const polaroidDiv = document.createElement('div');
-                    polaroidDiv.className = 'polaroid-frame';
-                    
-                    const polaroidImg = document.createElement('img');
-                    polaroidImg.src = canvas.toDataURL('image/jpeg', 0.9);
-                    polaroidImg.className = 'polaroid-image';
-                    
-                    const caption = document.createElement('div');
-                    caption.className = 'polaroid-caption';
-                    caption.textContent = 'Our Memory 💕';
-                    
-                    const downloadBtn = document.createElement('button');
-                    downloadBtn.className = 'polaroid-download';
-                    downloadBtn.textContent = '⬇ Download';
-                    downloadBtn.onclick = () => {
-                        const link = document.createElement('a');
-                        link.download = 'polaroid-memory.jpg';
-                        link.href = canvas.toDataURL('image/jpeg', 0.9);
-                        link.click();
+                    img.onerror = function() {
+                        console.error('Error loading image:', file.name);
                     };
                     
-                    polaroidDiv.appendChild(polaroidImg);
-                    polaroidDiv.appendChild(caption);
-                    polaroidDiv.appendChild(downloadBtn);
+                    img.onload = function() {
+                        try {
+                            // Create canvas for Polaroid effect
+                            const canvas = document.createElement('canvas');
+                            const ctx = canvas.getContext('2d');
+                            
+                            if (!ctx) {
+                                console.error('Could not get canvas context');
+                                return;
+                            }
+                            
+                            // Set canvas size (Polaroid dimensions)
+                            canvas.width = POLAROID_WIDTH;
+                            canvas.height = POLAROID_HEIGHT;
+                            
+                            // Calculate image dimensions to fit in Polaroid
+                            const imageWidth = POLAROID_WIDTH;
+                            const scale = Math.min(imageWidth / img.width, IMAGE_HEIGHT / img.height);
+                            const scaledWidth = img.width * scale;
+                            const scaledHeight = img.height * scale;
+                            const x = (imageWidth - scaledWidth) / 2;
+                            const y = (IMAGE_HEIGHT - scaledHeight) / 2;
+                            
+                            // White background
+                            ctx.fillStyle = '#fff';
+                            ctx.fillRect(0, 0, POLAROID_WIDTH, POLAROID_HEIGHT);
+                            
+                            // Draw image
+                            ctx.drawImage(img, x, y, scaledWidth, scaledHeight);
+                            
+                            // Apply vintage sepia filter
+                            const imageData = ctx.getImageData(0, 0, POLAROID_WIDTH, IMAGE_HEIGHT);
+                            const data = imageData.data;
+                            
+                            for (let i = 0; i < data.length; i += 4) {
+                                const r = data[i];
+                                const g = data[i + 1];
+                                const b = data[i + 2];
+                                
+                                // Sepia formula
+                                data[i] = Math.min(255, (r * 0.393) + (g * 0.769) + (b * 0.189));
+                                data[i + 1] = Math.min(255, (r * 0.349) + (g * 0.686) + (b * 0.168));
+                                data[i + 2] = Math.min(255, (r * 0.272) + (g * 0.534) + (b * 0.131));
+                                
+                                // Warm filter (add red/yellow tint)
+                                data[i] = Math.min(255, data[i] + 20);
+                                data[i + 1] = Math.min(255, data[i + 1] + 10);
+                            }
+                            
+                            ctx.putImageData(imageData, 0, 0);
+                            
+                            // Create polaroid element
+                            const polaroidDiv = document.createElement('div');
+                            polaroidDiv.className = 'polaroid-frame';
+                            
+                            const polaroidImg = document.createElement('img');
+                            polaroidImg.src = canvas.toDataURL('image/jpeg', 0.9);
+                            polaroidImg.className = 'polaroid-image';
+                            
+                            const caption = document.createElement('div');
+                            caption.className = 'polaroid-caption';
+                            caption.textContent = 'Our Memory 💕';
+                            
+                            const downloadBtn = document.createElement('button');
+                            downloadBtn.className = 'polaroid-download';
+                            downloadBtn.textContent = '⬇ Download';
+                            downloadBtn.onclick = () => {
+                                const link = document.createElement('a');
+                                link.download = 'polaroid-memory.jpg';
+                                link.href = canvas.toDataURL('image/jpeg', 0.9);
+                                link.click();
+                            };
+                            
+                            polaroidDiv.appendChild(polaroidImg);
+                            polaroidDiv.appendChild(caption);
+                            polaroidDiv.appendChild(downloadBtn);
+                            
+                            polaroidGallery.appendChild(polaroidDiv);
+                        } catch (error) {
+                            console.error('Error creating Polaroid:', error);
+                        }
+                    };
                     
-                    polaroidGallery.appendChild(polaroidDiv);
-                };
-                img.src = e.target.result;
+                    img.src = e.target.result;
+                } catch (error) {
+                    console.error('Error processing image:', error);
+                }
             };
             
             reader.readAsDataURL(file);
         }
 
         // Virtual Cake Functions
+        const MAX_CAKE_SLICES = 8;
+        let sliceCount = 0;
+        
         function blowCandle(candle) {
             candle.classList.add('blown');
             
@@ -1265,7 +1301,6 @@
             }
         }
 
-        let sliceCount = 0;
         function cutCake(event) {
             const allCandles = document.querySelectorAll('.candle');
             const blownCandles = document.querySelectorAll('.candle.blown');
@@ -1275,7 +1310,7 @@
                 return;
             }
             
-            if (sliceCount >= 8) {
+            if (sliceCount >= MAX_CAKE_SLICES) {
                 alert('The cake is all gone! 😊');
                 return;
             }
