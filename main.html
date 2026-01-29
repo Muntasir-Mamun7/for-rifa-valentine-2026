@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 Days of Love ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            overflow-x: hidden;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .welcome-message {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .days-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .day-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease;
+            animation-fill-mode: both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .day-card:nth-child(1) { animation-delay: 0.1s; }
+        .day-card:nth-child(2) { animation-delay: 0.2s; }
+        .day-card:nth-child(3) { animation-delay: 0.3s; }
+        .day-card:nth-child(4) { animation-delay: 0.4s; }
+        .day-card:nth-child(5) { animation-delay: 0.5s; }
+        .day-card:nth-child(6) { animation-delay: 0.6s; }
+        .day-card:nth-child(7) { animation-delay: 0.7s; }
+
+        .day-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+        }
+
+        .day-card.locked {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .day-card.locked:hover {
+            transform: none;
+        }
+
+        .day-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: block;
+            text-align: center;
+        }
+
+        .day-date {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .day-title {
+            font-size: 1.5rem;
+            color: #C41E3A;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .day-subtitle {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .lock-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .countdown {
+            background: rgba(255, 107, 157, 0.2);
+            padding: 0.5rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            color: #C41E3A;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .status-unlocked {
+            color: #28a745;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .days-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        .logout-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            border: 2px solid white;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+
+    <div class="header">
+        <h1>7 Days of Love</h1>
+        <div class="welcome-message">
+            <p id="welcomeText">Welcome! ❤️</p>
+        </div>
+        <p>A journey through Valentine's week</p>
+    </div>
+
+    <div class="days-container" id="daysContainer">
+        <!-- Days will be populated by JavaScript -->
+    </div>
+
+    <script>
+        const days = [
+            {
+                date: '2026-02-07',
+                icon: '🌹',
+                title: 'Rose Day',
+                subtitle: 'The First Bloom',
+                page: 'days/day1-rose.html'
+            },
+            {
+                date: '2026-02-08',
+                icon: '💍',
+                title: 'Propose Day',
+                subtitle: 'The Question That Changed Everything',
+                page: 'days/day2-propose.html'
+            },
+            {
+                date: '2026-02-09',
+                icon: '🍫',
+                title: 'Chocolate Day',
+                subtitle: 'Sweet Like Our Love',
+                page: 'days/day3-chocolate.html'
+            },
+            {
+                date: '2026-02-10',
+                icon: '🧸',
+                title: 'Teddy Day',
+                subtitle: 'Warm Hugs Across Miles',
+                page: 'days/day4-teddy.html'
+            },
+            {
+                date: '2026-02-11',
+                icon: '🤝',
+                title: 'Promise Day',
+                subtitle: 'Our Promises',
+                page: 'days/day5-promise.html'
+            },
+            {
+                date: '2026-02-12',
+                icon: '🤗',
+                title: 'Hug Day',
+                subtitle: 'Missing Your Warmth',
+                page: 'days/day6-hug.html'
+            },
+            {
+                date: '2026-02-14',
+                icon: '❤️',
+                title: "Valentine's Day",
+                subtitle: 'The Grand Finale',
+                page: 'days/day7-valentine.html'
+            }
+        ];
+
+        // Check login
+        const userName = localStorage.getItem('userName');
+        if(!userName) {
+            window.location.href = 'index.html';
+        }
+
+        // Display welcome message
+        document.getElementById('welcomeText').textContent = `Welcome ${userName}! ❤️`;
+
+        // Check if user is Muntasir (admin mode - no time locks)
+        const isAdmin = userName.toLowerCase() === 'muntasir';
+
+        function isUnlocked(dateStr) {
+            if(isAdmin) return true;
+            
+            const unlockDate = new Date(dateStr + 'T00:00:00+06:00'); // Bangladesh time
+            const now = new Date();
+            return now >= unlockDate;
+        }
+
+        function getCountdown(dateStr) {
+            const unlockDate = new Date(dateStr + 'T00:00:00+06:00');
+            const now = new Date();
+            const diff = unlockDate - now;
+            
+            if(diff <= 0) return null;
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            
+            if(days > 0) return `Unlocks in ${days} day${days > 1 ? 's' : ''}`;
+            if(hours > 0) return `Unlocks in ${hours} hour${hours > 1 ? 's' : ''}`;
+            return 'Unlocks soon!';
+        }
+
+        function renderDays() {
+            const container = document.getElementById('daysContainer');
+            container.innerHTML = '';
+            
+            days.forEach((day, index) => {
+                const unlocked = isUnlocked(day.date);
+                const countdown = getCountdown(day.date);
+                
+                const card = document.createElement('div');
+                card.className = `day-card ${!unlocked ? 'locked' : ''}`;
+                
+                card.innerHTML = `
+                    <div class="day-icon">${day.icon}</div>
+                    <div class="day-date">${day.date}</div>
+                    <div class="day-title">${day.title}</div>
+                    <div class="day-subtitle">${day.subtitle}</div>
+                    ${!unlocked ? `<div class="lock-overlay">🔒</div>` : ''}
+                    ${!unlocked && countdown ? `<div class="countdown">${countdown}</div>` : ''}
+                    ${unlocked ? `<div class="status-unlocked">✨ Click to open ✨</div>` : ''}
+                `;
+                
+                if(unlocked) {
+                    card.onclick = () => {
+                        window.location.href = day.page;
+                    };
+                }
+                
+                container.appendChild(card);
+            });
+        }
+
+        function logout() {
+            if(confirm('Are you sure you want to logout?')) {
+                localStorage.clear();
+                window.location.href = 'index.html';
+            }
+        }
+
+        // Initial render
+        renderDays();
+        
+        // Update countdown every minute
+        setInterval(renderDays, 60000);
+    </script>
+</body>
+</html>
