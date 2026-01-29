@@ -80,6 +80,7 @@
             margin: 30px 0;
             backdrop-filter: blur(10px);
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 0.8s ease;
         }
 
         .content-section h2 {
@@ -316,7 +317,7 @@
             align-items: center;
             justify-content: center;
             color: rgba(212, 175, 55, 0.6);
-            font-size: 5rem;
+            font-size: 3rem;
             border: 1px solid #ddd;
         }
 
@@ -415,10 +416,6 @@
                 opacity: 1;
                 transform: translateY(0);
             }
-        }
-
-        .content-section {
-            animation: fadeInUp 0.8s ease;
         }
 
         @media (max-width: 768px) {
@@ -596,8 +593,10 @@
 
         function updateLoveQuote() {
             const quoteElement = document.querySelector('.love-quote');
-            const randomQuote = loveQuotes[Math.floor(Math.random() * loveQuotes.length)];
-            quoteElement.textContent = `"${randomQuote}"`;
+            if (quoteElement) {
+                const randomQuote = loveQuotes[Math.floor(Math.random() * loveQuotes.length)];
+                quoteElement.textContent = randomQuote;
+            }
         }
 
         // Update quote every 10 seconds

@@ -393,8 +393,10 @@
 
         function updateLoveQuote() {
             const quoteElement = document.querySelector('.love-quote');
-            const randomQuote = loveQuotes[Math.floor(Math.random() * loveQuotes.length)];
-            quoteElement.textContent = randomQuote;
+            if (quoteElement) {
+                const randomQuote = loveQuotes[Math.floor(Math.random() * loveQuotes.length)];
+                quoteElement.textContent = randomQuote;
+            }
         }
 
         // Update quote every 10 seconds
