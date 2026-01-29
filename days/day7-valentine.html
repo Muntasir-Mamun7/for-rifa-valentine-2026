@@ -1165,7 +1165,7 @@
                 <div class="upload-icon">[+]</div>
                 <div class="upload-text">Click or drag photos here</div>
                 <div class="upload-subtext">Upload one or multiple photos (iOS Safari compatible)</div>
-                <input type="file" id="fileInput" accept="image/*" multiple>
+                <input type="file" id="polaroidFileInput" accept="image/*" multiple>
             </div>
 
             <div class="polaroid-gallery" id="polaroidGallery"></div>
@@ -1372,6 +1372,19 @@
         </div>
     </div>
 
+    <!-- Crop Modal -->
+    <div class="crop-modal" id="cropModal">
+        <div class="crop-container">
+            <img id="cropImage" src="" alt="Crop">
+            <div class="crop-controls">
+                <button class="btn-save" onclick="saveCroppedImage()">Save</button>
+                <button class="btn-cancel" onclick="cancelCrop()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+
     <script>
         // Photo upload and cropping functionality
         let cropper = null;
@@ -1537,10 +1550,10 @@
 
         // Polaroid Photo Upload
         const uploadArea = document.getElementById('uploadArea');
-        const fileInput = document.getElementById('fileInput');
+        const polaroidFileInput = document.getElementById('polaroidFileInput');
         const polaroidGallery = document.getElementById('polaroidGallery');
 
-        uploadArea.addEventListener('click', () => fileInput.click());
+        uploadArea.addEventListener('click', () => polaroidFileInput.click());
 
         // Drag and drop support
         uploadArea.addEventListener('dragover', (e) => {
@@ -1559,7 +1572,7 @@
             handleFiles(files);
         });
 
-        fileInput.addEventListener('change', (e) => {
+        polaroidFileInput.addEventListener('change', (e) => {
             handleFiles(e.target.files);
         });
 
@@ -1859,19 +1872,6 @@
         
         createParticles();
     </script>
-
-    <!-- Crop Modal -->
-    <div class="crop-modal" id="cropModal">
-        <div class="crop-container">
-            <img id="cropImage" src="" alt="Crop">
-            <div class="crop-controls">
-                <button class="btn-save" onclick="saveCroppedImage()">Save</button>
-                <button class="btn-cancel" onclick="cancelCrop()">Cancel</button>
-            </div>
-        </div>
-    </div>
-
-    <input type="file" id="fileInput" accept="image/*" style="display: none;">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
 </body>
