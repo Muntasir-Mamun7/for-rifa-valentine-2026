@@ -1060,13 +1060,196 @@
             0%, 100% { transform: rotate(90deg) translateX(0); opacity: 0.5; }
             50% { transform: rotate(90deg) translateX(10px); opacity: 0.9; }
         }
+
+        /* Letter Section Styles */
+        .letter-section {
+            background: rgba(10, 10, 15, 0.85);
+            border: 1px solid rgba(139, 0, 0, 0.4);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .letter-greeting {
+            color: #DC143C;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .letter-content {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            font-size: 1.1rem;
+            text-align: left;
+        }
+
+        /* Page Title */
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #BC2020;
+            text-align: center;
+            margin: 1rem 0;
+            animation: fadeInDown 1s ease;
+        }
+
+        /* Polaroid Section Styles */
+        .polaroid-section {
+            background: rgba(10, 10, 15, 0.85);
+            border: 1px solid rgba(139, 0, 0, 0.4);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+        }
+
+        .polaroid-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: #BC2020;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .polaroid-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .polaroid {
+            background: #fff;
+            padding: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transform: rotate(-2deg);
+            transition: transform 0.3s ease;
+        }
+
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .polaroid-image {
+            width: 300px;
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.2), rgba(100, 0, 0, 0.3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(139, 0, 0, 0.5);
+            font-size: 3rem;
+            border: 1px solid #ddd;
+        }
+
+        .polaroid-caption {
+            padding: 15px 0 0 0;
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            color: #333;
+            font-size: 1rem;
+        }
+
+        .polaroid-date {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .love-quote {
+            text-align: center;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.2rem;
+            margin-top: 30px;
+            padding: 20px;
+            border-top: 1px solid rgba(139, 0, 0, 0.3);
+        }
+
+        /* Gallery Section Styles */
+        .gallery-section {
+            background: rgba(10, 10, 15, 0.85);
+            border: 1px solid rgba(139, 0, 0, 0.4);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+        }
+
+        .gallery-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: #BC2020;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .photo-frame {
+            position: relative;
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.3), rgba(101, 67, 33, 0.3));
+            border: 3px solid rgba(139, 0, 0, 0.4);
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(139, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .photo-frame:hover {
+            transform: translateY(-5px) rotate(1deg);
+            box-shadow: 0 10px 30px rgba(139, 0, 0, 0.5), inset 0 0 30px rgba(139, 0, 0, 0.2);
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.15), rgba(100, 0, 0, 0.25));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(139, 0, 0, 0.5);
+            font-size: 2.5rem;
+            border-radius: 5px;
+            border: 1px dashed rgba(139, 0, 0, 0.3);
+        }
+
+        .frame-label {
+            text-align: center;
+            margin-top: 10px;
+            font-family: 'Cormorant Garamond', serif;
+            color: #BC2020;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div style="text-align: center; margin-bottom: 1rem;">
             <div class="date-badge">February 7, 2026</div>
+            <h1 class="page-title">Rose Day</h1>
         </div>
+
+        <!-- Letter Section -->
+        <div class="letter-section">
+            <p class="letter-greeting">My dear Rifa,</p>
+            <p class="letter-content">
+                Missing u too much. not because it's Rose day or anything related to valentine day. becasue u r not with me these days. Ar matro koyekta din tarporei abar dekha hobe tomar sathe eita vebe onek khusi ami. Ajker rose ta reserve kora thaklo tomar jonno. Onek valobashi tomake
+            </p>
+        </div>
+
         <div class="rose-container">
             <div class="light-source"></div>
             <div class="key-light"></div>
@@ -1134,12 +1317,6 @@
             </div>
         </div>
 
-        <div class="message-card">
-            <h2>Our Destiny</h2>
-            <p>November 30th, 2025 - A day that changed everything. At Gulou Metro Station in Nanjing, our paths crossed for the very first time.</p>
-            <p>From that moment, our journey began - a journey not just through the streets of Nanjing, but through life itself. Our destiny was written in the stars, and it leads us from Gulou Metro Station to Forever.</p>
-        </div>
-
         <div class="map-section">
             <h3>Our Destiny</h3>
             <p style="text-align: center; color: rgba(255, 255, 255, 0.8); margin-bottom: 2rem; font-style: italic;">From Gulou Metro Station to Forever</p>
@@ -1183,6 +1360,45 @@
                 <div class="secret-petal" onclick="revealMessage(this)">
                     <span class="petal-text">Tap Me!</span>
                     <div class="secret-message">"U are my today and all of my tomorrows. Forever and always."</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Polaroid Section for Single Photo -->
+        <div class="polaroid-section">
+            <h2>Captured Moment</h2>
+            <div class="polaroid-container">
+                <div class="polaroid">
+                    <div class="polaroid-image">[Photo]</div>
+                    <div class="polaroid-caption">
+                        <div contenteditable="true" style="outline: none; cursor: text;">Rose Day 2026</div>
+                        <div class="polaroid-date" contenteditable="true" style="outline: none; cursor: text;">February 7, 2026 • A Rose for You</div>
+                    </div>
+                </div>
+            </div>
+            <div class="love-quote">
+                "A single rose can be my garden... a single friend, my world."
+            </div>
+        </div>
+
+        <!-- Magical Memory Gallery -->
+        <div class="gallery-section">
+            <h2>Magical Memory Gallery</h2>
+            <p style="text-align: center; color: rgba(255, 255, 255, 0.8); margin-bottom: 20px;">
+                Our enchanted collection of moments, waiting to be filled with love
+            </p>
+            <div class="gallery-grid">
+                <div class="photo-frame">
+                    <div class="photo-placeholder">[Photo]</div>
+                    <div class="frame-label">Memory 1</div>
+                </div>
+                <div class="photo-frame">
+                    <div class="photo-placeholder">[Photo]</div>
+                    <div class="frame-label">Memory 2</div>
+                </div>
+                <div class="photo-frame">
+                    <div class="photo-placeholder">[Photo]</div>
+                    <div class="frame-label">Memory 3</div>
                 </div>
             </div>
         </div>
