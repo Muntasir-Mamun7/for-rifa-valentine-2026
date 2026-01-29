@@ -1165,7 +1165,7 @@
                 <div class="upload-icon">[+]</div>
                 <div class="upload-text">Click or drag photos here</div>
                 <div class="upload-subtext">Upload one or multiple photos (iOS Safari compatible)</div>
-                <input type="file" id="fileInput" accept="image/*" multiple>
+                <input type="file" id="polaroidFileInput" accept="image/*" multiple>
             </div>
 
             <div class="polaroid-gallery" id="polaroidGallery"></div>
@@ -1537,10 +1537,10 @@
 
         // Polaroid Photo Upload
         const uploadArea = document.getElementById('uploadArea');
-        const fileInput = document.getElementById('fileInput');
+        const polaroidFileInput = document.getElementById('polaroidFileInput');
         const polaroidGallery = document.getElementById('polaroidGallery');
 
-        uploadArea.addEventListener('click', () => fileInput.click());
+        uploadArea.addEventListener('click', () => polaroidFileInput.click());
 
         // Drag and drop support
         uploadArea.addEventListener('dragover', (e) => {
@@ -1559,7 +1559,7 @@
             handleFiles(files);
         });
 
-        fileInput.addEventListener('change', (e) => {
+        polaroidFileInput.addEventListener('change', (e) => {
             handleFiles(e.target.files);
         });
 
