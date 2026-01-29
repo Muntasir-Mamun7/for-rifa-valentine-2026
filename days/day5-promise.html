@@ -440,7 +440,7 @@
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
             margin-top: 30px;
         }
@@ -453,6 +453,7 @@
             padding: 15px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(212, 175, 55, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
         }
 
         .photo-frame:hover {
@@ -467,10 +468,56 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-direction: column;
             color: rgba(212, 175, 55, 0.5);
             font-size: 2.5rem;
             border-radius: 5px;
             border: 1px dashed rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .upload-hint {
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            color: rgba(212, 175, 55, 0.6);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 3px 10px;
+            border-radius: 10px;
+            white-space: nowrap;
+        }
+
+        .photo-input {
+            display: none;
+        }
+
+        .change-photo-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(212, 175, 55, 0.8);
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.7rem;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .photo-frame:hover .change-photo-btn {
+            opacity: 1;
         }
 
         .frame-label {
@@ -483,6 +530,18 @@
         }
 
         @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .photo-frame {
+                max-width: 100%;
+            }
+
+            .photo-placeholder {
+                height: 250px;
+            }
             h1 {
                 font-size: 2rem;
             }
@@ -537,8 +596,8 @@
 
         <div class="content-section">
             <h2>Promises That Last Forever</h2>
-            <p>Today, I plant a tree of promises - each branch represents a vow I make to you. Watch as our promise tree grows, just like our love grows stronger each day.</p>
-            <p>These aren't just words; they're commitments from my heart to yours, sealed with all the love I have.</p>
+            <p>Today, I plant a tree of promises - each branch represents a vow I make to u. Watch as our promise tree grows, just like our love grows stronger each day.</p>
+            <p>These aren't just words; they're commitments from my heart to urs, sealed with all the love I have.</p>
         </div>
 
         <div class="tree-container">
@@ -546,22 +605,22 @@
                 <div class="branch">
                     <span class="branch-icon">♥</span>
                     <div class="branch-title">I Promise</div>
-                    <div class="branch-promise">To love you unconditionally, in every moment, through every season of life.</div>
+                    <div class="branch-promise">To love u unconditionally, in every moment, through every season of life.</div>
                 </div>
                 <div class="branch">
                     <span class="branch-icon">★</span>
                     <div class="branch-title">I Promise</div>
-                    <div class="branch-promise">To support your dreams of becoming a doctor and healing the world.</div>
+                    <div class="branch-promise">To support ur dreams of becoming a doctor and healing the world.</div>
                 </div>
                 <div class="branch">
                     <span class="branch-icon">♥</span>
                     <div class="branch-title">I Promise</div>
-                    <div class="branch-promise">To be there for you, whether you're in Nanjing or Bangladesh, near or far.</div>
+                    <div class="branch-promise">To be there for u, whether u're in Nanjing or Bangladesh, near or far.</div>
                 </div>
                 <div class="branch">
                     <span class="branch-icon">☺</span>
                     <div class="branch-title">I Promise</div>
-                    <div class="branch-promise">To make you smile every single day, even when miles apart.</div>
+                    <div class="branch-promise">To make u smile every single day, even when miles apart.</div>
                 </div>
                 <div class="branch">
                     <span class="branch-icon">★</span>
@@ -571,12 +630,12 @@
                 <div class="branch">
                     <span class="branch-icon">♥</span>
                     <div class="branch-title">I Promise</div>
-                    <div class="branch-promise">To be your strength when you're tired, your comfort when you're sad.</div>
+                    <div class="branch-promise">To be ur strength when u're tired, ur comfort when u're sad.</div>
                 </div>
                 <div class="branch">
                     <span class="branch-icon">∞</span>
                     <div class="branch-title">I Promise</div>
-                    <div class="branch-promise">Forever. That's how long I'll love you. Forever and always.</div>
+                    <div class="branch-promise">Forever. That's how long I'll love u. Forever and always.</div>
                 </div>
             </div>
             <div class="tree-trunk"></div>
@@ -599,12 +658,12 @@
                 <div class="landmark-card">
                     <div class="landmark-icon">🎓</div>
                     <div class="landmark-name">NJUPT</div>
-                    <div class="landmark-memory">Where I study CS, dreaming of you</div>
+                    <div class="landmark-memory">Where I study CS, dreaming of u</div>
                 </div>
                 <div class="landmark-card">
                     <div class="landmark-icon">🏥</div>
                     <div class="landmark-name">NMU Jiangning</div>
-                    <div class="landmark-memory">Where you're becoming a healer</div>
+                    <div class="landmark-memory">Where u're becoming a healer</div>
                 </div>
                 <div class="landmark-card">
                     <div class="landmark-icon">🏙️</div>
@@ -645,10 +704,10 @@
         <div class="message-card">
             <h2>A Special Promise</h2>
             <p style="font-size: 1.2rem; color: #483D8B; text-align: center; font-weight: 600;">
-                "I promise that no matter where life takes us - whether you're at NMU saving lives or I'm at NJUPT writing code - we'll always find our way back to each other."
+                "I promise that no matter where life takes us - whether u're at NMU saving lives or I'm at NJUPT writing code - we'll always find our way back to each other."
             </p>
             <p style="text-align: center; margin-top: 2rem; font-size: 1.3rem; color: #C41E3A;">
-                These promises are written in my heart. Forever yours.
+                These promises are written in my heart. Forever urs.
             </p>
         </div>
         <div class="polaroid-section">
@@ -670,31 +729,55 @@
         <div class="gallery-section">
             <h2>Magical Memory Gallery</h2>
             <p style="text-align: center; color: rgba(212, 175, 55, 0.8); margin-bottom: 20px;">
-                Our enchanted collection of moments, waiting to be filled with love
+                Click on any frame to upload ur photos - they'll be saved locally and both can see them! 📸
             </p>
-            <div class="gallery-grid">
-                <div class="photo-frame">
-                    <div class="photo-placeholder">[Photo]</div>
+            <div class="gallery-grid" id="promiseGallery">
+                <div class="photo-frame" data-frame="0" onclick="openPhotoUpload(0)">
+                    <div class="photo-placeholder" id="photo-0">
+                        <span style="font-size: 2rem;">📷</span>
+                        <span class="upload-hint">Click to upload</span>
+                    </div>
+                    <input type="file" class="photo-input" id="input-0" accept="image/*" onchange="handlePhotoUpload(0, event)">
                     <div class="frame-label">Expecto Patronum</div>
                 </div>
-                <div class="photo-frame">
-                    <div class="photo-placeholder">[Photo]</div>
+                <div class="photo-frame" data-frame="1" onclick="openPhotoUpload(1)">
+                    <div class="photo-placeholder" id="photo-1">
+                        <span style="font-size: 2rem;">📷</span>
+                        <span class="upload-hint">Click to upload</span>
+                    </div>
+                    <input type="file" class="photo-input" id="input-1" accept="image/*" onchange="handlePhotoUpload(1, event)">
                     <div class="frame-label">Lumos Maxima</div>
                 </div>
-                <div class="photo-frame">
-                    <div class="photo-placeholder">[Photo]</div>
+                <div class="photo-frame" data-frame="2" onclick="openPhotoUpload(2)">
+                    <div class="photo-placeholder" id="photo-2">
+                        <span style="font-size: 2rem;">📷</span>
+                        <span class="upload-hint">Click to upload</span>
+                    </div>
+                    <input type="file" class="photo-input" id="input-2" accept="image/*" onchange="handlePhotoUpload(2, event)">
                     <div class="frame-label">Wingardium Leviosa</div>
                 </div>
-                <div class="photo-frame">
-                    <div class="photo-placeholder">[Photo]</div>
+                <div class="photo-frame" data-frame="3" onclick="openPhotoUpload(3)">
+                    <div class="photo-placeholder" id="photo-3">
+                        <span style="font-size: 2rem;">📷</span>
+                        <span class="upload-hint">Click to upload</span>
+                    </div>
+                    <input type="file" class="photo-input" id="input-3" accept="image/*" onchange="handlePhotoUpload(3, event)">
                     <div class="frame-label">Riddikulus</div>
                 </div>
-                <div class="photo-frame">
-                    <div class="photo-placeholder">[Photo]</div>
+                <div class="photo-frame" data-frame="4" onclick="openPhotoUpload(4)">
+                    <div class="photo-placeholder" id="photo-4">
+                        <span style="font-size: 2rem;">📷</span>
+                        <span class="upload-hint">Click to upload</span>
+                    </div>
+                    <input type="file" class="photo-input" id="input-4" accept="image/*" onchange="handlePhotoUpload(4, event)">
                     <div class="frame-label">Alohomora</div>
                 </div>
-                <div class="photo-frame">
-                    <div class="photo-placeholder">[Photo]</div>
+                <div class="photo-frame" data-frame="5" onclick="openPhotoUpload(5)">
+                    <div class="photo-placeholder" id="photo-5">
+                        <span style="font-size: 2rem;">📷</span>
+                        <span class="upload-hint">Click to upload</span>
+                    </div>
+                    <input type="file" class="photo-input" id="input-5" accept="image/*" onchange="handlePhotoUpload(5, event)">
                     <div class="frame-label">Always</div>
                 </div>
             </div>
@@ -705,10 +788,10 @@
         // Love quotes for Promise Day
         const loveQuotes = [
             "A promise is a sacred vow, written in the language of the heart.",
-            "In your promises, I found my future, my hope, my forever.",
+            "In ur promises, I found my future, my hope, my forever.",
             "Every promise we make is a step closer to our eternal bond.",
             "Promises are the threads that weave our hearts together across any distance.",
-            "I promise to keep every vow, to honor every word, to love you endlessly."
+            "I promise to keep every vow, to honor every word, to love u endlessly."
         ];
 
         function updateLoveQuote() {
@@ -753,6 +836,49 @@
         document.head.appendChild(style);
         
         createParticles();
+
+        // Photo upload functionality for Promise Day gallery
+        function openPhotoUpload(frameIndex) {
+            document.getElementById(`input-${frameIndex}`).click();
+        }
+
+        function handlePhotoUpload(frameIndex, event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const photoData = e.target.result;
+                
+                // Save to localStorage so both users can see it
+                localStorage.setItem(`promise-photo-${frameIndex}`, photoData);
+                
+                // Display the photo
+                displayPhoto(frameIndex, photoData);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function displayPhoto(frameIndex, photoData) {
+            const photoPlaceholder = document.getElementById(`photo-${frameIndex}`);
+            photoPlaceholder.innerHTML = `
+                <img src="${photoData}" alt="Promise Photo">
+                <button class="change-photo-btn" onclick="event.stopPropagation(); openPhotoUpload(${frameIndex})">Change</button>
+            `;
+        }
+
+        // Load saved photos on page load
+        function loadSavedPhotos() {
+            for (let i = 0; i < 6; i++) {
+                const savedPhoto = localStorage.getItem(`promise-photo-${i}`);
+                if (savedPhoto) {
+                    displayPhoto(i, savedPhoto);
+                }
+            }
+        }
+
+        // Load photos when page loads
+        window.addEventListener('DOMContentLoaded', loadSavedPhotos);
 
         // Parallax effect
         const parallaxContainer = document.getElementById('parallaxContainer');

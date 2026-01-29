@@ -529,6 +529,103 @@
                 border-bottom-width: 120px !important;
             }
         }
+
+        /* Interactive Proposal Section */
+        .proposal-section {
+            background: rgba(20, 10, 15, 0.8);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 30px;
+            padding: 60px 40px;
+            margin: 50px 0;
+            text-align: center;
+            position: relative;
+            overflow: visible;
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.2);
+        }
+
+        .proposal-question {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #FFD700;
+            margin-bottom: 40px;
+            text-shadow: 0 2px 10px rgba(255, 215, 0, 0.5);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .proposal-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            position: relative;
+            min-height: 80px;
+        }
+
+        .proposal-btn {
+            padding: 20px 60px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Cormorant Garamond', serif;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-yes {
+            background: linear-gradient(135deg, #00FF00, #00CC00);
+            color: #fff;
+        }
+
+        .btn-yes:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(0, 255, 0, 0.4);
+        }
+
+        .btn-no {
+            background: linear-gradient(135deg, #FF6B6B, #C41E3A);
+            color: #fff;
+            position: absolute;
+        }
+
+        .proposal-result {
+            display: none;
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 20px;
+            animation: fadeInScale 0.8s ease;
+        }
+
+        .proposal-result h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #FFD700;
+            margin-bottom: 20px;
+        }
+
+        .proposal-result p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
     </style>
 </head>
 <body>
@@ -551,16 +648,34 @@
 
         <div class="content-section">
             <h2>The Night I Asked Forever</h2>
-            <p>On that magical day at Purple Mountain, as the sun set and painted the sky in breathtaking colors, I knew I had found something extraordinary. The way you laughed, the way your eyes sparkled with joy - everything about you felt like home.</p>
-            <p>In that moment, watching the sunset together, I realized that I wanted to witness every sunrise and sunset with you for the rest of my life.</p>
+            <p>On that magical day at Purple Mountain, as the sun set and painted the sky in breathtaking colors, I knew I had found something extraordinary. The way u laughed, the way ur eyes sparkled with joy - everything about u felt like home.</p>
+            <p>In that moment, watching the sunset together, I realized that I wanted to witness every sunrise and sunset with u for the rest of my life.</p>
         </div>
 
         <div class="content-section">
             <h2>A Promise Written in the Stars</h2>
-            <p>From Gulou Metro Station to Purple Mountain, from our first meeting to this moment - every step has led us here. You've turned my ordinary days into extraordinary memories.</p>
-            <p>You're studying medicine to save lives, and you've already saved mine by simply being in it. While you heal others, you heal my soul just by existing.</p>
+            <p>From Gulou Metro Station to Purple Mountain, from our first meeting to this moment - every step has led us here. U've turned my ordinary days into extraordinary memories.</p>
+            <p>U're studying medicine to save lives, and u've already saved mine by simply being in it. While u heal others, u heal my soul just by existing.</p>
             <div class="message-card">
-                <p>Distance may separate us now as you're in Bangladesh for winter holidays, but our hearts beat as one. No ocean, no miles, no time zone can diminish what we share.</p>
+                <p>Distance may separate us now as u're in Bangladesh for winter holidays, but our hearts beat as one. No ocean, no miles, no time zone can diminish what we share.</p>
+            </div>
+        </div>
+
+        <!-- Interactive Proposal Section -->
+        <div class="proposal-section">
+            <h2 class="proposal-question">💍 Will u be mine? 💍</h2>
+            <p style="font-size: 1.3rem; color: rgba(212, 175, 55, 0.9); margin-bottom: 30px;">
+                This is the most important question I've ever asked...
+            </p>
+            <div class="proposal-buttons" id="proposalButtons">
+                <button class="proposal-btn btn-yes" onclick="handleYes()">Yes! 💕</button>
+                <button class="proposal-btn btn-no" id="noBtn" onmouseover="moveNoButton()" onclick="moveNoButton()">No</button>
+            </div>
+            <div class="proposal-result" id="proposalResult">
+                <h3>🎉 YES! 🎉</h3>
+                <p>U made me the happiest person in the world! ❤️</p>
+                <p>I promise to love u, cherish u, and make u smile every single day!</p>
+                <p style="margin-top: 20px; font-size: 1.5rem;">Forever and always, urs! 💕</p>
             </div>
         </div>
 
@@ -576,7 +691,7 @@
                 </div>
             </div>
             <div class="love-quote">
-                "Under the stars at Purple Mountain, I found my forever in your eyes."
+                "Under the stars at Purple Mountain, I found my forever in ur eyes."
             </div>
         </div>
 
@@ -615,13 +730,97 @@
     </div>
 
     <script>
+        // Interactive Proposal Functions
+        function handleYes() {
+            document.getElementById('proposalButtons').style.display = 'none';
+            document.getElementById('proposalResult').style.display = 'block';
+            createFireworks();
+        }
+
+        function moveNoButton() {
+            const noBtn = document.getElementById('noBtn');
+            const container = document.getElementById('proposalButtons');
+            const containerRect = container.getBoundingClientRect();
+            
+            // Generate random position within container bounds
+            const maxX = containerRect.width - noBtn.offsetWidth;
+            const maxY = 150; // Allow vertical movement
+            
+            const randomX = Math.random() * maxX;
+            const randomY = (Math.random() - 0.5) * maxY;
+            
+            noBtn.style.transform = `translate(${randomX - noBtn.offsetLeft}px, ${randomY}px)`;
+        }
+
+        function createFireworks() {
+            const container = document.createElement('div');
+            container.style.position = 'fixed';
+            container.style.top = '0';
+            container.style.left = '0';
+            container.style.width = '100%';
+            container.style.height = '100%';
+            container.style.pointerEvents = 'none';
+            container.style.zIndex = '9999';
+            document.body.appendChild(container);
+
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const colors = ['#FFD700', '#FF69B4', '#FF1493', '#FFA500', '#FF6347'];
+                    const x = Math.random() * window.innerWidth;
+                    const y = Math.random() * window.innerHeight * 0.7;
+                    
+                    for (let j = 0; j < 20; j++) {
+                        const particle = document.createElement('div');
+                        particle.style.position = 'absolute';
+                        particle.style.left = x + 'px';
+                        particle.style.top = y + 'px';
+                        particle.style.width = '6px';
+                        particle.style.height = '6px';
+                        particle.style.borderRadius = '50%';
+                        particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                        
+                        const angle = (Math.PI * 2 * j) / 20;
+                        const velocity = 100 + Math.random() * 100;
+                        const tx = Math.cos(angle) * velocity;
+                        const ty = Math.sin(angle) * velocity;
+                        
+                        particle.style.animation = `firework-explode 1s ease-out forwards`;
+                        particle.style.setProperty('--tx', tx + 'px');
+                        particle.style.setProperty('--ty', ty + 'px');
+                        
+                        container.appendChild(particle);
+                        
+                        setTimeout(() => particle.remove(), 1000);
+                    }
+                }, i * 100);
+            }
+            
+            setTimeout(() => container.remove(), 6000);
+        }
+
+        // Add firework animation
+        const fireworkStyle = document.createElement('style');
+        fireworkStyle.textContent = `
+            @keyframes firework-explode {
+                0% {
+                    opacity: 1;
+                    transform: translate(0, 0) scale(1);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translate(var(--tx), var(--ty)) scale(0);
+                }
+            }
+        `;
+        document.head.appendChild(fireworkStyle);
+
         // Random love quotes for polaroid
         const loveQuotes = [
-            "Under the stars at Purple Mountain, I found my forever in your eyes.",
+            "Under the stars at Purple Mountain, I found my forever in ur eyes.",
             "In that magical moment, two souls became one under the setting sun.",
             "The mountain witnessed our promise, the stars blessed our love.",
             "From Gulou to forever - this is where our journey truly began.",
-            "Every sunset reminds me of the day I asked you to be mine."
+            "Every sunset reminds me of the day I asked u to be mine."
         ];
 
         function updateLoveQuote() {
