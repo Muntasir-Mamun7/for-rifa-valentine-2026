@@ -2,6 +2,14 @@
 
 A beautiful, romantic Valentine's week interactive website featuring 7 themed days (Feb 7-14, 2026) with special animations, interactive elements, and personalized messages.
 
+## 🚀 **READY TO GO LIVE?**
+
+**👉 [Follow the Quick Start Guide](QUICKSTART.md) to make your website live in 5 minutes!**
+
+Or read the [Complete Deployment Guide](DEPLOYMENT.md) for detailed instructions.
+
+---
+
 ## 🌹 Features
 
 ### Login System
@@ -115,15 +123,38 @@ A beautiful, romantic Valentine's week interactive website featuring 7 themed da
 
 ## 🚀 Deployment
 
-### GitHub Pages (Recommended)
-1. Push all files to your repository
-2. Go to repository Settings → Pages
-3. Select source branch (main/master)
-4. Save and wait for deployment
-5. Access at: `https://[username].github.io/for-rifa-valentine-2026/`
+### Quick Deployment (5 Minutes!)
+
+**Ready to make your website live?** Follow these simple steps:
+
+1. **📖 Read the Quick Start:** [QUICKSTART.md](QUICKSTART.md)
+2. **🔧 Enable GitHub Pages:** Settings → Pages → Source: "GitHub Actions"  
+3. **✅ Merge Pull Request:** Merge your code to main branch
+4. **🎉 Go Live:** Your site will be at `https://muntasir-mamun7.github.io/for-rifa-valentine-2026/`
+
+**Need detailed instructions?** Check out [DEPLOYMENT.md](DEPLOYMENT.md) for:
+- Step-by-step setup guide
+- Troubleshooting tips
+- Custom domain setup
+- How to share your site
+- Update and maintenance guide
+
+### Automatic Deployment
+
+This repository includes a GitHub Actions workflow that automatically deploys your site when you push to the main branch. Just merge your PR and the rest happens automatically!
 
 ### Local Testing
-Simply open `index.html` in a web browser. All pages work without a server.
+
+For testing before deployment:
+```bash
+# Using Python 3
+python3 -m http.server 8080
+
+# Or using Node.js
+npx http-server -p 8080
+
+# Visit: http://localhost:8080
+```
 
 ## 🎵 Adding Music
 
