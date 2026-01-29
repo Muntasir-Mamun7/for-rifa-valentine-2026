@@ -14,7 +14,7 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: radial-gradient(ellipse at top, #1a0a0f 0%, #0d0507 100%);
+            background: linear-gradient(to bottom, #050505 0%, #0a0a0a 50%, #000000 100%);
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
@@ -32,8 +32,8 @@
         .rose-container {
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 600px;
+            align-items: flex-end;
+            min-height: 700px;
             position: relative;
             margin: 3rem 0;
             perspective: 1500px;
@@ -41,47 +41,194 @@
 
         .rose-3d {
             position: relative;
-            width: 450px;
-            height: 450px;
+            width: 350px;
+            height: 600px;
             transform-style: preserve-3d;
-            animation: rotate3d 30s linear infinite;
+            animation: rotate3d 35s linear infinite;
             cursor: pointer;
-            filter: drop-shadow(0 40px 80px rgba(0,0,0,0.9));
+            filter: drop-shadow(0 40px 80px rgba(0,0,0,0.95));
         }
 
         .rose-3d:hover {
             animation-play-state: paused;
         }
 
-        /* Top-down view for fully open rose */
+        /* Side view with slight angle */
         @keyframes rotate3d {
-            0% { transform: rotateY(0deg) rotateX(0deg); }
-            100% { transform: rotateY(360deg) rotateX(0deg); }
+            0% { transform: rotateY(0deg) rotateX(-20deg); }
+            100% { transform: rotateY(360deg) rotateX(-20deg); }
         }
 
-        /* Stem - Hidden for top-down fully open rose view */
+        /* Stem - Visible for side view in vase */
         .stem {
-            display: none;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 14px;
+            height: 380px;
+            background: 
+                linear-gradient(to right, 
+                    #1a2e0d 0%, 
+                    #2d4520 20%,
+                    #3d5a28 50%,
+                    #2d4520 80%,
+                    #1a2e0d 100%),
+                linear-gradient(to bottom, 
+                    #2d4520 0%, 
+                    #3d5a28 30%, 
+                    #4a6b30 50%, 
+                    #3d5a28 70%,
+                    #2d4520 100%);
+            background-blend-mode: multiply;
+            border-radius: 7px;
+            box-shadow: 
+                inset -3px 0 10px rgba(0,0,0,0.8),
+                inset 3px 0 10px rgba(100,140,50,0.2),
+                5px 5px 15px rgba(0,0,0,0.9),
+                -2px -2px 8px rgba(255,255,255,0.02);
         }
 
-        /* Leaves - Hidden for top-down view */
+        .stem::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 3px;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, 
+                rgba(120,160,70,0.3) 0%, 
+                rgba(100,140,50,0.2) 30%,
+                transparent 60%);
+            border-radius: 2px;
+            filter: blur(1px);
+        }
+
+        .stem::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 2px;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, 
+                transparent 0%, 
+                rgba(0,0,0,0.6) 50%,
+                transparent 100%);
+            border-radius: 1px;
+        }
+
+        /* Leaves - Visible and styled for side view */
         .leaf {
-            display: none;
+            position: absolute;
+            width: 70px;
+            height: 42px;
+            background: 
+                radial-gradient(ellipse at 25% 25%, rgba(100,140,50,0.5), transparent 60%),
+                radial-gradient(ellipse at 75% 75%, rgba(0,0,0,0.6), transparent 60%),
+                radial-gradient(ellipse at 35% 35%, #3d5a28, #1a2e0d);
+            border-radius: 0 50% 50% 0;
+            box-shadow: 
+                inset -4px -4px 10px rgba(0,0,0,0.7),
+                inset 3px 3px 6px rgba(100,140,50,0.2),
+                4px 4px 12px rgba(0,0,0,0.8),
+                -1px -1px 3px rgba(255,255,255,0.05);
+            transform-origin: left center;
         }
 
-        /* Thorns - Hidden for top-down view */
+        /* Leaf veins */
+        .leaf::before {
+            content: '';
+            position: absolute;
+            width: 1.5px;
+            height: 100%;
+            background: linear-gradient(to bottom, 
+                rgba(60,90,30,0.7) 0%, 
+                rgba(40,70,20,0.5) 50%,
+                transparent 100%);
+            left: 0;
+            top: 0;
+            transform: translateX(35px) rotate(-25deg);
+            box-shadow: 
+                2px 0 1px rgba(60,90,30,0.2),
+                -2px 0 1px rgba(60,90,30,0.2);
+        }
+
+        /* Secondary vein details */
+        .leaf::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(110deg, transparent 48%, rgba(60,90,30,0.25) 49%, transparent 50%),
+                linear-gradient(130deg, transparent 48%, rgba(60,90,30,0.25) 49%, transparent 50%),
+                linear-gradient(70deg, transparent 48%, rgba(60,90,30,0.25) 49%, transparent 50%);
+            border-radius: 0 50% 50% 0;
+        }
+
+        .leaf:nth-child(1) {
+            bottom: 280px;
+            left: -40px;
+            transform: rotate(-50deg) rotateY(-25deg) rotateX(15deg);
+        }
+
+        .leaf:nth-child(2) {
+            bottom: 240px;
+            right: -42px;
+            transform: rotate(140deg) rotateY(25deg) scaleX(-1) rotateX(15deg);
+        }
+
+        .leaf:nth-child(3) {
+            bottom: 190px;
+            left: -45px;
+            transform: rotate(-55deg) rotateY(-30deg) rotateX(20deg);
+        }
+
+        /* Thorns - Visible on stem */
         .thorn {
-            display: none;
+            position: absolute;
+            width: 8px;
+            height: 12px;
+            background: linear-gradient(135deg, #2d4520 0%, #1a2e0d 100%);
+            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+            box-shadow: 
+                1px 1px 3px rgba(0,0,0,0.9),
+                inset -1px -1px 2px rgba(0,0,0,0.6);
         }
 
-        /* Rose Flower - Fully open top-down view */
+        .thorn:nth-child(4) {
+            bottom: 280px;
+            left: -5px;
+            transform: rotate(-30deg);
+        }
+
+        .thorn:nth-child(5) {
+            bottom: 230px;
+            right: -6px;
+            transform: rotate(45deg);
+        }
+
+        .thorn:nth-child(6) {
+            bottom: 180px;
+            left: -4px;
+            transform: rotate(-25deg);
+        }
+
+        .thorn:nth-child(7) {
+            bottom: 130px;
+            right: -5px;
+            transform: rotate(40deg);
+        }
+
+        /* Rose Flower - Side view at top of stem */
         .flower {
             position: absolute;
-            top: 50%;
+            top: 0;
             left: 50%;
-            transform: translate(-50%, -50%);
-            width: 400px;
-            height: 400px;
+            transform: translateX(-50%);
+            width: 250px;
+            height: 220px;
             transform-style: preserve-3d;
         }
 
@@ -93,41 +240,41 @@
             transform-style: preserve-3d;
         }
 
-        /* Petals - Ultra-realistic with texture details */
+        /* Petals - Ultra-realistic with dark red texture */
         .petal {
             position: absolute;
             width: 90px;
             height: 110px;
             background: 
                 /* Subtle vein patterns */
-                linear-gradient(160deg, transparent 48%, rgba(200,30,60,0.15) 49%, transparent 51%),
-                linear-gradient(170deg, transparent 48%, rgba(200,30,60,0.15) 49%, transparent 51%),
-                linear-gradient(150deg, transparent 48%, rgba(200,30,60,0.15) 49%, transparent 51%),
+                linear-gradient(160deg, transparent 48%, rgba(100,10,20,0.2) 49%, transparent 51%),
+                linear-gradient(170deg, transparent 48%, rgba(100,10,20,0.2) 49%, transparent 51%),
+                linear-gradient(150deg, transparent 48%, rgba(100,10,20,0.2) 49%, transparent 51%),
                 /* Highlight on edge */
-                radial-gradient(ellipse at 90% 20%, rgba(255,150,180,0.6) 0%, transparent 30%),
+                radial-gradient(ellipse at 90% 20%, rgba(160,40,50,0.4) 0%, transparent 30%),
                 /* Subsurface scattering effect */
-                radial-gradient(ellipse at 50% 70%, rgba(255,100,140,0.3) 0%, transparent 60%),
-                /* Main color gradient */
+                radial-gradient(ellipse at 50% 70%, rgba(120,20,30,0.3) 0%, transparent 60%),
+                /* Main color gradient - dark red */
                 radial-gradient(ellipse at 35% 25%, 
-                    #ff5577 0%,
-                    #ff4d6d 20%, 
-                    #e63956 40%,
-                    #c9184a 60%, 
-                    #a01537 80%,
-                    #800f2f 100%);
+                    #8B1A1A 0%,
+                    #7D1515 20%, 
+                    #6B1010 40%,
+                    #5A0C0C 60%, 
+                    #4A0808 80%,
+                    #3A0505 100%);
             border-radius: 50% 50% 50% 0;
             transform-origin: bottom center;
             box-shadow: 
                 /* Ambient occlusion */
-                inset -6px -8px 20px rgba(0,0,0,0.5),
+                inset -6px -8px 20px rgba(0,0,0,0.8),
                 /* Specular highlight */
-                inset 6px 6px 18px rgba(255,150,180,0.4),
+                inset 6px 6px 18px rgba(160,40,50,0.3),
                 /* Edge glow */
-                inset 0 0 30px rgba(255,100,140,0.2),
+                inset 0 0 30px rgba(120,20,30,0.2),
                 /* Cast shadow */
-                6px 8px 25px rgba(0,0,0,0.6),
+                6px 8px 25px rgba(0,0,0,0.9),
                 /* Rim light */
-                -2px -2px 8px rgba(255,180,200,0.15);
+                -2px -2px 8px rgba(160,50,60,0.1);
         }
 
         /* Petal texture overlay */
@@ -140,12 +287,12 @@
                 /* Organic texture pattern */
                 repeating-radial-gradient(circle at 30% 30%, 
                     transparent 0px, 
-                    rgba(200,30,60,0.08) 1px, 
+                    rgba(100,10,20,0.1) 1px, 
                     transparent 2px,
                     transparent 8px),
                 /* Slight noise/grain */
                 repeating-linear-gradient(0deg, 
-                    rgba(0,0,0,0.02) 0px, 
+                    rgba(0,0,0,0.03) 0px, 
                     transparent 1px, 
                     transparent 2px);
             border-radius: 50% 50% 50% 0;
@@ -161,160 +308,164 @@
             width: 100%;
             height: 100%;
             border-radius: 50% 50% 50% 0;
+            border: 1px solid rgba(160,40,50,0.1);
+            box-shadow: inset 0 0 15px rgba(120,20,30,0.1);
+        }
             border: 1px solid rgba(255,150,180,0.15);
             box-shadow: inset 0 0 15px rgba(255,100,140,0.1);
         }
 
-        /* Outer layer petals - Fully open, circular arrangement (8 petals) */
+        /* Outer layer petals - Side view arrangement */
         .petal-layer-1 .petal:nth-child(1) {
-            transform: translate(0, -160px) rotate(0deg) rotateX(15deg) translateZ(5px);
+            transform: translate(80px, 90px) rotate(-90deg) rotateY(-30deg) rotateX(20deg);
         }
         .petal-layer-1 .petal:nth-child(2) {
-            transform: translate(113px, -113px) rotate(45deg) rotateX(15deg) translateZ(5px);
+            transform: translate(120px, 60px) rotate(-30deg) rotateY(-20deg) rotateX(25deg);
         }
         .petal-layer-1 .petal:nth-child(3) {
-            transform: translate(160px, 0) rotate(90deg) rotateX(15deg) translateZ(5px);
+            transform: translate(130px, 100px) rotate(30deg) rotateY(20deg) rotateX(25deg);
         }
         .petal-layer-1 .petal:nth-child(4) {
-            transform: translate(113px, 113px) rotate(135deg) rotateX(15deg) translateZ(5px);
+            transform: translate(90px, 140px) rotate(90deg) rotateY(30deg) rotateX(20deg);
         }
         .petal-layer-1 .petal:nth-child(5) {
-            transform: translate(0, 160px) rotate(180deg) rotateX(15deg) translateZ(5px);
+            transform: translate(30px, 130px) rotate(150deg) rotateY(30deg) rotateX(25deg);
         }
         .petal-layer-1 .petal:nth-child(6) {
-            transform: translate(-113px, 113px) rotate(225deg) rotateX(15deg) translateZ(5px);
+            transform: translate(20px, 80px) rotate(-150deg) rotateY(-30deg) rotateX(25deg);
         }
         .petal-layer-1 .petal:nth-child(7) {
-            transform: translate(-160px, 0) rotate(270deg) rotateX(15deg) translateZ(5px);
+            transform: translate(60px, 50px) rotate(-60deg) rotateY(-25deg) rotateX(22deg);
         }
         .petal-layer-1 .petal:nth-child(8) {
-            transform: translate(-113px, -113px) rotate(315deg) rotateX(15deg) translateZ(5px);
+            transform: translate(100px, 120px) rotate(60deg) rotateY(25deg) rotateX(22deg);
         }
 
-        /* Middle layer petals - Slightly different coloring */
+        /* Middle layer petals - Dark red coloring */
         .petal-layer-2 .petal {
             width: 80px;
             height: 95px;
             background: 
-                linear-gradient(160deg, transparent 48%, rgba(220,50,80,0.15) 49%, transparent 51%),
-                linear-gradient(170deg, transparent 48%, rgba(220,50,80,0.15) 49%, transparent 51%),
-                radial-gradient(ellipse at 88% 18%, rgba(255,160,190,0.7) 0%, transparent 25%),
-                radial-gradient(ellipse at 50% 65%, rgba(255,110,150,0.35) 0%, transparent 55%),
+                linear-gradient(160deg, transparent 48%, rgba(100,10,20,0.2) 49%, transparent 51%),
+                linear-gradient(170deg, transparent 48%, rgba(100,10,20,0.2) 49%, transparent 51%),
+                radial-gradient(ellipse at 88% 18%, rgba(140,35,45,0.5) 0%, transparent 25%),
+                radial-gradient(ellipse at 50% 65%, rgba(110,25,35,0.3) 0%, transparent 55%),
                 radial-gradient(ellipse at 38% 28%, 
-                    #ff6b8a 0%,
-                    #ff5577 18%, 
-                    #e84d6f 35%,
-                    #d62f5e 55%, 
-                    #b51e48 75%,
-                    #8f1537 100%);
+                    #9B1B1B 0%,
+                    #8A1717 18%, 
+                    #791313 35%,
+                    #680F0F 55%, 
+                    #570B0B 75%,
+                    #460808 100%);
             box-shadow: 
-                inset -5px -7px 18px rgba(0,0,0,0.55),
-                inset 5px 5px 16px rgba(255,160,190,0.45),
-                inset 0 0 25px rgba(255,110,150,0.25),
-                5px 7px 22px rgba(0,0,0,0.65),
-                -1.5px -1.5px 7px rgba(255,190,210,0.18);
+                inset -5px -7px 18px rgba(0,0,0,0.75),
+                inset 5px 5px 16px rgba(140,35,45,0.3),
+                inset 0 0 25px rgba(110,25,35,0.2),
+                5px 7px 22px rgba(0,0,0,0.85),
+                -1.5px -1.5px 7px rgba(140,40,50,0.1);
         }
 
         .petal-layer-2 .petal:nth-child(1) {
-            transform: translate(0, -110px) rotate(22.5deg) rotateX(20deg) translateZ(10px);
+            transform: translate(75px, 85px) rotate(-75deg) rotateX(38deg);
         }
         .petal-layer-2 .petal:nth-child(2) {
-            transform: translate(78px, -78px) rotate(67.5deg) rotateX(20deg) translateZ(10px);
+            transform: translate(110px, 75px) rotate(-15deg) rotateX(38deg);
         }
         .petal-layer-2 .petal:nth-child(3) {
-            transform: translate(110px, 0) rotate(112.5deg) rotateX(20deg) translateZ(10px);
+            transform: translate(120px, 110px) rotate(45deg) rotateX(38deg);
         }
         .petal-layer-2 .petal:nth-child(4) {
-            transform: translate(78px, 78px) rotate(157.5deg) rotateX(20deg) translateZ(10px);
+            transform: translate(92px, 135px) rotate(105deg) rotateX(38deg);
         }
         .petal-layer-2 .petal:nth-child(5) {
-            transform: translate(0, 110px) rotate(202.5deg) rotateX(20deg) translateZ(10px);
+            transform: translate(45px, 125px) rotate(165deg) rotateX(38deg);
         }
         .petal-layer-2 .petal:nth-child(6) {
-            transform: translate(-78px, 78px) rotate(247.5deg) rotateX(20deg) translateZ(10px);
+            transform: translate(35px, 85px) rotate(-135deg) rotateX(38deg);
         }
         .petal-layer-2 .petal:nth-child(7) {
-            transform: translate(-110px, 0) rotate(292.5deg) rotateX(20deg) translateZ(10px);
+            transform: translate(70px, 60px) rotate(-45deg) rotateX(38deg);
         }
         .petal-layer-2 .petal:nth-child(8) {
-            transform: translate(-78px, -78px) rotate(337.5deg) rotateX(20deg) translateZ(10px);
+            transform: translate(100px, 105px) rotate(75deg) rotateX(38deg);
         }
 
-        /* Inner layer petals - Darkest, most saturated */
+        /* Inner layer petals - Darkest red */
         .petal-layer-3 .petal {
             width: 60px;
             height: 75px;
             background: 
-                linear-gradient(165deg, transparent 48%, rgba(230,60,90,0.18) 49%, transparent 51%),
-                radial-gradient(ellipse at 85% 15%, rgba(255,170,200,0.8) 0%, transparent 22%),
-                radial-gradient(ellipse at 50% 60%, rgba(255,120,160,0.4) 0%, transparent 50%),
+                linear-gradient(165deg, transparent 48%, rgba(90,10,15,0.2) 49%, transparent 51%),
+                radial-gradient(ellipse at 85% 15%, rgba(130,30,40,0.6) 0%, transparent 22%),
+                radial-gradient(ellipse at 50% 60%, rgba(100,20,30,0.35) 0%, transparent 50%),
                 radial-gradient(ellipse at 40% 30%, 
-                    #ff8fa3 0%,
-                    #ff7090 15%,
-                    #f05878 30%,
-                    #e84d6f 48%, 
-                    #d03858 65%,
-                    #b01e40 82%,
-                    #a01f42 100%);
+                    #AB1C1C 0%,
+                    #9A1818 15%,
+                    #891414 30%,
+                    #781010 48%, 
+                    #670D0D 65%,
+                    #560909 82%,
+                    #450606 100%);
             box-shadow: 
-                inset -4px -6px 16px rgba(0,0,0,0.6),
-                inset 4px 4px 14px rgba(255,170,200,0.5),
-                inset 0 0 20px rgba(255,120,160,0.3),
-                4px 6px 20px rgba(0,0,0,0.7),
-                -1px -1px 6px rgba(255,200,220,0.2);
+                inset -4px -6px 16px rgba(0,0,0,0.8),
+                inset 4px 4px 14px rgba(130,30,40,0.35),
+                inset 0 0 20px rgba(100,20,30,0.25),
+                4px 6px 20px rgba(0,0,0,0.9),
+                -1px -1px 6px rgba(130,35,45,0.12);
         }
 
         .petal-layer-3 .petal:nth-child(1) {
-            transform: translate(0, -65px) rotate(11.25deg) rotateX(25deg) translateZ(15px);
+            transform: translate(82px, 90px) rotate(-60deg) rotateX(50deg);
         }
         .petal-layer-3 .petal:nth-child(2) {
-            transform: translate(46px, -46px) rotate(56.25deg) rotateX(25deg) translateZ(15px);
+            transform: translate(105px, 85px) rotate(0deg) rotateX(50deg);
         }
         .petal-layer-3 .petal:nth-child(3) {
-            transform: translate(65px, 0) rotate(101.25deg) rotateX(25deg) translateZ(15px);
+            transform: translate(110px, 115px) rotate(60deg) rotateX(50deg);
         }
         .petal-layer-3 .petal:nth-child(4) {
-            transform: translate(46px, 46px) rotate(146.25deg) rotateX(25deg) translateZ(15px);
+            transform: translate(82px, 125px) rotate(120deg) rotateX(50deg);
         }
         .petal-layer-3 .petal:nth-child(5) {
-            transform: translate(0, 65px) rotate(191.25deg) rotateX(25deg) translateZ(15px);
+            transform: translate(50px, 115px) rotate(180deg) rotateX(50deg);
         }
         .petal-layer-3 .petal:nth-child(6) {
-            transform: translate(-46px, 46px) rotate(236.25deg) rotateX(25deg) translateZ(15px);
+            transform: translate(45px, 90px) rotate(-120deg) rotateX(50deg);
         }
         .petal-layer-3 .petal:nth-child(7) {
-            transform: translate(-65px, 0) rotate(281.25deg) rotateX(25deg) translateZ(15px);
+            transform: translate(75px, 70px) rotate(-30deg) rotateX(50deg);
         }
         .petal-layer-3 .petal:nth-child(8) {
-            transform: translate(-46px, -46px) rotate(326.25deg) rotateX(25deg) translateZ(15px);
+            transform: translate(95px, 105px) rotate(90deg) rotateX(50deg);
+        }
         }
 
-        /* Rose center - Enhanced for top-down view */
+        /* Rose center - Dark red enhanced */
         .rose-center {
             position: absolute;
             width: 55px;
             height: 55px;
             background: 
-                radial-gradient(circle at 30% 30%, rgba(255,200,220,0.6) 0%, transparent 35%),
-                radial-gradient(circle at 70% 70%, rgba(0,0,0,0.5) 0%, transparent 45%),
+                radial-gradient(circle at 30% 30%, rgba(140,40,50,0.4) 0%, transparent 35%),
+                radial-gradient(circle at 70% 70%, rgba(0,0,0,0.7) 0%, transparent 45%),
                 radial-gradient(circle at 40% 40%, 
-                    #ff9db0 0%,
-                    #ff8fa3 15%,
-                    #ff7090 30%,
-                    #e84d6f 50%, 
-                    #d03858 70%,
-                    #a01537 85%,
-                    #5c0f24 100%);
+                    #BC2020 0%,
+                    #AB1C1C 15%,
+                    #9A1818 30%,
+                    #891414 50%, 
+                    #781010 70%,
+                    #560909 85%,
+                    #2D0505 100%);
             border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) translateZ(20px);
+            top: 100px;
+            left: 85px;
+            transform: translateZ(20px);
             box-shadow: 
-                inset -5px -5px 15px rgba(0,0,0,0.75),
-                inset 5px 5px 12px rgba(255,180,200,0.6),
-                0 0 40px rgba(255,107,138,0.8),
-                0 0 20px rgba(255,80,120,0.6),
-                0 5px 15px rgba(0,0,0,0.8);
+                inset -5px -5px 15px rgba(0,0,0,0.9),
+                inset 5px 5px 12px rgba(140,40,50,0.4),
+                0 0 40px rgba(139,0,0,0.6),
+                0 0 20px rgba(100,0,0,0.5),
+                0 5px 15px rgba(0,0,0,0.95);
         }
 
         /* Center pistils/stamens for detail */
@@ -326,7 +477,7 @@
             background: 
                 repeating-radial-gradient(circle at 50% 50%, 
                     transparent 0px, 
-                    rgba(200,30,60,0.12) 2px, 
+                    rgba(100,10,20,0.15) 2px, 
                     transparent 4px,
                     transparent 10px);
             border-radius: 50%;
@@ -341,13 +492,13 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background: radial-gradient(circle at 35% 35%, 
-                #d03858 0%,
-                #a01537 50%,
-                #5c0f24 100%);
+                #781010 0%,
+                #560909 50%,
+                #2D0505 100%);
             border-radius: 50%;
             box-shadow: 
-                inset -2px -2px 6px rgba(0,0,0,0.8),
-                inset 2px 2px 4px rgba(255,150,180,0.3);
+                inset -2px -2px 6px rgba(0,0,0,0.95),
+                inset 2px 2px 4px rgba(140,30,40,0.25);
         }
 
         /* Water droplets on rose - Realistic 3D rain drops */
@@ -574,27 +725,90 @@
             filter: blur(30px);
         }
 
+        /* Vase - Realistic glass/ceramic flower vase */
+        .vase {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 180px;
+            height: 200px;
+            background: 
+                linear-gradient(to bottom,
+                    rgba(40,20,25,0.9) 0%,
+                    rgba(50,25,30,0.85) 30%,
+                    rgba(45,22,27,0.88) 70%,
+                    rgba(35,18,22,0.92) 100%);
+            border-radius: 0 0 50% 50% / 0 0 40% 40%;
+            clip-path: polygon(
+                20% 0%, 80% 0%,
+                85% 25%, 90% 40%,
+                95% 60%, 95% 80%,
+                90% 95%, 85% 100%,
+                15% 100%, 10% 95%,
+                5% 80%, 5% 60%,
+                10% 40%, 15% 25%
+            );
+            box-shadow: 
+                inset -10px 0 20px rgba(0,0,0,0.7),
+                inset 10px 0 20px rgba(80,40,50,0.2),
+                0 20px 40px rgba(0,0,0,0.9),
+                0 5px 15px rgba(0,0,0,0.8);
+            z-index: -1;
+        }
+
+        .vase::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 15%;
+            width: 25%;
+            height: 60%;
+            background: linear-gradient(135deg,
+                rgba(100,50,60,0.3) 0%,
+                transparent 50%);
+            border-radius: 50%;
+            filter: blur(8px);
+        }
+
+        .vase::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 130%;
+            height: 30px;
+            background: linear-gradient(to bottom,
+                rgba(50,25,30,0.95) 0%,
+                rgba(45,22,27,0.9) 100%);
+            border-radius: 50% 50% 0 0 / 80% 80% 0 0;
+            box-shadow: 
+                inset 0 -5px 10px rgba(0,0,0,0.5),
+                0 2px 8px rgba(0,0,0,0.7);
+        }
+
         .message-card {
-            background: rgba(20, 20, 30, 0.8);
-            border: 1px solid rgba(255, 107, 138, 0.3);
+            background: rgba(10, 10, 15, 0.85);
+            border: 1px solid rgba(139, 0, 0, 0.4);
             border-radius: 20px;
             padding: 2rem;
             margin: 2rem 0;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
             animation: fadeInUp 1s ease;
             backdrop-filter: blur(10px);
         }
 
         .message-card h2 {
             font-family: 'Playfair Display', serif;
-            color: #ff6b8a;
+            color: #BC2020;
             margin-bottom: 1rem;
             font-size: 2rem;
             text-align: center;
         }
 
         .message-card p {
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.85);
             line-height: 1.8;
             font-size: 1.1rem;
             margin-bottom: 1rem;
@@ -602,18 +816,18 @@
         }
 
         .map-section {
-            background: rgba(20, 20, 30, 0.8);
-            border: 1px solid rgba(255, 107, 138, 0.3);
+            background: rgba(10, 10, 15, 0.85);
+            border: 1px solid rgba(139, 0, 0, 0.4);
             border-radius: 20px;
             padding: 2rem;
             margin: 2rem 0;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
             backdrop-filter: blur(10px);
         }
 
         .map-section h3 {
             font-family: 'Playfair Display', serif;
-            color: #ff6b8a;
+            color: #BC2020;
             margin-bottom: 1.5rem;
             font-size: 1.8rem;
             text-align: center;
@@ -631,10 +845,10 @@
         .location {
             text-align: center;
             padding: 1.5rem;
-            background: linear-gradient(135deg, rgba(255, 107, 138, 0.2), rgba(201, 24, 74, 0.2));
-            border: 1px solid rgba(255, 107, 138, 0.4);
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.25), rgba(100, 0, 0, 0.2));
+            border: 1px solid rgba(139, 0, 0, 0.5);
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.6);
             animation: pulse 2s ease-in-out infinite;
             flex: 1;
             min-width: 150px;
@@ -642,13 +856,13 @@
         }
 
         @keyframes pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 5px 15px rgba(255, 107, 138, 0.3); }
-            50% { transform: scale(1.05); box-shadow: 0 8px 25px rgba(255, 107, 138, 0.5); }
+            0%, 100% { transform: scale(1); box-shadow: 0 5px 15px rgba(139, 0, 0, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 8px 25px rgba(139, 0, 0, 0.6); }
         }
 
         .location-name {
             font-weight: 600;
-            color: #ff6b8a;
+            color: #BC2020;
             font-size: 1.1rem;
             margin-top: 0.5rem;
         }
@@ -661,13 +875,13 @@
 
         .arrow {
             font-size: 3rem;
-            color: #ff6b8a;
+            color: #BC2020;
             animation: moveArrow 1.5s ease-in-out infinite;
         }
 
         @keyframes moveArrow {
-            0%, 100% { transform: translateX(0); opacity: 0.6; }
-            50% { transform: translateX(10px); opacity: 1; }
+            0%, 100% { transform: translateX(0); opacity: 0.5; }
+            50% { transform: translateX(10px); opacity: 0.9; }
         }
 
         .interactive-petals {
@@ -678,8 +892,8 @@
         }
 
         .secret-petal {
-            background: linear-gradient(135deg, rgba(255, 107, 138, 0.2), rgba(201, 24, 74, 0.2));
-            border: 1px solid rgba(255, 107, 138, 0.4);
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.25), rgba(100, 0, 0, 0.2));
+            border: 1px solid rgba(139, 0, 0, 0.5);
             border-radius: 15px;
             padding: 2rem 1.5rem;
             text-align: center;
@@ -696,23 +910,23 @@
 
         .secret-petal:hover {
             transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(255, 107, 138, 0.4);
-            border-color: rgba(255, 107, 138, 0.6);
+            box-shadow: 0 10px 30px rgba(139, 0, 0, 0.5);
+            border-color: rgba(139, 0, 0, 0.7);
         }
 
         .secret-petal.revealed {
-            background: rgba(255, 107, 138, 0.1);
-            border: 1px solid rgba(255, 107, 138, 0.5);
+            background: rgba(139, 0, 0, 0.15);
+            border: 1px solid rgba(139, 0, 0, 0.6);
         }
 
         .petal-text {
-            color: #ff6b8a;
+            color: #BC2020;
             font-weight: 600;
         }
 
         .secret-message {
             display: none;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.85);
             font-size: 0.95rem;
             line-height: 1.6;
             padding: 1rem;
@@ -727,18 +941,18 @@
         }
 
         .music-player {
-            background: rgba(20, 20, 30, 0.8);
-            border: 1px solid rgba(255, 107, 138, 0.3);
+            background: rgba(10, 10, 15, 0.85);
+            border: 1px solid rgba(139, 0, 0, 0.4);
             border-radius: 20px;
             padding: 1.5rem;
             margin: 2rem 0;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
             text-align: center;
             backdrop-filter: blur(10px);
         }
 
         .music-player h2 {
-            color: #ff6b8a;
+            color: #BC2020;
         }
 
         .music-player p {
@@ -757,9 +971,9 @@
         }
 
         .control-btn {
-            background: linear-gradient(135deg, rgba(255, 107, 138, 0.3), rgba(201, 24, 74, 0.3));
-            border: 1px solid rgba(255, 107, 138, 0.5);
-            color: #ff6b8a;
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.3), rgba(100, 0, 0, 0.3));
+            border: 1px solid rgba(139, 0, 0, 0.6);
+            color: #BC2020;
             border-radius: 50%;
             width: 50px;
             height: 50px;
@@ -774,23 +988,12 @@
 
         .control-btn:hover {
             transform: scale(1.1);
-            background: linear-gradient(135deg, rgba(255, 107, 138, 0.5), rgba(201, 24, 74, 0.5));
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.5), rgba(100, 0, 0, 0.5));
         }
 
-        /* Swipe gesture support */
+        /* Swipe gesture support - hidden but functional */
         .swipe-indicator {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.9rem;
-            animation: fadeInOut 3s ease-in-out infinite;
-        }
-
-        @keyframes fadeInOut {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.7; }
+            display: none;
         }
 
         @keyframes fadeInDown {
@@ -849,6 +1052,7 @@
             <div class="rim-light"></div>
             <div class="ambient-light"></div>
             <div class="rose-3d" id="rose3d">
+                <div class="vase"></div>
                 <div class="stem">
                     <div class="leaf"></div>
                     <div class="leaf"></div>
