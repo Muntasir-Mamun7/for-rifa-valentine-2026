@@ -6,7 +6,7 @@
     <title>Day 7 - Valentine's Day | The Grand Finale 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,12 +15,11 @@
         }
 
         body {
-            font-family: 'Cormorant Garamond', serif;
-            background: linear-gradient(to bottom, #1a0a0f 0%, #2a0a1f 50%, #1a0515 100%);
-            color: #d4af37;
+            font-family: 'Inter', sans-serif;
+            background: #000;
+            color: #fff;
             overflow-x: hidden;
             position: relative;
-            min-height: 100vh;
         }
 
         /* Cinematic Opening */
@@ -42,7 +41,7 @@
         .cinematic-text {
             font-family: 'Playfair Display', serif;
             font-size: clamp(2rem, 8vw, 5rem);
-            color: #d4af37;
+            color: #FF6B9D;
             text-align: center;
             animation: fadeInScale 2s ease-in-out;
         }
@@ -135,6 +134,30 @@
             padding: 40px 20px;
         }
 
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid #FF6B9D;
+            border-radius: 50px;
+            color: #C41E3A;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 107, 157, 0.4);
+            margin-bottom: 30px;
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 107, 157, 0.6);
+            background: #fff;
+        }
+
         header {
             text-align: center;
             margin-bottom: 80px;
@@ -154,30 +177,30 @@
         }
 
         .date {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Inter', sans-serif;
             font-size: clamp(1.3rem, 3vw, 1.8rem);
-            color: #d4af37;
+            color: #fff;
             font-weight: 300;
             letter-spacing: 4px;
-            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.5);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .bengali-text {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Inter', sans-serif;
             font-size: clamp(2rem, 5vw, 3.5rem);
-            color: #d4af37;
+            color: #FFD700;
             margin-top: 30px;
             font-weight: 700;
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
             animation: glow 2s ease-in-out infinite;
         }
 
         @keyframes glow {
             0%, 100% {
-                text-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
+                text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
             }
             50% {
-                text-shadow: 0 0 40px rgba(212, 175, 55, 1), 0 0 60px rgba(212, 175, 55, 0.6);
+                text-shadow: 0 0 40px rgba(255, 215, 0, 1), 0 0 60px rgba(255, 215, 0, 0.6);
             }
         }
 
@@ -194,7 +217,7 @@
         .section-title {
             font-family: 'Playfair Display', serif;
             font-size: clamp(2rem, 5vw, 3.5rem);
-            color: #d4af37;
+            color: #C41E3A;
             text-align: center;
             margin-bottom: 40px;
         }
@@ -773,206 +796,14 @@
             }
         }
 
-        /* Additional styles from day8-kiss.html */
-        .date-badge {
-            display: inline-block;
-            background: rgba(212, 175, 55, 0.2);
-            padding: 10px 30px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
-
-        .content-section {
-            background: rgba(20, 10, 15, 0.6);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 30px 0;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            animation: fadeInUp 0.8s ease;
-        }
-
-        .content-section h2 {
-            font-family: 'Playfair Display', serif;
-            color: #d4af37;
-            font-size: 2rem;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        .content-section p {
-            line-height: 1.9;
-            font-size: 1.2rem;
-            color: rgba(212, 175, 55, 0.85);
-            margin-bottom: 20px;
-        }
-
-        .message-card {
-            background: rgba(212, 175, 55, 0.1);
-            border-left: 4px solid rgba(212, 175, 55, 0.5);
-            padding: 25px;
-            margin: 25px 0;
-            border-radius: 10px;
-            font-style: italic;
-        }
-
-        .message-card p {
-            font-size: 1.25rem;
-            color: rgba(212, 175, 55, 0.9);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .polaroid-section {
-            background: rgba(20, 10, 15, 0.6);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 30px 0;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-        }
-
-        .polaroid-section h2 {
-            font-family: 'Playfair Display', serif;
-            color: #d4af37;
-            font-size: 2rem;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .polaroid-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 20px 0;
-        }
-
-        .polaroid {
-            background: #fff;
-            padding: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            transform: rotate(-2deg);
-            transition: transform 0.3s ease;
-        }
-
-        .polaroid:hover {
-            transform: rotate(0deg) scale(1.05);
-        }
-
-        .polaroid-image {
-            width: 300px;
-            height: 300px;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.4));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(212, 175, 55, 0.6);
-            font-size: 3rem;
-            border: 1px solid #ddd;
-        }
-
-        .polaroid-caption {
-            padding: 15px 0 0 0;
-            text-align: center;
-            font-family: 'Cormorant Garamond', serif;
-            color: #333;
-            font-size: 1rem;
-        }
-
-        .polaroid-date {
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 5px;
-        }
-
-        .love-quote {
-            text-align: center;
-            font-style: italic;
-            color: rgba(212, 175, 55, 0.9);
-            font-size: 1.2rem;
-            margin-top: 30px;
-            padding: 20px;
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
-        }
-
-        .gallery-section {
-            background: rgba(20, 10, 15, 0.6);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 30px 0;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-        }
-
-        .gallery-section h2 {
-            font-family: 'Playfair Display', serif;
-            color: #d4af37;
-            font-size: 2rem;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .photo-frame {
-            position: relative;
-            background: linear-gradient(135deg, rgba(139, 69, 19, 0.3), rgba(101, 67, 33, 0.3));
-            border: 3px solid rgba(212, 175, 55, 0.4);
-            border-radius: 10px;
-            padding: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(212, 175, 55, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .photo-frame:hover {
-            transform: translateY(-5px) rotate(1deg);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3), inset 0 0 30px rgba(212, 175, 55, 0.2);
-        }
-
-        .photo-placeholder {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.3));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(212, 175, 55, 0.5);
-            font-size: 2.5rem;
-            border-radius: 5px;
-            border: 1px dashed rgba(212, 175, 55, 0.3);
-        }
-
-        .frame-label {
-            text-align: center;
-            margin-top: 10px;
-            font-family: 'Cormorant Garamond', serif;
-            color: #d4af37;
-            font-size: 0.9rem;
-            font-style: italic;
-        }
-
         @media (max-width: 480px) {
             .container {
                 padding: 20px 15px;
+            }
+
+            .back-button {
+                padding: 10px 20px;
+                font-size: 14px;
             }
 
             .polaroid-gallery {
@@ -994,11 +825,15 @@
     <div class="floating-hearts" id="floatingHearts"></div>
 
     <div class="container">
+        <button class="back-button" onclick="window.location.href='../main.html'">
+            ← Back to Calendar
+        </button>
+
         <header>
             <h1>Valentine's Day</h1>
             <p class="date">February 14, 2026</p>
             <p class="bengali-text">আমি তোমায় ভালোবাসি</p>
-            <p style="text-align: center; margin-top: 10px; font-size: 1.2rem; color: #d4af37;">
+            <p style="text-align: center; margin-top: 10px; font-size: 1.2rem; color: #FFD700;">
                 (I Love You)
             </p>
         </header>
@@ -1229,7 +1064,7 @@
                     This Valentine's Day, I promise you my forever. My love, my commitment, 
                     my dreams - they're all yours.
                 </p>
-                <p style="font-size: 1.8rem; color: #d4af37; font-weight: bold; margin-top: 40px;">
+                <p style="font-size: 1.8rem; color: #C41E3A; font-weight: bold; margin-top: 40px;">
                     I Love You, Today and Always 💝
                 </p>
             </div>
@@ -1245,57 +1080,6 @@
                 <button class="music-button" id="nextBtn" title="Next">⏭️</button>
             </div>
             <p class="music-note">Music player controls - Add your favorite songs here</p>
-        </div>
-
-        <!-- Polaroid Section -->
-        <div class="polaroid-section">
-            <h2>✨ Captured Moment ✨</h2>
-            <div class="polaroid-container">
-                <div class="polaroid">
-                    <div class="polaroid-image">💝</div>
-                    <div class="polaroid-caption">
-                        Valentine's Day 2026
-                        <div class="polaroid-date">February 14, 2026 • True Love</div>
-                    </div>
-                </div>
-            </div>
-            <div class="love-quote">
-                "In your kiss, I found my home. In your embrace, I found my peace. In your love, I found my forever."
-            </div>
-        </div>
-
-        <!-- Gallery Section -->
-        <div class="gallery-section">
-            <h2>🎭 Magical Memory Gallery 🎭</h2>
-            <p style="text-align: center; color: rgba(212, 175, 55, 0.8); margin-bottom: 20px;">
-                Our enchanted collection of moments, waiting to be filled with love
-            </p>
-            <div class="gallery-grid">
-                <div class="photo-frame">
-                    <div class="photo-placeholder">⚡</div>
-                    <div class="frame-label">Expecto Patronum</div>
-                </div>
-                <div class="photo-frame">
-                    <div class="photo-placeholder">🌟</div>
-                    <div class="frame-label">Lumos Maxima</div>
-                </div>
-                <div class="photo-frame">
-                    <div class="photo-placeholder">✨</div>
-                    <div class="frame-label">Wingardium Leviosa</div>
-                </div>
-                <div class="photo-frame">
-                    <div class="photo-placeholder">🔮</div>
-                    <div class="frame-label">Riddikulus</div>
-                </div>
-                <div class="photo-frame">
-                    <div class="photo-placeholder">💫</div>
-                    <div class="frame-label">Alohomora</div>
-                </div>
-                <div class="photo-frame">
-                    <div class="photo-placeholder">🦌</div>
-                    <div class="frame-label">Always</div>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -1601,60 +1385,6 @@
                 observer.observe(item);
             });
         });
-
-        // Rotating love quotes for polaroid
-        const loveQuotes = [
-            "In your kiss, I found my home. In your embrace, I found my peace. In your love, I found my forever.",
-            "True love stories never have endings, and ours is written in the stars.",
-            "Forever is not a word, rather it is a place where two lovers go when true love takes them there.",
-            "I love you not only for what you are, but for what I am when I am with you.",
-            "In all the world, there is no heart for me like yours. In all the world, there is no love for you like mine."
-        ];
-
-        function updateLoveQuote() {
-            const quoteElement = document.querySelector('.love-quote');
-            if (quoteElement) {
-                const randomQuote = loveQuotes[Math.floor(Math.random() * loveQuotes.length)];
-                quoteElement.textContent = randomQuote;
-            }
-        }
-
-        // Update quote every 10 seconds
-        setInterval(updateLoveQuote, 10000);
-
-        // Add floating particles animation
-        function createParticles() {
-            const container = document.body;
-            for(let i = 0; i < 30; i++) {
-                const particle = document.createElement('div');
-                particle.style.position = 'fixed';
-                particle.style.width = '4px';
-                particle.style.height = '4px';
-                particle.style.background = 'radial-gradient(circle, rgba(212, 175, 55, 0.5) 0%, rgba(212, 175, 55, 0.1) 100%)';
-                particle.style.borderRadius = '50%';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.bottom = '-10px';
-                particle.style.pointerEvents = 'none';
-                particle.style.zIndex = '1';
-                particle.style.animation = `float-up ${10 + Math.random() * 10}s infinite`;
-                particle.style.animationDelay = Math.random() * 10 + 's';
-                container.appendChild(particle);
-            }
-        }
-
-        // Add CSS animation for particles
-        const particleStyle = document.createElement('style');
-        particleStyle.textContent = `
-            @keyframes float-up {
-                0% { transform: translateY(0) scale(0); opacity: 0; }
-                10% { opacity: 1; }
-                90% { opacity: 1; }
-                100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
-            }
-        `;
-        document.head.appendChild(particleStyle);
-        
-        createParticles();
     </script>
 </body>
 </html>

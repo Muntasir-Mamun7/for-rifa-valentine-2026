@@ -15,10 +15,10 @@
         }
 
         body {
-            font-family: 'Cormorant Garamond', serif;
-            background: linear-gradient(to bottom, #1a0a0f 0%, #2a0a1f 50%, #1a0515 100%);
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #FF6B35 0%, #FF9068 25%, #FFB6A3 50%, #FFC3B8 75%, #FFE5E0 100%);
             min-height: 100vh;
-            color: #d4af37;
+            color: #4A1C1C;
             overflow-x: hidden;
             position: relative;
         }
@@ -38,18 +38,59 @@
             position: absolute;
             width: 6px;
             height: 6px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.6) 0%, rgba(212, 175, 55, 0.3) 100%);
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.6) 0%, rgba(255, 107, 53, 0.3) 100%);
             border-radius: 50%;
             animation: float-up 10s infinite;
             opacity: 0;
         }
 
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+
         .container {
             position: relative;
             z-index: 2;
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50px;
+            color: #FF6B35;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+            margin-bottom: 30px;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+            background: #fff;
         }
 
         header {
@@ -58,229 +99,28 @@
             animation: fadeInDown 1s ease;
         }
 
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            color: #d4af37;
-            margin-bottom: 15px;
+            font-size: clamp(3rem, 8vw, 5rem);
             font-weight: 700;
-            text-shadow: 2px 2px 8px rgba(212, 175, 55, 0.3);
+            color: #C41E3A;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .date-badge {
-            display: inline-block;
-            background: rgba(212, 175, 55, 0.2);
-            padding: 10px 30px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
+        .date {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            color: #8B3A3A;
+            font-weight: 300;
+            letter-spacing: 2px;
         }
 
         .subtitle {
-            font-size: 1.4rem;
-            color: rgba(212, 175, 55, 0.8);
-            margin-bottom: 10px;
-            font-style: italic;
-        }
-
-        .content-section {
-            background: rgba(20, 10, 15, 0.6);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 30px 0;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-        }
-
-        .content-section h2 {
             font-family: 'Playfair Display', serif;
-            color: #d4af37;
-            font-size: 2rem;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        .content-section p {
-            line-height: 1.9;
-            font-size: 1.2rem;
-            color: rgba(212, 175, 55, 0.85);
-            margin-bottom: 20px;
-        }
-
-        .message-card {
-            background: rgba(212, 175, 55, 0.1);
-            border-left: 4px solid rgba(212, 175, 55, 0.5);
-            padding: 25px;
-            margin: 25px 0;
-            border-radius: 10px;
-            font-style: italic;
-        }
-
-        .message-card p {
-            font-size: 1.25rem;
-            color: rgba(212, 175, 55, 0.9);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .content-section {
-            animation: fadeInUp 0.8s ease;
-        }
-
-        .polaroid-section {
-            background: rgba(20, 10, 15, 0.6);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 30px 0;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-        }
-
-        .polaroid-section h2 {
-            font-family: 'Playfair Display', serif;
-            color: #d4af37;
-            font-size: 2rem;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .polaroid-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 20px 0;
-        }
-
-        .polaroid {
-            background: #fff;
-            padding: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            transform: rotate(-2deg);
-            transition: transform 0.3s ease;
-        }
-
-        .polaroid:hover {
-            transform: rotate(0deg) scale(1.05);
-        }
-
-        .polaroid-image {
-            width: 300px;
-            height: 300px;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.4));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(212, 175, 55, 0.6);
-            font-size: 3rem;
-            border: 1px solid #ddd;
-        }
-
-        .polaroid-caption {
-            padding: 15px 0 0 0;
-            text-align: center;
-            font-family: 'Cormorant Garamond', serif;
-            color: #333;
-            font-size: 1rem;
-        }
-
-        .polaroid-date {
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 5px;
-        }
-
-        .love-quote {
-            text-align: center;
-            font-style: italic;
-            color: rgba(212, 175, 55, 0.9);
-            font-size: 1.2rem;
-            margin-top: 30px;
-            padding: 20px;
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
-        }
-
-        .gallery-section {
-            background: rgba(20, 10, 15, 0.6);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 30px 0;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-        }
-
-        .gallery-section h2 {
-            font-family: 'Playfair Display', serif;
-            color: #d4af37;
-            font-size: 2rem;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .photo-frame {
-            position: relative;
-            background: linear-gradient(135deg, rgba(139, 69, 19, 0.3), rgba(101, 67, 33, 0.3));
-            border: 3px solid rgba(212, 175, 55, 0.4);
-            border-radius: 10px;
-            padding: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(212, 175, 55, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .photo-frame:hover {
-            transform: translateY(-5px) rotate(1deg);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3), inset 0 0 30px rgba(212, 175, 55, 0.2);
-        }
-
-        .photo-placeholder {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.3));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(212, 175, 55, 0.5);
-            font-size: 2.5rem;
-            border-radius: 5px;
-            border: 1px dashed rgba(212, 175, 55, 0.3);
-        }
-
-        .frame-label {
-            text-align: center;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: #FF6B35;
             margin-top: 10px;
-            font-family: 'Cormorant Garamond', serif;
-            color: #d4af37;
-            font-size: 0.9rem;
             font-style: italic;
         }
 
@@ -614,22 +454,10 @@
             }
         }
 
+        /* Responsive Design */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            .content-section {
-                padding: 25px;
-            }
-
-            .content-section h2 {
-                font-size: 1.6rem;
-            }
-
-            .content-section p,
-            .message-card p {
-                font-size: 1.1rem;
+            .container {
+                padding: 20px 15px;
             }
 
             .hug-stage {
@@ -652,6 +480,35 @@
             .hug-stage.active .hug-figure.right {
                 transform: translateX(-40px);
             }
+
+            .heartbeat-display {
+                gap: 40px;
+            }
+
+            .pulsing-heart {
+                font-size: 70px;
+            }
+
+            .message-section {
+                padding: 40px 25px;
+            }
+
+            .temperature-display {
+                top: 10px;
+                right: 10px;
+                padding: 15px 20px;
+            }
+
+            .temp-value {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .back-button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
@@ -659,24 +516,22 @@
     <!-- Warm Particles Background -->
     <div class="warm-particles" id="warmParticles"></div>
 
+    <!-- Temperature Display -->
+    <div class="temperature-display">
+        <div class="temp-value" id="tempValue">98.6°</div>
+        <div class="temp-label">Body Warmth</div>
+    </div>
+
     <div class="container">
+        <button class="back-button" onclick="window.location.href='../main.html'">
+            ← Back to Calendar
+        </button>
+
         <header>
-            <div class="date-badge">February 12, 2026</div>
             <h1>Hug Day</h1>
+            <p class="date">February 12, 2026</p>
             <p class="subtitle">Warmth, Comfort & Embrace</p>
         </header>
-
-        <div class="content-section">
-            <h2>The Warmth of Your Embrace</h2>
-            <p>
-                In your arms, I find my home. A place where warmth meets comfort, where two hearts beat as one.
-                Every hug from you is a reminder that distance means nothing when hearts are connected.
-            </p>
-            <p>
-                Even though we're miles apart, I feel your warmth surrounding me, protecting me, loving me.
-                This Hug Day, I'm sending you all the warmth my heart can hold. 🤗💕
-            </p>
-        </div>
 
         <!-- Hug Animation -->
         <div class="hug-animation-container">
@@ -716,125 +571,28 @@
         </section>
 
         <!-- Message Section -->
-        <section class="content-section">
-            <h2>Hearts Beating as One</h2>
-            <div class="message-card">
-                <p>
-                    In your hug, I found my safe haven, the warmest place on earth.
-                    Every embrace brings us closer, even when the world tries to keep us apart.
-                </p>
-            </div>
-            <p>
-                Until we can be together again, I carry your warmth with me. They remind me that true love 
-                isn't measured by proximity, but by the depth of connection that even distance cannot diminish.
-            </p>
+        <section class="message-section">
+            <h2>The Warmth of Your Embrace</h2>
+            <p>In your arms, I find my home. A place where warmth meets comfort, where two hearts beat as one.</p>
+            <p>Every hug from you is a reminder that distance means nothing when hearts are connected.</p>
+            <p>Even though we're miles apart, I feel your warmth surrounding me, protecting me, loving me.</p>
+            <p>This Hug Day, I'm sending you all the warmth my heart can hold. 🤗💕</p>
         </section>
 
-        <div class="polaroid-section">
-            <h2>✨ Captured Moment ✨</h2>
-            <div class="polaroid-container">
-                <div class="polaroid">
-                    <div class="polaroid-image">🤗</div>
-                    <div class="polaroid-caption">
-                        Hug Day 2026
-                        <div class="polaroid-date">February 12, 2026 • Embracing Love</div>
-                    </div>
-                </div>
+        <!-- Music Player Placeholder -->
+        <div class="music-player">
+            <h3>🎵 Hug Day Playlist 🎵</h3>
+            <div class="music-controls">
+                <button class="music-button" id="playButton" title="Play">▶️</button>
+                <button class="music-button" id="pauseButton" title="Pause">⏸️</button>
+                <!-- Music player functionality to be added with actual audio files -->
             </div>
-            <div class="love-quote" id="loveQuote">
-                "A hug is worth a thousand words, and your embrace is my favorite story."
-            </div>
-        </div>
-
-        <div class="gallery-section">
-            <h2>🎭 Magical Memory Gallery 🎭</h2>
-            <p style="text-align: center; color: rgba(212, 175, 55, 0.8); margin-bottom: 20px;">
-                Our enchanted collection of moments, waiting to be filled with love
-            </p>
-            <div class="gallery-grid">
-                <div class="photo-frame">
-                    <div class="photo-placeholder">⚡</div>
-                    <div class="frame-label">Expecto Patronum</div>
-                </div>
-                <div class="photo-frame">
-                    <div class="photo-placeholder">🌟</div>
-                    <div class="frame-label">Lumos Maxima</div>
-                </div>
-                <div class="photo-frame">
-                    <div class="photo-placeholder">✨</div>
-                    <div class="frame-label">Wingardium Leviosa</div>
-                </div>
-                <div class="photo-frame">
-                    <div class="photo-placeholder">🔮</div>
-                    <div class="frame-label">Riddikulus</div>
-                </div>
-                <div class="photo-frame">
-                    <div class="photo-placeholder">💫</div>
-                    <div class="frame-label">Alohomora</div>
-                </div>
-                <div class="photo-frame">
-                    <div class="photo-placeholder">🦌</div>
-                    <div class="frame-label">Always</div>
-                </div>
-            </div>
+            <p class="music-note">Music player controls - Audio files to be added</p>
         </div>
     </div>
 
     <script>
-        // Love quotes for Hug Day
-        const loveQuotes = [
-            "A hug is worth a thousand words, and your embrace is my favorite story.",
-            "In your arms, I found my safe haven, my warmest place on earth.",
-            "Distance may keep us apart, but our hearts embrace across the miles.",
-            "Every hug brings comfort, every embrace brings peace, every moment brings love.",
-            "Your love wraps around me like the warmest, softest hug."
-        ];
-
-        function updateLoveQuote() {
-            const quoteElement = document.getElementById('loveQuote');
-            const randomQuote = loveQuotes[Math.floor(Math.random() * loveQuotes.length)];
-            quoteElement.textContent = randomQuote;
-        }
-
-        // Update quote every 10 seconds
-        setInterval(updateLoveQuote, 10000);
-
-        // Add floating particles animation
-        function createParticles() {
-            const container = document.body;
-            for(let i = 0; i < 30; i++) {
-                const particle = document.createElement('div');
-                particle.style.position = 'fixed';
-                particle.style.width = '4px';
-                particle.style.height = '4px';
-                particle.style.background = 'radial-gradient(circle, rgba(212, 175, 55, 0.5) 0%, rgba(212, 175, 55, 0.1) 100%)';
-                particle.style.borderRadius = '50%';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.bottom = '-10px';
-                particle.style.pointerEvents = 'none';
-                particle.style.zIndex = '1';
-                particle.style.animation = `float-up ${10 + Math.random() * 10}s infinite`;
-                particle.style.animationDelay = Math.random() * 10 + 's';
-                container.appendChild(particle);
-            }
-        }
-
-        // Add CSS animation for particles
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes float-up {
-                0% { transform: translateY(0) scale(0); opacity: 0; }
-                10% { opacity: 1; }
-                90% { opacity: 1; }
-                100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
-            }
-        `;
-        document.head.appendChild(style);
-        
-        createParticles();
-
-        // Hug Animation Functions (keep existing animations)
-        // Hug Animation Functions (keep existing animations)
+        // Warm Particles Animation
         function createWarmParticles() {
             const container = document.getElementById('warmParticles');
             const particleCount = 30;
@@ -950,9 +708,21 @@
             }, 10000); // Every 10 seconds
         }
 
+        // Music Player Placeholder Functions
+        document.getElementById('playButton').addEventListener('click', function() {
+            console.log('Play button clicked - Audio playback to be implemented');
+            // Add actual audio playback here
+        });
+
+        document.getElementById('pauseButton').addEventListener('click', function() {
+            console.log('Pause button clicked - Audio playback to be implemented');
+            // Add actual audio pause here
+        });
+
         // Initialize
         window.addEventListener('DOMContentLoaded', () => {
             createWarmParticles();
+            animateTemperature();
             
             // Initial hug animation after page load
             setTimeout(() => {
