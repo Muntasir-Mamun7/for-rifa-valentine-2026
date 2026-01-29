@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Day 5 - Promise Day 🤝</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Day 5 - Promise Day</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,9 +13,10 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #7B68EE 0%, #6A5ACD 50%, #483D8B 100%);
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(to bottom, #1a0a0f 0%, #2a0a1f 50%, #1a0515 100%);
             min-height: 100vh;
+            color: #d4af37;
             overflow-x: hidden;
             position: relative;
         }
@@ -30,45 +31,84 @@
 
         h1 {
             font-family: 'Playfair Display', serif;
-            color: #FFD700;
+            font-size: 3.5rem;
+            color: #d4af37;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(212, 175, 55, 0.3);
             text-align: center;
-            font-size: 3rem;
-            margin: 2rem 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             animation: fadeInDown 1s ease;
         }
 
         .date-badge {
-            background: rgba(255, 215, 0, 0.3);
-            color: #FFD700;
-            padding: 0.5rem 1.5rem;
-            border-radius: 20px;
             display: inline-block;
-            margin-bottom: 1rem;
+            background: rgba(212, 175, 55, 0.2);
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: rgba(212, 175, 55, 0.8);
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .content-section {
+            background: rgba(20, 10, 15, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
             backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .content-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .content-section p {
+            line-height: 1.9;
+            font-size: 1.2rem;
+            color: rgba(212, 175, 55, 0.85);
+            margin-bottom: 20px;
         }
 
         .message-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            animation: fadeInUp 1s ease;
-        }
-
-        .message-card h2 {
-            font-family: 'Playfair Display', serif;
-            color: #483D8B;
-            margin-bottom: 1rem;
-            font-size: 2rem;
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid rgba(212, 175, 55, 0.5);
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+            font-style: italic;
         }
 
         .message-card p {
-            color: #333;
-            line-height: 1.8;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            color: rgba(212, 175, 55, 0.9);
         }
 
         .tree-container {
@@ -283,29 +323,7 @@
             padding: 2rem;
         }
 
-        .back-button {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: rgba(255, 255, 255, 0.3);
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s;
-            font-size: 1rem;
-            font-weight: 600;
-            z-index: 101;
-            text-decoration: none;
-            display: inline-block;
-        }
 
-        .back-button:hover {
-            background: rgba(255, 255, 255, 0.5);
-            transform: translateX(-5px);
-        }
 
         @keyframes fadeInDown {
             from {
@@ -327,6 +345,141 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+
+        .polaroid-section {
+            background: rgba(20, 10, 15, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .polaroid-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .polaroid-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .polaroid {
+            background: #fff;
+            padding: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transform: rotate(-2deg);
+            transition: transform 0.3s ease;
+        }
+
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .polaroid-image {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.4));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(212, 175, 55, 0.6);
+            font-size: 3rem;
+            border: 1px solid #ddd;
+        }
+
+        .polaroid-caption {
+            padding: 15px 0 0 0;
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            color: #333;
+            font-size: 1rem;
+        }
+
+        .polaroid-date {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .love-quote {
+            text-align: center;
+            font-style: italic;
+            color: rgba(212, 175, 55, 0.9);
+            font-size: 1.2rem;
+            margin-top: 30px;
+            padding: 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .gallery-section {
+            background: rgba(20, 10, 15, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .photo-frame {
+            position: relative;
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.3), rgba(101, 67, 33, 0.3));
+            border: 3px solid rgba(212, 175, 55, 0.4);
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(212, 175, 55, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .photo-frame:hover {
+            transform: translateY(-5px) rotate(1deg);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3), inset 0 0 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(212, 175, 55, 0.5);
+            font-size: 2.5rem;
+            border-radius: 5px;
+            border: 1px dashed rgba(212, 175, 55, 0.3);
+        }
+
+        .frame-label {
+            text-align: center;
+            margin-top: 10px;
+            font-family: 'Cormorant Garamond', serif;
+            color: #d4af37;
+            font-size: 0.9rem;
+            font-style: italic;
         }
 
         @media (max-width: 768px) {
@@ -375,54 +528,53 @@
     </style>
 </head>
 <body>
-    <a href="../main.html" class="back-button">← Back to Days</a>
-
     <div class="container">
-        <div style="text-align: center;">
-            <span class="date-badge">February 11, 2026</span>
-        </div>
-        <h1>🤝 Promise Day 🤝</h1>
+        <header>
+            <div class="date-badge">February 11, 2026</div>
+            <h1>Promise Day</h1>
+            <p class="subtitle">Promises that last forever</p>
+        </header>
 
-        <div class="message-card">
+        <div class="content-section">
             <h2>Promises That Last Forever</h2>
             <p>Today, I plant a tree of promises - each branch represents a vow I make to you. Watch as our promise tree grows, just like our love grows stronger each day.</p>
-            <p>These aren't just words; they're commitments from my heart to yours, sealed with all the love I have. 💕</p>
+            <p>These aren't just words; they're commitments from my heart to yours, sealed with all the love I have.</p>
         </div>
 
         <div class="tree-container">
             <div class="tree-branches">
                 <div class="branch">
-                    <span class="branch-icon">💝</span>
+                    <span class="branch-icon">♥</span>
                     <div class="branch-title">I Promise</div>
                     <div class="branch-promise">To love you unconditionally, in every moment, through every season of life.</div>
                 </div>
                 <div class="branch">
-                    <span class="branch-icon">🌟</span>
+                    <span class="branch-icon">★</span>
                     <div class="branch-title">I Promise</div>
                     <div class="branch-promise">To support your dreams of becoming a doctor and healing the world.</div>
                 </div>
                 <div class="branch">
-                    <span class="branch-icon">🤗</span>
+                    <span class="branch-icon">♥</span>
                     <div class="branch-title">I Promise</div>
                     <div class="branch-promise">To be there for you, whether you're in Nanjing or Bangladesh, near or far.</div>
                 </div>
                 <div class="branch">
-                    <span class="branch-icon">😊</span>
+                    <span class="branch-icon">☺</span>
                     <div class="branch-title">I Promise</div>
                     <div class="branch-promise">To make you smile every single day, even when miles apart.</div>
                 </div>
                 <div class="branch">
-                    <span class="branch-icon">🌈</span>
+                    <span class="branch-icon">★</span>
                     <div class="branch-title">I Promise</div>
                     <div class="branch-promise">To create beautiful memories together, just like our Purple Mountain sunset.</div>
                 </div>
                 <div class="branch">
-                    <span class="branch-icon">💪</span>
+                    <span class="branch-icon">♥</span>
                     <div class="branch-title">I Promise</div>
                     <div class="branch-promise">To be your strength when you're tired, your comfort when you're sad.</div>
                 </div>
                 <div class="branch">
-                    <span class="branch-icon">♾️</span>
+                    <span class="branch-icon">∞</span>
                     <div class="branch-title">I Promise</div>
                     <div class="branch-promise">Forever. That's how long I'll love you. Forever and always.</div>
                 </div>
@@ -432,7 +584,7 @@
 
         <div class="landmarks-section">
             <h3>Our Special Places in Nanjing</h3>
-            <p style="text-align: center; color: #666; margin-bottom: 2rem;">Every location holds a piece of our story ❤️</p>
+            <p style="text-align: center; color: #666; margin-bottom: 2rem;">Every location holds a piece of our story</p>
             <div class="landmarks-grid">
                 <div class="landmark-card">
                     <div class="landmark-icon">🚇</div>
@@ -477,9 +629,16 @@
 
         <div class="promise-lock">
             <h3>Our Virtual Promise Lock</h3>
-            <div class="lock-icon">🔒</div>
+            <div class="lock-icon">
+                <svg width="80" height="100" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="15" y="45" width="50" height="45" rx="5" fill="#FFD700" stroke="#d4af37" stroke-width="2"/>
+                    <path d="M 25 45 V 30 A 15 15 0 0 1 55 30 V 45" stroke="#FFD700" stroke-width="6" fill="none"/>
+                    <circle cx="40" cy="67" r="5" fill="#d4af37"/>
+                    <rect x="38" y="67" width="4" height="12" fill="#d4af37"/>
+                </svg>
+            </div>
             <div class="lock-message">
-                Like the love locks on bridges around the world, this lock symbolizes our promises locked together forever. No key can unlock it, no time can break it. Our promises are eternal. 💕
+                Like the love locks on bridges around the world, this lock symbolizes our promises locked together forever. No key can unlock it, no time can break it. Our promises are eternal.
             </div>
         </div>
 
@@ -489,12 +648,112 @@
                 "I promise that no matter where life takes us - whether you're at NMU saving lives or I'm at NJUPT writing code - we'll always find our way back to each other."
             </p>
             <p style="text-align: center; margin-top: 2rem; font-size: 1.3rem; color: #C41E3A;">
-                These promises are written in my heart. Forever yours. 💝
+                These promises are written in my heart. Forever yours.
             </p>
+        </div>
+        <div class="polaroid-section">
+            <h2>Captured Moment</h2>
+            <div class="polaroid-container">
+                <div class="polaroid">
+                    <div class="polaroid-image">[Photo]</div>
+                    <div class="polaroid-caption">
+                        Promise Day 2026
+                        <div class="polaroid-date">February 11, 2026 • Forever Vows</div>
+                    </div>
+                </div>
+            </div>
+            <div class="love-quote" id="loveQuote">
+                "A promise is a sacred vow, written in the language of the heart."
+            </div>
+        </div>
+
+        <div class="gallery-section">
+            <h2>Magical Memory Gallery</h2>
+            <p style="text-align: center; color: rgba(212, 175, 55, 0.8); margin-bottom: 20px;">
+                Our enchanted collection of moments, waiting to be filled with love
+            </p>
+            <div class="gallery-grid">
+                <div class="photo-frame">
+                    <div class="photo-placeholder">[Photo]</div>
+                    <div class="frame-label">Expecto Patronum</div>
+                </div>
+                <div class="photo-frame">
+                    <div class="photo-placeholder">[Photo]</div>
+                    <div class="frame-label">Lumos Maxima</div>
+                </div>
+                <div class="photo-frame">
+                    <div class="photo-placeholder">[Photo]</div>
+                    <div class="frame-label">Wingardium Leviosa</div>
+                </div>
+                <div class="photo-frame">
+                    <div class="photo-placeholder">[Photo]</div>
+                    <div class="frame-label">Riddikulus</div>
+                </div>
+                <div class="photo-frame">
+                    <div class="photo-placeholder">[Photo]</div>
+                    <div class="frame-label">Alohomora</div>
+                </div>
+                <div class="photo-frame">
+                    <div class="photo-placeholder">[Photo]</div>
+                    <div class="frame-label">Always</div>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
+        // Love quotes for Promise Day
+        const loveQuotes = [
+            "A promise is a sacred vow, written in the language of the heart.",
+            "In your promises, I found my future, my hope, my forever.",
+            "Every promise we make is a step closer to our eternal bond.",
+            "Promises are the threads that weave our hearts together across any distance.",
+            "I promise to keep every vow, to honor every word, to love you endlessly."
+        ];
+
+        function updateLoveQuote() {
+            const quoteElement = document.getElementById('loveQuote');
+            const randomQuote = loveQuotes[Math.floor(Math.random() * loveQuotes.length)];
+            quoteElement.textContent = randomQuote;
+        }
+
+        // Update quote every 10 seconds
+        setInterval(updateLoveQuote, 10000);
+
+        // Add floating particles animation
+        function createParticles() {
+            const container = document.body;
+            for(let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'fixed';
+                particle.style.width = '4px';
+                particle.style.height = '4px';
+                particle.style.background = 'radial-gradient(circle, rgba(212, 175, 55, 0.5) 0%, rgba(212, 175, 55, 0.1) 100%)';
+                particle.style.borderRadius = '50%';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.bottom = '-10px';
+                particle.style.pointerEvents = 'none';
+                particle.style.zIndex = '1';
+                particle.style.animation = `float-up ${10 + Math.random() * 10}s infinite`;
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Add CSS animation for particles
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float-up {
+                0% { transform: translateY(0) scale(0); opacity: 0; }
+                10% { opacity: 1; }
+                90% { opacity: 1; }
+                100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        createParticles();
+
         // Parallax effect
         const parallaxContainer = document.getElementById('parallaxContainer');
         

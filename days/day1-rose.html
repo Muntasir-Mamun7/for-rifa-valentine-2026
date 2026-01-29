@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Destiny</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,7 +13,7 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Cormorant Garamond', serif;
             background: linear-gradient(to bottom, #050505 0%, #0a0a0a 50%, #000000 100%);
             min-height: 100vh;
             overflow-x: hidden;
@@ -834,6 +834,18 @@
             text-align: center;
         }
 
+        .date-badge {
+            display: inline-block;
+            background: rgba(188, 32, 32, 0.2);
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            border: 1px solid rgba(188, 32, 32, 0.3);
+            color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+        }
+
         .journey-map {
             display: flex;
             align-items: center;
@@ -1040,12 +1052,21 @@
 
             .arrow {
                 transform: rotate(90deg);
+                animation: moveArrowDown 1.5s ease-in-out infinite;
             }
+        }
+        
+        @keyframes moveArrowDown {
+            0%, 100% { transform: rotate(90deg) translateX(0); opacity: 0.5; }
+            50% { transform: rotate(90deg) translateX(10px); opacity: 0.9; }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <div style="text-align: center; margin-bottom: 1rem;">
+            <div class="date-badge">February 7, 2026 - Rose Day</div>
+        </div>
         <div class="rose-container">
             <div class="light-source"></div>
             <div class="key-light"></div>
@@ -1186,7 +1207,12 @@
         
         // Reveal hidden messages
         function revealMessage(element) {
-            element.classList.add('revealed');
+            // Toggle the revealed state
+            if (element.classList.contains('revealed')) {
+                element.classList.remove('revealed');
+            } else {
+                element.classList.add('revealed');
+            }
         }
 
         // Music player functions (placeholders)

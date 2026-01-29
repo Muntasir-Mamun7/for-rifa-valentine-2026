@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Day 3 - Chocolate Day 🍫</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Day 3 - Chocolate Day | Valentine's Week 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,39 +13,103 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #3D2817 0%, #6B4423 50%, #8B5A3C 100%);
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(to bottom, #1a0a0f 0%, #2a0a1f 50%, #1a0515 100%);
             min-height: 100vh;
+            color: #d4af37;
             overflow-x: hidden;
             position: relative;
         }
 
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
             position: relative;
-            z-index: 1;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 1s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         h1 {
             font-family: 'Playfair Display', serif;
-            color: #FFF5E1;
-            text-align: center;
-            font-size: 3rem;
-            margin: 2rem 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            animation: fadeInDown 1s ease;
+            font-size: 3.5rem;
+            color: #d4af37;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(212, 175, 55, 0.3);
         }
 
         .date-badge {
-            background: rgba(255, 245, 225, 0.3);
-            color: #FFF5E1;
-            padding: 0.5rem 1.5rem;
-            border-radius: 20px;
             display: inline-block;
-            margin-bottom: 1rem;
+            background: rgba(212, 175, 55, 0.2);
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: rgba(212, 175, 55, 0.8);
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .content-section {
+            background: rgba(20, 10, 15, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
             backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .content-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .content-section p {
+            line-height: 1.9;
+            font-size: 1.2rem;
+            color: rgba(212, 175, 55, 0.85);
+            margin-bottom: 20px;
+        }
+
+        .message-card {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid rgba(212, 175, 55, 0.5);
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+            font-style: italic;
+        }
+
+        .message-card p {
+            font-size: 1.25rem;
+            color: rgba(212, 175, 55, 0.9);
         }
 
         .chocolate-box-container {
@@ -125,81 +189,6 @@
             background: linear-gradient(135deg, #8B4513, #654321);
         }
 
-        .chocolate-piece::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transform: rotate(45deg);
-            animation: shine 3s infinite;
-        }
-
-        @keyframes shine {
-            0%, 100% { transform: translateX(-100%) rotate(45deg); }
-            50% { transform: translateX(100%) rotate(45deg); }
-        }
-
-        .message-card {
-            background: rgba(255, 245, 225, 0.95);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            animation: fadeInUp 1s ease;
-        }
-
-        .message-card h2 {
-            font-family: 'Playfair Display', serif;
-            color: #3D2817;
-            margin-bottom: 1rem;
-            font-size: 2rem;
-        }
-
-        .message-card p {
-            color: #333;
-            line-height: 1.8;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-        }
-
-        .sweet-messages {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .sweet-card {
-            background: linear-gradient(135deg, rgba(255, 245, 225, 0.9), rgba(255, 228, 196, 0.9));
-            border-radius: 15px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.3s;
-            cursor: pointer;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-        }
-
-        .sweet-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
-
-        .sweet-card-emoji {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .sweet-card-text {
-            color: #3D2817;
-            font-size: 1rem;
-            line-height: 1.6;
-            font-weight: 500;
-        }
-
         .unwrap-button {
             background: linear-gradient(135deg, #C41E3A, #8B0000);
             color: white;
@@ -207,6 +196,7 @@
             padding: 1.5rem 3rem;
             border-radius: 50px;
             font-size: 1.3rem;
+            font-family: 'Cormorant Garamond', serif;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
@@ -218,53 +208,6 @@
         .unwrap-button:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 40px rgba(196, 30, 58, 0.6);
-        }
-
-        .chocolate-fact {
-            background: linear-gradient(135deg, rgba(139, 69, 19, 0.3), rgba(101, 67, 33, 0.3));
-            border: 2px solid rgba(255, 245, 225, 0.5);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-            color: #FFF5E1;
-            text-align: center;
-            backdrop-filter: blur(10px);
-        }
-
-        .chocolate-fact h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: #FFD700;
-        }
-
-        .chocolate-fact p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .back-button {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: rgba(255, 245, 225, 0.3);
-            color: #FFF5E1;
-            border: 2px solid rgba(255, 245, 225, 0.5);
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s;
-            font-size: 1rem;
-            font-weight: 600;
-            z-index: 100;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .back-button:hover {
-            background: rgba(255, 245, 225, 0.5);
-            transform: translateX(-5px);
         }
 
         .modal {
@@ -326,23 +269,148 @@
             border-radius: 25px;
             cursor: pointer;
             font-size: 1.1rem;
+            font-family: 'Cormorant Garamond', serif;
         }
 
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .polaroid-section {
+            background: rgba(20, 10, 15, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .polaroid-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .polaroid-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .polaroid {
+            background: #fff;
+            padding: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transform: rotate(-2deg);
+            transition: transform 0.3s ease;
+        }
+
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .polaroid-image {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.4));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(212, 175, 55, 0.6);
+            font-size: 3rem;
+            border: 1px solid #ddd;
+        }
+
+        .polaroid-caption {
+            padding: 15px 0 0 0;
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            color: #333;
+            font-size: 1rem;
+        }
+
+        .polaroid-date {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .love-quote {
+            text-align: center;
+            font-style: italic;
+            color: rgba(212, 175, 55, 0.9);
+            font-size: 1.2rem;
+            margin-top: 30px;
+            padding: 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .gallery-section {
+            background: rgba(20, 10, 15, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .photo-frame {
+            position: relative;
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.3), rgba(101, 67, 33, 0.3));
+            border: 3px solid rgba(212, 175, 55, 0.4);
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(212, 175, 55, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .photo-frame:hover {
+            transform: translateY(-5px) rotate(1deg);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3), inset 0 0 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(212, 175, 55, 0.5);
+            font-size: 2.5rem;
+            border-radius: 5px;
+            border: 1px dashed rgba(212, 175, 55, 0.3);
+        }
+
+        .frame-label {
+            text-align: center;
+            margin-top: 10px;
+            font-family: 'Cormorant Garamond', serif;
+            color: #d4af37;
+            font-size: 0.9rem;
+            font-style: italic;
         }
 
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(50px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -352,7 +420,20 @@
 
         @media (max-width: 768px) {
             h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
+            }
+
+            .content-section {
+                padding: 25px;
+            }
+
+            .content-section h2 {
+                font-size: 1.6rem;
+            }
+
+            .content-section p,
+            .message-card p {
+                font-size: 1.1rem;
             }
 
             .chocolate-box {
@@ -367,72 +448,92 @@
     </style>
 </head>
 <body>
-    <a href="../main.html" class="back-button">← Back to Days</a>
-
     <div class="container">
-        <div style="text-align: center;">
-            <span class="date-badge">February 9, 2026</span>
-        </div>
-        <h1>🍫 Chocolate Day 🍫</h1>
+        <header>
+            <div class="date-badge">February 9, 2026</div>
+            <h1>Chocolate Day</h1>
+            <p class="subtitle">Sweet Like Our Love</p>
+        </header>
 
-        <div class="message-card">
+        <div class="content-section">
             <h2>Sweet Like Our Love</h2>
-            <p>They say life is like a box of chocolates - you never know what you're going to get. But with you, every moment is sweeter than the finest chocolate. 🍫</p>
+            <p>They say life is like a box of chocolates - you never know what you're going to get. But with you, every moment is sweeter than the finest chocolate.</p>
             <p>I know how much you love chocolate! Each piece in this virtual box represents a sweet memory, a loving thought, a moment that made my heart melt just like chocolate on a warm day.</p>
         </div>
 
-        <button class="unwrap-button" onclick="openBox()">🎁 Unwrap the Box</button>
+        <button class="unwrap-button" onclick="openBox()">Unwrap the Box</button>
 
         <div class="chocolate-box-container">
             <div class="chocolate-box" id="chocolateBox">
                 <div class="box-lid">
-                    <span>🎀</span>
+                    <span></span>
                 </div>
                 <div class="box-base">
-                    <div class="chocolate-piece" onclick="showMessage(0)">🍫</div>
-                    <div class="chocolate-piece" onclick="showMessage(1)">🍬</div>
-                    <div class="chocolate-piece" onclick="showMessage(2)">🍫</div>
-                    <div class="chocolate-piece" onclick="showMessage(3)">🍬</div>
-                    <div class="chocolate-piece" onclick="showMessage(4)">🍫</div>
-                    <div class="chocolate-piece" onclick="showMessage(5)">🍬</div>
-                    <div class="chocolate-piece" onclick="showMessage(6)">🍫</div>
-                    <div class="chocolate-piece" onclick="showMessage(7)">🍬</div>
-                    <div class="chocolate-piece" onclick="showMessage(8)">🍫</div>
+                    <div class="chocolate-piece" onclick="showMessage(0)"></div>
+                    <div class="chocolate-piece" onclick="showMessage(1)"></div>
+                    <div class="chocolate-piece" onclick="showMessage(2)"></div>
+                    <div class="chocolate-piece" onclick="showMessage(3)"></div>
+                    <div class="chocolate-piece" onclick="showMessage(4)"></div>
+                    <div class="chocolate-piece" onclick="showMessage(5)"></div>
+                    <div class="chocolate-piece" onclick="showMessage(6)"></div>
+                    <div class="chocolate-piece" onclick="showMessage(7)"></div>
+                    <div class="chocolate-piece" onclick="showMessage(8)"></div>
                 </div>
             </div>
         </div>
 
-        <div class="chocolate-fact">
-            <h3>Did You Know? 💝</h3>
-            <p>Chocolate releases endorphins in the brain, the same chemicals that make you feel happy when you're in love. That's why you make me feel like I'm on a constant chocolate high! 🥰</p>
+        <div class="content-section">
+            <h2>Did You Know?</h2>
+            <div class="message-card">
+                <p>Chocolate releases endorphins in the brain, the same chemicals that make you feel happy when you're in love. That's why you make me feel like I'm on a constant chocolate high!</p>
+            </div>
         </div>
 
-        <div class="message-card">
-            <h2>Sweet Messages for You</h2>
-            <div class="sweet-messages">
-                <div class="sweet-card">
-                    <span class="sweet-card-emoji">🍫</span>
-                    <p class="sweet-card-text">"You're the sweetest part of my life, more delightful than any chocolate could ever be."</p>
+        <div class="polaroid-section">
+            <h2>Captured Moment</h2>
+            <div class="polaroid-container">
+                <div class="polaroid">
+                    <div class="polaroid-image">[Photo]</div>
+                    <div class="polaroid-caption">
+                        Chocolate Day 2026
+                        <div class="polaroid-date">February 9, 2026 • Sweet Moments</div>
+                    </div>
                 </div>
-                <div class="sweet-card">
-                    <span class="sweet-card-emoji">💖</span>
-                    <p class="sweet-card-text">"Just like chocolate melts in warmth, my heart melts every time I see your smile."</p>
+            </div>
+            <div class="love-quote">
+                "You're sweeter than chocolate, more precious than gold"
+            </div>
+        </div>
+
+        <div class="gallery-section">
+            <h2>Magical Memory Gallery</h2>
+            <p style="text-align: center; color: rgba(212, 175, 55, 0.8); margin-bottom: 20px;">
+                Our enchanted collection of moments, waiting to be filled with love
+            </p>
+            <div class="gallery-grid">
+                <div class="photo-frame">
+                    <div class="photo-placeholder">[Photo]</div>
+                    <div class="frame-label">Sweet Beginnings</div>
                 </div>
-                <div class="sweet-card">
-                    <span class="sweet-card-emoji">🌟</span>
-                    <p class="sweet-card-text">"Dark chocolate, milk chocolate, white chocolate - they're all wonderful, but none compare to the sweetness you bring to my life."</p>
+                <div class="photo-frame">
+                    <div class="photo-placeholder">[Photo]</div>
+                    <div class="frame-label">Chocolate Hearts</div>
                 </div>
-                <div class="sweet-card">
-                    <span class="sweet-card-emoji">🎁</span>
-                    <p class="sweet-card-text">"Every moment with you is like unwrapping a precious gift, revealing new layers of beauty and love."</p>
+                <div class="photo-frame">
+                    <div class="photo-placeholder">[Photo]</div>
+                    <div class="frame-label">Golden Memories</div>
                 </div>
-                <div class="sweet-card">
-                    <span class="sweet-card-emoji">✨</span>
-                    <p class="sweet-card-text">"You're studying to heal the world, but you've already healed my heart with your sweetness."</p>
+                <div class="photo-frame">
+                    <div class="photo-placeholder">[Photo]</div>
+                    <div class="frame-label">Precious Moments</div>
                 </div>
-                <div class="sweet-card">
-                    <span class="sweet-card-emoji">💝</span>
-                    <p class="sweet-card-text">"Distance may keep us apart, but like chocolate and happiness, you and I are perfectly paired forever."</p>
+                <div class="photo-frame">
+                    <div class="photo-placeholder">[Photo]</div>
+                    <div class="frame-label">Sweet Gifts</div>
+                </div>
+                <div class="photo-frame">
+                    <div class="photo-placeholder">[Photo]</div>
+                    <div class="frame-label">Forever Love</div>
                 </div>
             </div>
         </div>
@@ -440,7 +541,7 @@
 
     <div class="modal" id="messageModal">
         <div class="modal-content">
-            <h3 id="modalTitle">💝 Sweet Message</h3>
+            <h3 id="modalTitle">Sweet Message</h3>
             <p id="modalMessage"></p>
             <button class="close-modal" onclick="closeModal()">Close</button>
         </div>
@@ -448,15 +549,15 @@
 
     <script>
         const messages = [
-            "Your smile is sweeter than the finest Belgian chocolate! 🍫",
-            "Like cocoa beans need time to become chocolate, our love grows richer every day. ❤️",
-            "You're the perfect blend - sweet, warm, and absolutely irresistible! 😍",
-            "Just like chocolate, you make everything better! 🌟",
-            "Missing you is bittersweet, like dark chocolate - intense but beautiful. 💔💕",
-            "When we're together again, it'll be sweeter than any dessert in the world! 🎂",
-            "You're my favorite flavor in this life - pure sweetness! 🍬",
-            "Like chocolate melts on the tongue, you melt my heart every single day. 💖",
-            "No chocolate can compete with the joy you bring to my life! ✨"
+            "Your smile is sweeter than the finest Belgian chocolate!",
+            "Like cocoa beans need time to become chocolate, our love grows richer every day.",
+            "You're the perfect blend - sweet, warm, and absolutely irresistible!",
+            "Just like chocolate, you make everything better!",
+            "Missing you is bittersweet, like dark chocolate - intense but beautiful.",
+            "When we're together again, it'll be sweeter than any dessert in the world!",
+            "You're my favorite flavor in this life - pure sweetness!",
+            "Like chocolate melts on the tongue, you melt my heart every single day.",
+            "No chocolate can compete with the joy you bring to my life!"
         ];
 
         function openBox() {
@@ -480,6 +581,60 @@
                 closeModal();
             }
         });
+
+        // Random love quotes for polaroid
+        const loveQuotes = [
+            "You're sweeter than chocolate, more precious than gold",
+            "Like chocolate melts, so does my heart for you",
+            "Every moment with you is a sweet treasure",
+            "You're the sweetness that makes life worth living",
+            "In the box of life, you're my favorite chocolate"
+        ];
+
+        function updateLoveQuote() {
+            const quoteElement = document.querySelector('.love-quote');
+            if (quoteElement) {
+                const randomQuote = loveQuotes[Math.floor(Math.random() * loveQuotes.length)];
+                quoteElement.textContent = randomQuote;
+            }
+        }
+
+        // Update quote every 10 seconds
+        setInterval(updateLoveQuote, 10000);
+
+        // Add floating particles animation
+        function createParticles() {
+            const container = document.body;
+            for(let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'fixed';
+                particle.style.width = '4px';
+                particle.style.height = '4px';
+                particle.style.background = 'radial-gradient(circle, rgba(212, 175, 55, 0.5) 0%, rgba(212, 175, 55, 0.1) 100%)';
+                particle.style.borderRadius = '50%';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.bottom = '-10px';
+                particle.style.pointerEvents = 'none';
+                particle.style.zIndex = '1';
+                particle.style.animation = `float-up ${10 + Math.random() * 10}s infinite`;
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Add CSS animation for particles
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float-up {
+                0% { transform: translateY(0) scale(0); opacity: 0; }
+                10% { opacity: 1; }
+                90% { opacity: 1; }
+                100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        createParticles();
     </script>
 </body>
 </html>

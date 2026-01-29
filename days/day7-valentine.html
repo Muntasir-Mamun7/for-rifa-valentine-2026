@@ -6,7 +6,7 @@
     <title>Day 7 - Valentine's Day | The Grand Finale 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,11 +15,12 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: #000;
-            color: #fff;
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(to bottom, #1a0a0f 0%, #2a0a1f 50%, #1a0515 100%);
+            color: #d4af37;
             overflow-x: hidden;
             position: relative;
+            min-height: 100vh;
         }
 
         /* Cinematic Opening */
@@ -41,7 +42,7 @@
         .cinematic-text {
             font-family: 'Playfair Display', serif;
             font-size: clamp(2rem, 8vw, 5rem);
-            color: #FF6B9D;
+            color: #d4af37;
             text-align: center;
             animation: fadeInScale 2s ease-in-out;
         }
@@ -134,30 +135,6 @@
             padding: 40px 20px;
         }
 
-        .back-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            background: rgba(255, 255, 255, 0.95);
-            border: 2px solid #FF6B9D;
-            border-radius: 50px;
-            color: #C41E3A;
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(255, 107, 157, 0.4);
-            margin-bottom: 30px;
-        }
-
-        .back-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(255, 107, 157, 0.6);
-            background: #fff;
-        }
-
         header {
             text-align: center;
             margin-bottom: 80px;
@@ -177,30 +154,30 @@
         }
 
         .date {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Cormorant Garamond', serif;
             font-size: clamp(1.3rem, 3vw, 1.8rem);
-            color: #fff;
+            color: #d4af37;
             font-weight: 300;
             letter-spacing: 4px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.5);
         }
 
         .bengali-text {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Cormorant Garamond', serif;
             font-size: clamp(2rem, 5vw, 3.5rem);
-            color: #FFD700;
+            color: #d4af37;
             margin-top: 30px;
             font-weight: 700;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
             animation: glow 2s ease-in-out infinite;
         }
 
         @keyframes glow {
             0%, 100% {
-                text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+                text-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
             }
             50% {
-                text-shadow: 0 0 40px rgba(255, 215, 0, 1), 0 0 60px rgba(255, 215, 0, 0.6);
+                text-shadow: 0 0 40px rgba(212, 175, 55, 1), 0 0 60px rgba(212, 175, 55, 0.6);
             }
         }
 
@@ -217,7 +194,7 @@
         .section-title {
             font-family: 'Playfair Display', serif;
             font-size: clamp(2rem, 5vw, 3.5rem);
-            color: #C41E3A;
+            color: #d4af37;
             text-align: center;
             margin-bottom: 40px;
         }
@@ -659,7 +636,7 @@
         }
 
         .love-letter::before {
-            content: '💕';
+            content: '♥';
             position: absolute;
             font-size: 15rem;
             opacity: 0.05;
@@ -796,14 +773,206 @@
             }
         }
 
+        /* Additional styles from day8-kiss.html */
+        .date-badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.2);
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .content-section {
+            background: rgba(20, 10, 15, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .content-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .content-section p {
+            line-height: 1.9;
+            font-size: 1.2rem;
+            color: rgba(212, 175, 55, 0.85);
+            margin-bottom: 20px;
+        }
+
+        .message-card {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid rgba(212, 175, 55, 0.5);
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+            font-style: italic;
+        }
+
+        .message-card p {
+            font-size: 1.25rem;
+            color: rgba(212, 175, 55, 0.9);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .polaroid-section {
+            background: rgba(20, 10, 15, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .polaroid-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .polaroid-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .polaroid {
+            background: #fff;
+            padding: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transform: rotate(-2deg);
+            transition: transform 0.3s ease;
+        }
+
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .polaroid-image {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.4));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(212, 175, 55, 0.6);
+            font-size: 3rem;
+            border: 1px solid #ddd;
+        }
+
+        .polaroid-caption {
+            padding: 15px 0 0 0;
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            color: #333;
+            font-size: 1rem;
+        }
+
+        .polaroid-date {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .love-quote {
+            text-align: center;
+            font-style: italic;
+            color: rgba(212, 175, 55, 0.9);
+            font-size: 1.2rem;
+            margin-top: 30px;
+            padding: 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .gallery-section {
+            background: rgba(20, 10, 15, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .photo-frame {
+            position: relative;
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.3), rgba(101, 67, 33, 0.3));
+            border: 3px solid rgba(212, 175, 55, 0.4);
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(212, 175, 55, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .photo-frame:hover {
+            transform: translateY(-5px) rotate(1deg);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3), inset 0 0 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(212, 175, 55, 0.5);
+            font-size: 2.5rem;
+            border-radius: 5px;
+            border: 1px dashed rgba(212, 175, 55, 0.3);
+        }
+
+        .frame-label {
+            text-align: center;
+            margin-top: 10px;
+            font-family: 'Cormorant Garamond', serif;
+            color: #d4af37;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
         @media (max-width: 480px) {
             .container {
                 padding: 20px 15px;
-            }
-
-            .back-button {
-                padding: 10px 20px;
-                font-size: 14px;
             }
 
             .polaroid-gallery {
@@ -815,7 +984,7 @@
 <body>
     <!-- Cinematic Opening -->
     <div class="cinematic-overlay">
-        <div class="cinematic-text">Happy Valentine's Day 2026 💝</div>
+        <div class="cinematic-text">Happy Valentine's Day 2026</div>
     </div>
 
     <!-- Background -->
@@ -825,22 +994,18 @@
     <div class="floating-hearts" id="floatingHearts"></div>
 
     <div class="container">
-        <button class="back-button" onclick="window.location.href='../main.html'">
-            ← Back to Calendar
-        </button>
-
         <header>
             <h1>Valentine's Day</h1>
             <p class="date">February 14, 2026</p>
             <p class="bengali-text">আমি তোমায় ভালোবাসি</p>
-            <p style="text-align: center; margin-top: 10px; font-size: 1.2rem; color: #FFD700;">
+            <p style="text-align: center; margin-top: 10px; font-size: 1.2rem; color: #d4af37;">
                 (I Love You)
             </p>
         </header>
 
         <!-- Nanjing Map Section -->
         <section class="section">
-            <h2 class="section-title">Our Special Places in Nanjing 🗺️</h2>
+            <h2 class="section-title">Our Special Places in Nanjing</h2>
             <div class="map-container">
                 <!-- Simple visual map representation -->
                 <div style="position: relative; width: 100%; height: 100%;">
@@ -855,10 +1020,10 @@
                     <!-- Location Markers -->
                     <!-- Gulou Metro Station -->
                     <div class="location-marker" style="left: 35%; top: 30%;" data-location="gulou">
-                        <div style="font-size: 40px;">📍</div>
+                        <div style="font-size: 40px;">•</div>
                     </div>
                     <div class="location-info" id="info-gulou" style="left: 35%; top: 30%; margin-left: 50px;">
-                        <h3>🚇 Gulou Metro Station</h3>
+                        <h3>Gulou Metro Station</h3>
                         <p>Where our story began...</p>
                         <p class="date-label">November 30, 2025</p>
                         <p>The moment our eyes met, everything changed. This is where destiny brought us together.</p>
@@ -866,10 +1031,10 @@
 
                     <!-- Purple Mountain -->
                     <div class="location-marker" style="right: 15%; bottom: 25%;" data-location="mountain">
-                        <div style="font-size: 40px;">⛰️</div>
+                        <div style="font-size: 40px;">•</div>
                     </div>
                     <div class="location-info" id="info-mountain" style="right: 15%; bottom: 25%; margin-right: 50px;">
-                        <h3>🌄 Purple Mountain</h3>
+                        <h3>Purple Mountain</h3>
                         <p>Our first sunset together</p>
                         <p class="date-label">November 30, 2025</p>
                         <p>Watching the sun paint the sky in colors of love, sitting beside you felt like home.</p>
@@ -877,10 +1042,10 @@
 
                     <!-- NJUPT Campus -->
                     <div class="location-marker" style="left: 55%; top: 45%;" data-location="njupt">
-                        <div style="font-size: 40px;">🎓</div>
+                        <div style="font-size: 40px;">•</div>
                     </div>
                     <div class="location-info" id="info-njupt" style="left: 55%; top: 45%; margin-left: 50px;">
-                        <h3>🏫 NJUPT Campus</h3>
+                        <h3>NJUPT Campus</h3>
                         <p>His University</p>
                         <p class="date-label">His Home in Nanjing</p>
                         <p>Nanjing University of Posts and Telecommunications - where he studies and dreams of our future.</p>
@@ -888,10 +1053,10 @@
 
                     <!-- NMU Jiangning Campus -->
                     <div class="location-marker" style="left: 25%; bottom: 30%;" data-location="nmu">
-                        <div style="font-size: 40px;">🏛️</div>
+                        <div style="font-size: 40px;">•</div>
                     </div>
                     <div class="location-info" id="info-nmu" style="left: 25%; bottom: 30%; margin-bottom: 70px;">
-                        <h3>📚 NMU Jiangning Campus</h3>
+                        <h3>NMU Jiangning Campus</h3>
                         <p>Her University</p>
                         <p class="date-label">Her Academic Journey</p>
                         <p>Nanjing Medical University - where she pursues her dreams and builds her future.</p>
@@ -899,10 +1064,10 @@
 
                     <!-- Xinjiekou -->
                     <div class="location-marker" style="left: 45%; top: 55%;" data-location="xinjiekou">
-                        <div style="font-size: 40px;">🏙️</div>
+                        <div style="font-size: 40px;">•</div>
                     </div>
                     <div class="location-info" id="info-xinjiekou" style="left: 45%; top: 55%; margin-left: 50px;">
-                        <h3>🛍️ Xinjiekou & Shangsanjie</h3>
+                        <h3>Xinjiekou & Shangsanjie</h3>
                         <p>Shopping and exploring together</p>
                         <p class="date-label">Our Dates</p>
                         <p>Walking hand in hand through the bustling streets, every moment with you is an adventure.</p>
@@ -910,10 +1075,10 @@
 
                     <!-- Cinema -->
                     <div class="location-marker" style="right: 30%; top: 40%;" data-location="cinema">
-                        <div style="font-size: 40px;">🎬</div>
+                        <div style="font-size: 40px;">•</div>
                     </div>
                     <div class="location-info" id="info-cinema" style="right: 30%; top: 40%; margin-right: 50px;">
-                        <h3>🎥 Cinema</h3>
+                        <h3>Cinema</h3>
                         <p>Watched Zootopia 2 together</p>
                         <p class="date-label">December 2025</p>
                         <p>Sharing popcorn, stealing glances, and making memories that will last forever.</p>
@@ -924,13 +1089,13 @@
 
         <!-- Polaroid Photo Upload Section -->
         <section class="section polaroid-section">
-            <h2 class="section-title">Create Polaroid Memories 📸</h2>
+            <h2 class="section-title">Create Polaroid Memories</h2>
             <p style="text-align: center; color: #666; margin-bottom: 30px; font-size: 1.1rem;">
                 Upload photos and transform them into vintage Polaroid memories
             </p>
             
             <div class="upload-area" id="uploadArea">
-                <div class="upload-icon">📷</div>
+                <div class="upload-icon">[+]</div>
                 <div class="upload-text">Click or drag photos here</div>
                 <div class="upload-subtext">Upload one or multiple photos (iOS Safari compatible)</div>
                 <input type="file" id="fileInput" accept="image/*" multiple>
@@ -941,7 +1106,7 @@
 
         <!-- Virtual Cake Section -->
         <section class="section">
-            <h2 class="section-title">Virtual Strawberry Cake 🍰</h2>
+            <h2 class="section-title">Virtual Strawberry Cake</h2>
             <p class="cake-instruction">Tap the candles to blow them out, then click the cake to cut a slice!</p>
             
             <div class="cake-container">
@@ -966,13 +1131,13 @@
                 <div class="cake" id="cake" onclick="cutCake(event)">
                     <div class="cake-layers">
                         <div class="cake-layer">
-                            <div class="strawberries">🍓🍓🍓</div>
+                            <div class="strawberries">♥ ♥ ♥</div>
                         </div>
                         <div class="cake-layer">
-                            <div class="strawberries">🍓🍓</div>
+                            <div class="strawberries">♥ ♥</div>
                         </div>
                         <div class="cake-layer" style="background: linear-gradient(to bottom, #F5DEB3 0%, #DEB887 100%);">
-                            <div class="strawberries">🍰</div>
+                            <div class="strawberries">[Cake]</div>
                         </div>
                     </div>
                 </div>
@@ -981,7 +1146,7 @@
 
         <!-- Timeline Section -->
         <section class="section" style="background: transparent; box-shadow: none;">
-            <h2 class="section-title" style="color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">Our Love Story Timeline 💕</h2>
+            <h2 class="section-title" style="color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">Our Love Story Timeline</h2>
             
             <div class="timeline">
                 <div class="timeline-item">
@@ -1042,7 +1207,7 @@
 
         <!-- Love Letter Section -->
         <section class="love-letter">
-            <h2>My Dearest Love 💌</h2>
+            <h2>My Dearest Love</h2>
             <div class="love-letter-content">
                 <p>
                     From the moment we met at Gulou Metro Station, my life changed forever. 
@@ -1064,16 +1229,16 @@
                     This Valentine's Day, I promise you my forever. My love, my commitment, 
                     my dreams - they're all yours.
                 </p>
-                <p style="font-size: 1.8rem; color: #C41E3A; font-weight: bold; margin-top: 40px;">
-                    I Love You, Today and Always 💝
+                <p style="font-size: 1.8rem; color: #d4af37; font-weight: bold; margin-top: 40px;">
+                    I Love You, Today and Always
                 </p>
             </div>
-            <div class="signature">Forever Yours ❤️</div>
+            <div class="signature">Forever Yours</div>
         </section>
 
         <!-- Music Player -->
         <div class="music-player">
-            <h3>🎵 Our Love Song 🎵</h3>
+            <h3>Our Love Song</h3>
             <div class="music-controls">
                 <button class="music-button" id="playBtn" title="Play">▶️</button>
                 <button class="music-button" id="pauseBtn" title="Pause">⏸️</button>
@@ -1081,13 +1246,64 @@
             </div>
             <p class="music-note">Music player controls - Add your favorite songs here</p>
         </div>
+
+        <!-- Polaroid Section -->
+        <div class="polaroid-section">
+            <h2>Captured Moment</h2>
+            <div class="polaroid-container">
+                <div class="polaroid">
+                    <div class="polaroid-image">[Photo]</div>
+                    <div class="polaroid-caption">
+                        Valentine's Day 2026
+                        <div class="polaroid-date">February 14, 2026 • True Love</div>
+                    </div>
+                </div>
+            </div>
+            <div class="love-quote">
+                "In your kiss, I found my home. In your embrace, I found my peace. In your love, I found my forever."
+            </div>
+        </div>
+
+        <!-- Gallery Section -->
+        <div class="gallery-section">
+            <h2>Magical Memory Gallery</h2>
+            <p style="text-align: center; color: rgba(212, 175, 55, 0.8); margin-bottom: 20px;">
+                Our enchanted collection of moments, waiting to be filled with love
+            </p>
+            <div class="gallery-grid">
+                <div class="photo-frame">
+                    <div class="photo-placeholder">[Photo]</div>
+                    <div class="frame-label">Expecto Patronum</div>
+                </div>
+                <div class="photo-frame">
+                    <div class="photo-placeholder">[Photo]</div>
+                    <div class="frame-label">Lumos Maxima</div>
+                </div>
+                <div class="photo-frame">
+                    <div class="photo-placeholder">[Photo]</div>
+                    <div class="frame-label">Wingardium Leviosa</div>
+                </div>
+                <div class="photo-frame">
+                    <div class="photo-placeholder">[Photo]</div>
+                    <div class="frame-label">Riddikulus</div>
+                </div>
+                <div class="photo-frame">
+                    <div class="photo-placeholder">[Photo]</div>
+                    <div class="frame-label">Alohomora</div>
+                </div>
+                <div class="photo-frame">
+                    <div class="photo-placeholder">[Photo]</div>
+                    <div class="frame-label">Always</div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
         // Floating Hearts Animation
         function createFloatingHearts() {
             const container = document.getElementById('floatingHearts');
-            const hearts = ['💕', '💖', '💗', '💓', '💝', '❤️', '💘'];
+            const hearts = ['♥', '♥', '♡', '♡', '❤', '❤', '♥'];
             
             for (let i = 0; i < 25; i++) {
                 const heart = document.createElement('div');
@@ -1252,7 +1468,7 @@
                             
                             const caption = document.createElement('div');
                             caption.className = 'polaroid-caption';
-                            caption.textContent = 'Our Memory 💕';
+                            caption.textContent = 'Our Memory';
                             
                             const downloadBtn = document.createElement('button');
                             downloadBtn.className = 'polaroid-download';
@@ -1296,7 +1512,7 @@
             
             if (allCandles.length === blownCandles.length) {
                 setTimeout(() => {
-                    alert('🎉 All candles blown! Now you can cut the cake! 🍰');
+                    alert('All candles blown! Now you can cut the cake!');
                 }, 500);
             }
         }
@@ -1306,12 +1522,12 @@
             const blownCandles = document.querySelectorAll('.candle.blown');
             
             if (allCandles.length !== blownCandles.length) {
-                alert('Blow out all the candles first! 🕯️');
+                alert('Blow out all the candles first!');
                 return;
             }
             
             if (sliceCount >= MAX_CAKE_SLICES) {
-                alert('The cake is all gone! 😊');
+                alert('The cake is all gone!');
                 return;
             }
             
@@ -1326,7 +1542,7 @@
             slice.style.top = y + 'px';
             slice.style.borderWidth = '0 30px 60px 30px';
             slice.style.borderColor = 'transparent transparent #FFB6C1 transparent';
-            slice.textContent = '🍰';
+            slice.textContent = '[Slice]';
             slice.style.fontSize = '30px';
             slice.style.position = 'absolute';
             
@@ -1342,7 +1558,7 @@
             sliceCount++;
             
             if (sliceCount === 1) {
-                alert('🍰 Delicious! Keep cutting to share the love!');
+                alert('Delicious! Keep cutting to share the love!');
             }
         }
 
@@ -1385,6 +1601,60 @@
                 observer.observe(item);
             });
         });
+
+        // Rotating love quotes for polaroid
+        const loveQuotes = [
+            "In your kiss, I found my home. In your embrace, I found my peace. In your love, I found my forever.",
+            "True love stories never have endings, and ours is written in the stars.",
+            "Forever is not a word, rather it is a place where two lovers go when true love takes them there.",
+            "I love you not only for what you are, but for what I am when I am with you.",
+            "In all the world, there is no heart for me like yours. In all the world, there is no love for you like mine."
+        ];
+
+        function updateLoveQuote() {
+            const quoteElement = document.querySelector('.love-quote');
+            if (quoteElement) {
+                const randomQuote = loveQuotes[Math.floor(Math.random() * loveQuotes.length)];
+                quoteElement.textContent = randomQuote;
+            }
+        }
+
+        // Update quote every 10 seconds
+        setInterval(updateLoveQuote, 10000);
+
+        // Add floating particles animation
+        function createParticles() {
+            const container = document.body;
+            for(let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'fixed';
+                particle.style.width = '4px';
+                particle.style.height = '4px';
+                particle.style.background = 'radial-gradient(circle, rgba(212, 175, 55, 0.5) 0%, rgba(212, 175, 55, 0.1) 100%)';
+                particle.style.borderRadius = '50%';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.bottom = '-10px';
+                particle.style.pointerEvents = 'none';
+                particle.style.zIndex = '1';
+                particle.style.animation = `float-up ${10 + Math.random() * 10}s infinite`;
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Add CSS animation for particles
+        const particleStyle = document.createElement('style');
+        particleStyle.textContent = `
+            @keyframes float-up {
+                0% { transform: translateY(0) scale(0); opacity: 0; }
+                10% { opacity: 1; }
+                90% { opacity: 1; }
+                100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(particleStyle);
+        
+        createParticles();
     </script>
 </body>
 </html>

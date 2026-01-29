@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Day 2 - Propose Day 💍</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Day 2 - Propose Day | Valentine's Week 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,12 +13,12 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(180deg, #0a0a2e 0%, #16213e 50%, #533483 100%);
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(to bottom, #1a0a0f 0%, #2a0a1f 50%, #1a0515 100%);
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
-            color: white;
+            color: #d4af37;
         }
 
         .stars {
@@ -71,25 +71,21 @@
 
         h1 {
             font-family: 'Playfair Display', serif;
-            text-align: center;
-            font-size: 3rem;
-            margin: 2rem 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            animation: fadeInDown 1s ease;
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: 3.5rem;
+            color: #d4af37;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(212, 175, 55, 0.3);
         }
 
         .date-badge {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 20px;
             display: inline-block;
-            margin-bottom: 1rem;
-            backdrop-filter: blur(10px);
+            background: rgba(212, 175, 55, 0.2);
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
         }
 
         .mountain-silhouette {
@@ -147,29 +143,44 @@
             50% { opacity: 1; }
         }
 
-        .message-card {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .content-section {
+            background: rgba(20, 10, 15, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.2);
             border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            padding: 40px;
+            margin: 30px 0;
             backdrop-filter: blur(10px);
-            animation: fadeInUp 1s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 0.8s ease;
         }
 
-        .message-card h2 {
+        .content-section h2 {
             font-family: 'Playfair Display', serif;
-            color: #FFD700;
-            margin-bottom: 1rem;
+            color: #d4af37;
             font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .content-section p {
+            line-height: 1.9;
+            font-size: 1.2rem;
+            color: rgba(212, 175, 55, 0.85);
+            margin-bottom: 20px;
+        }
+
+        .message-card {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid rgba(212, 175, 55, 0.5);
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+            font-style: italic;
         }
 
         .message-card p {
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.8;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            color: rgba(212, 175, 55, 0.9);
         }
 
         .declaration {
@@ -320,28 +331,17 @@
             font-style: italic;
         }
 
-        .back-button {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s;
-            font-size: 1rem;
-            font-weight: 600;
-            z-index: 101;
-            text-decoration: none;
-            display: inline-block;
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 1s ease;
         }
 
-        .back-button:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateX(-5px);
+        .subtitle {
+            font-size: 1.4rem;
+            color: rgba(212, 175, 55, 0.8);
+            margin-bottom: 10px;
+            font-style: italic;
         }
 
         @keyframes fadeInDown {
@@ -369,6 +369,141 @@
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
+        }
+
+        .polaroid-section {
+            background: rgba(20, 10, 15, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .polaroid-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .polaroid-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .polaroid {
+            background: #fff;
+            padding: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transform: rotate(-2deg);
+            transition: transform 0.3s ease;
+        }
+
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .polaroid-image {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.4));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(212, 175, 55, 0.6);
+            font-size: 3rem;
+            border: 1px solid #ddd;
+        }
+
+        .polaroid-caption {
+            padding: 15px 0 0 0;
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            color: #333;
+            font-size: 1rem;
+        }
+
+        .polaroid-date {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .love-quote {
+            text-align: center;
+            font-style: italic;
+            color: rgba(212, 175, 55, 0.9);
+            font-size: 1.2rem;
+            margin-top: 30px;
+            padding: 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .gallery-section {
+            background: rgba(20, 10, 15, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .photo-frame {
+            position: relative;
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.3), rgba(101, 67, 33, 0.3));
+            border: 3px solid rgba(212, 175, 55, 0.4);
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(212, 175, 55, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .photo-frame:hover {
+            transform: translateY(-5px) rotate(1deg);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3), inset 0 0 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(212, 175, 55, 0.5);
+            font-size: 2.5rem;
+            border-radius: 5px;
+            border: 1px dashed rgba(212, 175, 55, 0.3);
+        }
+
+        .frame-label {
+            text-align: center;
+            margin-top: 10px;
+            font-family: 'Cormorant Garamond', serif;
+            color: #d4af37;
+            font-size: 0.9rem;
+            font-style: italic;
         }
 
         @media (max-width: 768px) {
@@ -400,13 +535,12 @@
     <div class="stars" id="starsContainer"></div>
     <div class="fireworks-container" id="fireworksContainer"></div>
     
-    <a href="../main.html" class="back-button">← Back to Days</a>
-
     <div class="container">
-        <div style="text-align: center;">
-            <span class="date-badge">February 8, 2026</span>
-        </div>
-        <h1>💍 Propose Day 💍</h1>
+        <header>
+            <div class="date-badge">February 8, 2026</div>
+            <h1>Propose Day</h1>
+            <p class="subtitle">Under the stars at Purple Mountain</p>
+        </header>
         
         <div class="mountain-silhouette">
             <div class="sunset-glow"></div>
@@ -415,127 +549,123 @@
             <div class="mountain"></div>
         </div>
 
-        <div class="star-text">
-            ✨ Under the stars at Purple Mountain ✨
-        </div>
-
-        <div class="message-card">
+        <div class="content-section">
             <h2>The Night I Asked Forever</h2>
             <p>On that magical day at Purple Mountain, as the sun set and painted the sky in breathtaking colors, I knew I had found something extraordinary. The way you laughed, the way your eyes sparkled with joy - everything about you felt like home.</p>
             <p>In that moment, watching the sunset together, I realized that I wanted to witness every sunrise and sunset with you for the rest of my life.</p>
         </div>
 
-        <div class="ring-animation">
-            <div class="ring" onclick="triggerFireworks()">💍</div>
-            <p style="text-align: center; color: #FFD700; font-size: 1.1rem; margin-top: 1rem;">Click the ring for a surprise! ✨</p>
-        </div>
-
-        <div class="declaration">
-            <h2>My Heart's Declaration</h2>
-            <p>Will you be mine?</p>
-            <p>Will you let me be the one who makes you smile every day?</p>
-            <p>Will you share this beautiful journey of life with me?</p>
-            <p style="font-size: 1.8rem; color: #FFD700; margin-top: 2rem; font-family: 'Playfair Display', serif;">
-                I love you more than words can say ❤️
-            </p>
-        </div>
-
-        <div class="message-card">
+        <div class="content-section">
             <h2>A Promise Written in the Stars</h2>
             <p>From Gulou Metro Station to Purple Mountain, from our first meeting to this moment - every step has led us here. You've turned my ordinary days into extraordinary memories.</p>
             <p>You're studying medicine to save lives, and you've already saved mine by simply being in it. While you heal others, you heal my soul just by existing.</p>
-            <p>Distance may separate us now as you're in Bangladesh for winter holidays, but our hearts beat as one. No ocean, no miles, no time zone can diminish what we share.</p>
+            <div class="message-card">
+                <p>Distance may separate us now as you're in Bangladesh for winter holidays, but our hearts beat as one. No ocean, no miles, no time zone can diminish what we share.</p>
+            </div>
         </div>
 
-        <button class="interactive-button" onclick="triggerFireworks()">
-            Launch Fireworks 🎆
-        </button>
+        <div class="polaroid-section">
+            <h2>Captured Moment</h2>
+            <div class="polaroid-container">
+                <div class="polaroid">
+                    <div class="polaroid-image">[Photo]</div>
+                    <div class="polaroid-caption">
+                        Propose Day 2026
+                        <div class="polaroid-date">February 8, 2026 • Purple Mountain</div>
+                    </div>
+                </div>
+            </div>
+            <div class="love-quote">
+                "Under the stars at Purple Mountain, I found my forever in your eyes."
+            </div>
+        </div>
 
-        <div class="music-note">
-            <h3>♫ Special Song Dedication</h3>
-            <p>🎵 ENHYPEN song placeholder - Your favorite K-pop group!</p>
-            <p style="margin-top: 1rem;">Every melody reminds me of you 💕</p>
-            <!-- TODO: Add ENHYPEN audio here -->
-            <!-- <audio src="../assets/music/enhypen-song.mp3"></audio> -->
+        <div class="gallery-section">
+            <h2>Magical Memory Gallery</h2>
+            <p style="text-align: center; color: rgba(212, 175, 55, 0.8); margin-bottom: 20px;">
+                Our enchanted collection of moments, waiting to be filled with love
+            </p>
+            <div class="gallery-grid">
+                <div class="photo-frame">
+                    <div class="photo-placeholder">[Photo]</div>
+                    <div class="frame-label">Purple Mountain Sunset</div>
+                </div>
+                <div class="photo-frame">
+                    <div class="photo-placeholder">[Photo]</div>
+                    <div class="frame-label">The Proposal</div>
+                </div>
+                <div class="photo-frame">
+                    <div class="photo-placeholder">[Photo]</div>
+                    <div class="frame-label">Starlight Promise</div>
+                </div>
+                <div class="photo-frame">
+                    <div class="photo-placeholder">[Photo]</div>
+                    <div class="frame-label">Forever Begins</div>
+                </div>
+                <div class="photo-frame">
+                    <div class="photo-placeholder">[Photo]</div>
+                    <div class="frame-label">Hearts United</div>
+                </div>
+                <div class="photo-frame">
+                    <div class="photo-placeholder">[Photo]</div>
+                    <div class="frame-label">Love's Dawn</div>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
-        // Create starry night sky
-        function createStars() {
-            const container = document.getElementById('starsContainer');
-            const starCount = 150;
-            
-            for(let i = 0; i < starCount; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.width = Math.random() * 3 + 1 + 'px';
-                star.style.height = star.style.width;
-                star.style.animationDelay = Math.random() * 3 + 's';
-                container.appendChild(star);
-            }
+        // Random love quotes for polaroid
+        const loveQuotes = [
+            "Under the stars at Purple Mountain, I found my forever in your eyes.",
+            "In that magical moment, two souls became one under the setting sun.",
+            "The mountain witnessed our promise, the stars blessed our love.",
+            "From Gulou to forever - this is where our journey truly began.",
+            "Every sunset reminds me of the day I asked you to be mine."
+        ];
+
+        function updateLoveQuote() {
+            const quoteElement = document.querySelector('.love-quote');
+            const randomQuote = loveQuotes[Math.floor(Math.random() * loveQuotes.length)];
+            quoteElement.textContent = randomQuote;
         }
 
-        // Create shooting stars
-        function createShootingStar() {
-            const container = document.getElementById('starsContainer');
-            const star = document.createElement('div');
-            star.className = 'shooting-star';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 50 + '%';
-            star.style.width = Math.random() * 100 + 100 + 'px';
-            container.appendChild(star);
-            
-            setTimeout(() => star.remove(), 3000);
-        }
+        // Update quote every 10 seconds
+        setInterval(updateLoveQuote, 10000);
 
-        // Create fireworks effect
-        function triggerFireworks() {
-            const container = document.getElementById('fireworksContainer');
-            const colors = ['#FFD700', '#FF6B9D', '#FFA500', '#FF69B4', '#87CEEB'];
-            
-            for(let i = 0; i < 5; i++) {
-                setTimeout(() => {
-                    const x = Math.random() * window.innerWidth;
-                    const y = Math.random() * window.innerHeight * 0.5;
-                    createFirework(x, y, colors[Math.floor(Math.random() * colors.length)]);
-                }, i * 500);
-            }
-        }
-
-        function createFirework(x, y, color) {
-            const particles = 30;
-            for(let i = 0; i < particles; i++) {
+        // Add floating particles animation
+        function createParticles() {
+            const container = document.body;
+            for(let i = 0; i < 30; i++) {
                 const particle = document.createElement('div');
-                particle.className = 'firework';
-                particle.style.left = x + 'px';
-                particle.style.top = y + 'px';
-                particle.style.background = color;
-                
-                const angle = (Math.PI * 2 * i) / particles;
-                const velocity = 50 + Math.random() * 100;
-                const tx = Math.cos(angle) * velocity;
-                const ty = Math.sin(angle) * velocity;
-                
-                particle.style.setProperty('--tx', tx + 'px');
-                particle.style.setProperty('--ty', ty + 'px');
-                
-                document.getElementById('fireworksContainer').appendChild(particle);
-                
-                setTimeout(() => particle.remove(), 1000);
+                particle.style.position = 'fixed';
+                particle.style.width = '4px';
+                particle.style.height = '4px';
+                particle.style.background = 'radial-gradient(circle, rgba(212, 175, 55, 0.5) 0%, rgba(212, 175, 55, 0.1) 100%)';
+                particle.style.borderRadius = '50%';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.bottom = '-10px';
+                particle.style.pointerEvents = 'none';
+                particle.style.zIndex = '1';
+                particle.style.animation = `float-up ${10 + Math.random() * 10}s infinite`;
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                container.appendChild(particle);
             }
         }
 
-        // Initialize
-        createStars();
-        setInterval(createShootingStar, 3000);
+        // Add CSS animation for particles
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float-up {
+                0% { transform: translateY(0) scale(0); opacity: 0; }
+                10% { opacity: 1; }
+                90% { opacity: 1; }
+                100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
         
-        // Auto-trigger fireworks on load after delay
-        setTimeout(() => {
-            triggerFireworks();
-        }, 2000);
+        createParticles();
     </script>
 </body>
 </html>
