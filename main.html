@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7 Days of Love ❤️</title>
+    <title>To my beloved Rifa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,18 +13,18 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(to bottom, #0a0a0a 0%, #1a0a0f 50%, #0d0507 100%);
             min-height: 100vh;
-            padding: 2rem 1rem;
+            padding: 3rem 1rem;
             overflow-x: hidden;
         }
 
         .header {
             text-align: center;
-            color: white;
-            margin-bottom: 3rem;
-            animation: fadeInDown 1s ease;
+            color: #d4af37;
+            margin-bottom: 4rem;
+            animation: fadeInDown 1.2s ease;
         }
 
         @keyframes fadeInDown {
@@ -38,44 +39,36 @@
         }
 
         .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        .welcome-message {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 1rem;
-            border-radius: 10px;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
             margin-bottom: 1rem;
-            backdrop-filter: blur(10px);
+            text-shadow: 2px 2px 8px rgba(212, 175, 55, 0.3);
+            font-weight: 600;
+            letter-spacing: 1px;
         }
 
         .days-container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
             padding: 1rem;
         }
 
         .day-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s, box-shadow 0.3s;
+            background: rgba(20, 10, 15, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 15px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             position: relative;
             overflow: hidden;
             animation: fadeInUp 1s ease;
             animation-fill-mode: both;
+            backdrop-filter: blur(10px);
         }
 
         @keyframes fadeInUp {
@@ -96,45 +89,39 @@
         .day-card:nth-child(5) { animation-delay: 0.5s; }
         .day-card:nth-child(6) { animation-delay: 0.6s; }
         .day-card:nth-child(7) { animation-delay: 0.7s; }
+        .day-card:nth-child(8) { animation-delay: 0.8s; }
 
         .day-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.15);
+            border-color: rgba(212, 175, 55, 0.4);
         }
 
         .day-card.locked {
-            opacity: 0.6;
+            opacity: 0.5;
             cursor: not-allowed;
         }
 
         .day-card.locked:hover {
             transform: none;
-        }
-
-        .day-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            display: block;
-            text-align: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
         }
 
         .day-date {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            color: #d4af37;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
         .day-title {
-            font-size: 1.5rem;
-            color: #C41E3A;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
-
-        .day-subtitle {
-            color: #666;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #d4af37;
             margin-bottom: 1rem;
-            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.3;
         }
 
         .lock-overlay {
@@ -142,66 +129,56 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 3rem;
+            font-size: 2.5rem;
             opacity: 0.3;
             pointer-events: none;
         }
 
         .countdown {
-            background: rgba(255, 107, 157, 0.2);
-            padding: 0.5rem;
-            border-radius: 10px;
-            font-size: 0.9rem;
-            color: #C41E3A;
-            font-weight: bold;
-            margin-top: 1rem;
+            background: rgba(212, 175, 55, 0.15);
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            color: #d4af37;
+            font-weight: 500;
+            margin-top: 1.5rem;
+            border: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .status-unlocked {
-            color: #28a745;
-            font-weight: bold;
-            margin-top: 1rem;
+            color: #d4af37;
+            font-weight: 500;
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            opacity: 0.8;
+            font-style: italic;
         }
 
         @media (max-width: 768px) {
             .header h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .days-container {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
+                gap: 2rem;
+            }
+            
+            .day-card {
+                padding: 2rem 1.5rem;
             }
         }
 
         .logout-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.3);
-            color: white;
-            border: 2px solid white;
-            padding: 0.5rem 1rem;
-            border-radius: 10px;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s;
-        }
-
-        .logout-btn:hover {
-            background: rgba(255, 255, 255, 0.5);
+            display: none;
         }
     </style>
 </head>
 <body>
-    <button class="logout-btn" onclick="logout()">Logout</button>
+    <div class="logout-btn" id="logoutBtn" onclick="logout()">Logout</div>
 
     <div class="header">
-        <h1>7 Days of Love</h1>
-        <div class="welcome-message">
-            <p id="welcomeText">Welcome! ❤️</p>
-        </div>
-        <p>A journey through Valentine's week</p>
+        <h1>To my beloved Rifa.</h1>
     </div>
 
     <div class="days-container" id="daysContainer">
@@ -212,51 +189,42 @@
         const days = [
             {
                 date: '2026-02-07',
-                icon: '🌹',
-                title: 'Rose Day',
-                subtitle: 'The First Bloom',
+                title: 'February 7th',
                 page: 'days/day1-rose.html'
             },
             {
                 date: '2026-02-08',
-                icon: '💍',
-                title: 'Propose Day',
-                subtitle: 'The Question That Changed Everything',
+                title: 'February 8th',
                 page: 'days/day2-propose.html'
             },
             {
                 date: '2026-02-09',
-                icon: '🍫',
-                title: 'Chocolate Day',
-                subtitle: 'Sweet Like Our Love',
+                title: 'February 9th',
                 page: 'days/day3-chocolate.html'
             },
             {
                 date: '2026-02-10',
-                icon: '🧸',
-                title: 'Teddy Day',
-                subtitle: 'Warm Hugs Across Miles',
+                title: 'February 10th',
                 page: 'days/day4-teddy.html'
             },
             {
                 date: '2026-02-11',
-                icon: '🤝',
-                title: 'Promise Day',
-                subtitle: 'Our Promises',
+                title: 'February 11th',
                 page: 'days/day5-promise.html'
             },
             {
                 date: '2026-02-12',
-                icon: '🤗',
-                title: 'Hug Day',
-                subtitle: 'Missing Your Warmth',
+                title: 'February 12th',
                 page: 'days/day6-hug.html'
             },
             {
+                date: '2026-02-13',
+                title: 'February 13th',
+                page: 'days/day8-kiss.html'
+            },
+            {
                 date: '2026-02-14',
-                icon: '❤️',
-                title: "Valentine's Day",
-                subtitle: 'The Grand Finale',
+                title: 'February 14th',
                 page: 'days/day7-valentine.html'
             }
         ];
@@ -267,8 +235,10 @@
             window.location.href = 'index.html';
         }
 
-        // Display welcome message
-        document.getElementById('welcomeText').textContent = `Welcome ${userName}! ❤️`;
+        // Hide logout button for Rifa
+        if(userName.toLowerCase() === 'rifa') {
+            document.getElementById('logoutBtn').style.display = 'none';
+        }
 
         // Check if user is Muntasir (admin mode - no time locks)
         const isAdmin = userName.toLowerCase() === 'muntasir';
@@ -293,7 +263,7 @@
             
             if(days > 0) return `Unlocks in ${days} day${days > 1 ? 's' : ''}`;
             if(hours > 0) return `Unlocks in ${hours} hour${hours > 1 ? 's' : ''}`;
-            return 'Unlocks soon!';
+            return 'Unlocks soon';
         }
 
         function renderDays() {
@@ -308,13 +278,10 @@
                 card.className = `day-card ${!unlocked ? 'locked' : ''}`;
                 
                 card.innerHTML = `
-                    <div class="day-icon">${day.icon}</div>
-                    <div class="day-date">${day.date}</div>
-                    <div class="day-title">${day.title}</div>
-                    <div class="day-subtitle">${day.subtitle}</div>
+                    <div class="day-date">${day.title}</div>
                     ${!unlocked ? `<div class="lock-overlay">🔒</div>` : ''}
                     ${!unlocked && countdown ? `<div class="countdown">${countdown}</div>` : ''}
-                    ${unlocked ? `<div class="status-unlocked">✨ Click to open ✨</div>` : ''}
+                    ${unlocked ? `<div class="status-unlocked">Click to open</div>` : ''}
                 `;
                 
                 if(unlocked) {
