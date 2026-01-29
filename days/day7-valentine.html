@@ -999,93 +999,11 @@
             <p class="date">February 14, 2026</p>
             <p class="bengali-text">আমি তোমায় ভালোবাসি</p>
             <p style="text-align: center; margin-top: 10px; font-size: 1.2rem; color: #d4af37;">
-                (I Love You)
+                (I Love U)
             </p>
         </header>
 
-        <!-- Nanjing Map Section -->
-        <section class="section">
-            <h2 class="section-title">Our Special Places in Nanjing</h2>
-            <div class="map-container">
-                <!-- Simple visual map representation -->
-                <div style="position: relative; width: 100%; height: 100%;">
-                    <!-- Map background with city name -->
-                    <div style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); font-family: 'Playfair Display', serif; font-size: 2.5rem; color: rgba(0,0,0,0.1); font-weight: bold;">
-                        NANJING
-                    </div>
-                    
-                    <!-- Purple Mountain illustration -->
-                    <div style="position: absolute; bottom: 20%; right: 10%; width: 150px; height: 100px; background: linear-gradient(to top, #8B7BA8, #B8A8D8); border-radius: 50% 50% 0 0; opacity: 0.6;"></div>
-                    
-                    <!-- Location Markers -->
-                    <!-- Gulou Metro Station -->
-                    <div class="location-marker" style="left: 35%; top: 30%;" data-location="gulou">
-                        <div style="font-size: 40px;">•</div>
-                    </div>
-                    <div class="location-info" id="info-gulou" style="left: 35%; top: 30%; margin-left: 50px;">
-                        <h3>Gulou Metro Station</h3>
-                        <p>Where our story began...</p>
-                        <p class="date-label">November 30, 2025</p>
-                        <p>The moment our eyes met, everything changed. This is where destiny brought us together.</p>
-                    </div>
-
-                    <!-- Purple Mountain -->
-                    <div class="location-marker" style="right: 15%; bottom: 25%;" data-location="mountain">
-                        <div style="font-size: 40px;">•</div>
-                    </div>
-                    <div class="location-info" id="info-mountain" style="right: 15%; bottom: 25%; margin-right: 50px;">
-                        <h3>Purple Mountain</h3>
-                        <p>Our first sunset together</p>
-                        <p class="date-label">November 30, 2025</p>
-                        <p>Watching the sun paint the sky in colors of love, sitting beside you felt like home.</p>
-                    </div>
-
-                    <!-- NJUPT Campus -->
-                    <div class="location-marker" style="left: 55%; top: 45%;" data-location="njupt">
-                        <div style="font-size: 40px;">•</div>
-                    </div>
-                    <div class="location-info" id="info-njupt" style="left: 55%; top: 45%; margin-left: 50px;">
-                        <h3>NJUPT Campus</h3>
-                        <p>His University</p>
-                        <p class="date-label">His Home in Nanjing</p>
-                        <p>Nanjing University of Posts and Telecommunications - where he studies and dreams of our future.</p>
-                    </div>
-
-                    <!-- NMU Jiangning Campus -->
-                    <div class="location-marker" style="left: 25%; bottom: 30%;" data-location="nmu">
-                        <div style="font-size: 40px;">•</div>
-                    </div>
-                    <div class="location-info" id="info-nmu" style="left: 25%; bottom: 30%; margin-bottom: 70px;">
-                        <h3>NMU Jiangning Campus</h3>
-                        <p>Her University</p>
-                        <p class="date-label">Her Academic Journey</p>
-                        <p>Nanjing Medical University - where she pursues her dreams and builds her future.</p>
-                    </div>
-
-                    <!-- Xinjiekou -->
-                    <div class="location-marker" style="left: 45%; top: 55%;" data-location="xinjiekou">
-                        <div style="font-size: 40px;">•</div>
-                    </div>
-                    <div class="location-info" id="info-xinjiekou" style="left: 45%; top: 55%; margin-left: 50px;">
-                        <h3>Xinjiekou & Shangsanjie</h3>
-                        <p>Shopping and exploring together</p>
-                        <p class="date-label">Our Dates</p>
-                        <p>Walking hand in hand through the bustling streets, every moment with you is an adventure.</p>
-                    </div>
-
-                    <!-- Cinema -->
-                    <div class="location-marker" style="right: 30%; top: 40%;" data-location="cinema">
-                        <div style="font-size: 40px;">•</div>
-                    </div>
-                    <div class="location-info" id="info-cinema" style="right: 30%; top: 40%; margin-right: 50px;">
-                        <h3>Cinema</h3>
-                        <p>Watched Zootopia 2 together</p>
-                        <p class="date-label">December 2025</p>
-                        <p>Sharing popcorn, stealing glances, and making memories that will last forever.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- Nanjing Map Section - Removed as per requirement -->
 
         <!-- Polaroid Photo Upload Section -->
         <section class="section polaroid-section">
@@ -1104,13 +1022,13 @@
             <div class="polaroid-gallery" id="polaroidGallery"></div>
         </section>
 
-        <!-- Virtual Cake Section -->
+        <!-- Virtual Candle Section -->
         <section class="section">
-            <h2 class="section-title">Virtual Strawberry Cake</h2>
-            <p class="cake-instruction">Tap the candles to blow them out, then click the cake to cut a slice!</p>
+            <h2 class="section-title">Make a Wish 🧸</h2>
+            <p class="cake-instruction">Tap the candles to blow them out and make a wish for us!</p>
             
-            <div class="cake-container">
-                <div class="candles-container" id="candlesContainer">
+            <div class="cake-container" style="padding: 3rem 0;">
+                <div class="candles-container" id="candlesContainer" style="position: relative; top: 0; margin-bottom: 2rem;">
                     <div class="candle" onclick="blowCandle(this)">
                         <div class="flame"></div>
                     </div>
@@ -1128,18 +1046,8 @@
                     </div>
                 </div>
                 
-                <div class="cake" id="cake" onclick="cutCake(event)">
-                    <div class="cake-layers">
-                        <div class="cake-layer">
-                            <div class="strawberries">♥ ♥ ♥</div>
-                        </div>
-                        <div class="cake-layer">
-                            <div class="strawberries">♥ ♥</div>
-                        </div>
-                        <div class="cake-layer" style="background: linear-gradient(to bottom, #F5DEB3 0%, #DEB887 100%);">
-                            <div class="strawberries">[Cake]</div>
-                        </div>
-                    </div>
+                <div style="text-align: center; font-size: 3rem; margin-top: 2rem;">
+                    🧸 ♥️ 🕯️
                 </div>
             </div>
         </section>
@@ -1162,7 +1070,7 @@
                     <div class="timeline-content">
                         <h3>Purple Mountain Sunset</h3>
                         <div class="timeline-date">Same Day - November 30, 2025</div>
-                        <p>We climbed Purple Mountain together and watched the most beautiful sunset. The sky was ablaze with colors, but nothing shone brighter than your smile.</p>
+                        <p>We climbed Purple Mountain together and watched the most beautiful sunset. The sky was ablaze with colors, but nothing shone brighter than ur smile.</p>
                     </div>
                     <div class="timeline-dot"></div>
                 </div>
@@ -1171,7 +1079,7 @@
                     <div class="timeline-content">
                         <h3>Zootopia 2 Date</h3>
                         <div class="timeline-date">December 2025</div>
-                        <p>Our movie date watching Zootopia 2. Sharing popcorn, laughter, and stolen glances in the dark cinema. Every moment with you is magical.</p>
+                        <p>Our movie date watching Zootopia 2. Sharing popcorn, laughter, and stolen glances in the dark cinema. Every moment with u is magical.</p>
                     </div>
                     <div class="timeline-dot"></div>
                 </div>
@@ -1180,7 +1088,7 @@
                     <div class="timeline-content">
                         <h3>Campus Life Together</h3>
                         <div class="timeline-date">Ongoing</div>
-                        <p>You at NMU Jiangning pursuing medicine, me at NJUPT studying technology. Different paths, one destination - our future together.</p>
+                        <p>U at NMU Jiangning pursuing medicine, me at NJUPT studying technology. Different paths, one destination - our future together.</p>
                     </div>
                     <div class="timeline-dot"></div>
                 </div>
@@ -1189,7 +1097,7 @@
                     <div class="timeline-content">
                         <h3>Winter Holidays</h3>
                         <div class="timeline-date">January 2026</div>
-                        <p>You're in Bangladesh with your family, but you're always in my heart. Distance means nothing when someone means everything.</p>
+                        <p>U're in Bangladesh with ur family, but u're always in my heart. Distance means nothing when someone means everything.</p>
                     </div>
                     <div class="timeline-dot"></div>
                 </div>
@@ -1211,29 +1119,29 @@
             <div class="love-letter-content">
                 <p>
                     From the moment we met at Gulou Metro Station, my life changed forever. 
-                    You walked into my world and filled it with colors I never knew existed.
+                    U walked into my world and filled it with colors I never knew existed.
                 </p>
                 <p>
                     Every sunset we've watched together, every laugh we've shared, every moment 
                     we've spent - they're all treasures I hold close to my heart.
                 </p>
                 <p>
-                    আমি তোমায় ভালোবাসি - these words in your language carry the weight of 
-                    my entire heart. I love you more than words in any language can express.
+                    আমি তোমায় ভালোবাসি - these words in ur language carry the weight of 
+                    my entire heart. I love u more than words in any language can express.
                 </p>
                 <p>
-                    Even when you're in Bangladesh and I'm in Nanjing, you're always with me. 
+                    Even when u're in Bangladesh and I'm in Nanjing, u're always with me. 
                     In every heartbeat, in every breath, in every thought.
                 </p>
                 <p>
-                    This Valentine's Day, I promise you my forever. My love, my commitment, 
-                    my dreams - they're all yours.
+                    This Valentine's Day, I promise u my forever. My love, my commitment, 
+                    my dreams - they're all urs.
                 </p>
                 <p style="font-size: 1.8rem; color: #d4af37; font-weight: bold; margin-top: 40px;">
-                    I Love You, Today and Always
+                    I Love U, Today and Always
                 </p>
             </div>
-            <div class="signature">Forever Yours</div>
+            <div class="signature">Forever Urs</div>
         </section>
 
         <!-- Music Player -->
@@ -1244,7 +1152,7 @@
                 <button class="music-button" id="pauseBtn" title="Pause">⏸️</button>
                 <button class="music-button" id="nextBtn" title="Next">⏭️</button>
             </div>
-            <p class="music-note">Music player controls - Add your favorite songs here</p>
+            <p class="music-note">Music player controls - Add ur favorite songs here</p>
         </div>
 
         <!-- Polaroid Section -->
@@ -1255,12 +1163,12 @@
                     <div class="polaroid-image">[Photo]</div>
                     <div class="polaroid-caption">
                         Valentine's Day 2026
-                        <div class="polaroid-date">February 14, 2026 • True Love</div>
+                        <div class="polaroid-date" id="polaroid-datetime">February 14, 2026 • 11:11 AM</div>
                     </div>
                 </div>
             </div>
-            <div class="love-quote">
-                "In your kiss, I found my home. In your embrace, I found my peace. In your love, I found my forever."
+            <div class="love-quote" id="polaroid-quote">
+                "In ur kiss, I found my home. In ur embrace, I found my peace. In ur love, I found my forever."
             </div>
         </div>
 
@@ -1512,7 +1420,7 @@
             
             if (allCandles.length === blownCandles.length) {
                 setTimeout(() => {
-                    alert('All candles blown! Now you can cut the cake!');
+                    alert('All candles blown! Now u can cut the cake!');
                 }, 500);
             }
         }
@@ -1604,11 +1512,11 @@
 
         // Rotating love quotes for polaroid
         const loveQuotes = [
-            "In your kiss, I found my home. In your embrace, I found my peace. In your love, I found my forever.",
+            "In ur kiss, I found my home. In ur embrace, I found my peace. In ur love, I found my forever.",
             "True love stories never have endings, and ours is written in the stars.",
             "Forever is not a word, rather it is a place where two lovers go when true love takes them there.",
-            "I love you not only for what you are, but for what I am when I am with you.",
-            "In all the world, there is no heart for me like yours. In all the world, there is no love for you like mine."
+            "I love u not only for what u are, but for what I am when I am with u.",
+            "In all the world, there is no heart for me like urs. In all the world, there is no love for u like mine."
         ];
 
         function updateLoveQuote() {
