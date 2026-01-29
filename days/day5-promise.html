@@ -154,6 +154,7 @@
         .branch:nth-child(7) { right: 25%; top: 360px; animation-delay: 1.4s; }
 
         .landmarks-section {
+            display: none; /* Hide Nanjing metro map section */
             background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
             padding: 2rem;
@@ -339,9 +340,10 @@
             }
 
             .branch {
-                width: 80%;
-                left: 10% !important;
+                width: 90%;
+                left: 5% !important;
                 right: auto !important;
+                padding: 1.2rem;
             }
 
             .branch:nth-child(1) { top: 0; }
@@ -351,6 +353,24 @@
             .branch:nth-child(5) { top: 440px; }
             .branch:nth-child(6) { top: 550px; }
             .branch:nth-child(7) { top: 660px; }
+
+            .message-card,
+            .promise-lock {
+                padding: 1.5rem;
+            }
+
+            .message-card h2 {
+                font-size: 1.5rem;
+            }
+
+            .message-card p {
+                font-size: 1rem;
+            }
+
+            .landmarks-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
