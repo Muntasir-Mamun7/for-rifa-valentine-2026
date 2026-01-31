@@ -1197,7 +1197,7 @@
         </section>
 
         <!-- Background Music (Hidden) -->
-        <audio id="bgMusic" loop style="display: none;">
+        <audio id="bgMusic" loop autoplay style="display: none;">
             <source src="../assets/music/Titanic_ My Heart Will Go On  James Horner  Céline Dion [piano cover].mp3" type="audio/mpeg">
         </audio>
 
@@ -1509,14 +1509,19 @@
             }
         }
 
-        // Auto-play background music (user interaction required for most browsers)
-        document.addEventListener('click', function playOnce() {
-            const bgMusic = document.getElementById('bgMusic');
-            if (bgMusic && bgMusic.src) {
-                bgMusic.play().catch(e => console.log('Autoplay prevented:', e));
-            }
-            document.removeEventListener('click', playOnce);
-        }, { once: true });
+        // Auto-play background music
+        const bgMusic = document.getElementById('bgMusic');
+        
+        // Try to play immediately on page load
+        if (bgMusic) {
+            bgMusic.play().catch(function(error) {
+                console.log('Initial autoplay prevented, will try on user interaction:', error);
+                // If autoplay fails, play on first user interaction
+                document.addEventListener('click', function playOnce() {
+                    bgMusic.play().catch(e => console.log('Autoplay prevented:', e));
+                }, { once: true });
+            });
+        }
 
         // Update polaroid with current date and time
         function updatePolaroidDateTime() {
