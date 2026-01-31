@@ -1523,13 +1523,17 @@
                     console.log('Initial autoplay prevented, will try on user interaction:', error);
                     // If autoplay fails, play on first user interaction
                     document.addEventListener('click', function playOnce() {
-                        bgMusic.currentTime = 10;
-                        bgMusic.play().then(() => musicStarted = true).catch(e => console.log('Autoplay prevented:', e));
+                        if (!musicStarted) {
+                            bgMusic.currentTime = 10;
+                            bgMusic.play().then(() => musicStarted = true).catch(e => console.log('Autoplay prevented:', e));
+                        }
                     }, { once: true });
                     // Also try on touch for mobile
                     document.addEventListener('touchstart', function playOnceTouch() {
-                        bgMusic.currentTime = 10;
-                        bgMusic.play().then(() => musicStarted = true).catch(e => console.log('Autoplay prevented:', e));
+                        if (!musicStarted) {
+                            bgMusic.currentTime = 10;
+                            bgMusic.play().then(() => musicStarted = true).catch(e => console.log('Autoplay prevented:', e));
+                        }
                     }, { once: true });
                 });
             }
@@ -1539,15 +1543,16 @@
         attemptAutoplay();
         
         // Also try when page becomes visible (for mobile browsers)
-        document.addEventListener('visibilitychange', function tryOnVisibility() {
+        function handleVisibilityChange() {
             if (!document.hidden && bgMusic && bgMusic.paused && !musicStarted) {
                 attemptAutoplay();
             }
             // Remove listener once music has started
             if (musicStarted) {
-                document.removeEventListener('visibilitychange', tryOnVisibility);
+                document.removeEventListener('visibilitychange', handleVisibilityChange);
             }
-        });
+        }
+        document.addEventListener('visibilitychange', handleVisibilityChange);
 
         // Update polaroid with current date and time
         function updatePolaroidDateTime() {
