@@ -150,7 +150,57 @@
         <button onclick="login()">Enter</button>
     </div>
 
+    <!-- Background Music (Hidden) -->
+    <audio id="bgMusic" loop autoplay style="display: none;">
+        <source src="assets/music/Ed Sheeran - Perfect (Piano Cover by Riyandi Kusuma).mp3" type="audio/mpeg">
+    </audio>
+
     <script>
+        // Auto-play background music
+        const bgMusic = document.getElementById('bgMusic');
+        let musicStarted = false;
+        
+        // Try to play immediately on page load
+        function attemptAutoplay() {
+            if (bgMusic && !musicStarted) {
+                bgMusic.currentTime = 10; // Start at 10 seconds
+                bgMusic.play().then(function() {
+                    musicStarted = true;
+                }).catch(function(error) {
+                    console.log('Initial autoplay prevented, will try on user interaction:', error);
+                    // If autoplay fails, play on first user interaction
+                    document.addEventListener('click', function playOnce() {
+                        if (!musicStarted) {
+                            bgMusic.currentTime = 10;
+                            bgMusic.play().then(() => musicStarted = true).catch(e => console.log('Autoplay prevented:', e));
+                        }
+                    }, { once: true });
+                    // Also try on touch for mobile
+                    document.addEventListener('touchstart', function playOnceTouch() {
+                        if (!musicStarted) {
+                            bgMusic.currentTime = 10;
+                            bgMusic.play().then(() => musicStarted = true).catch(e => console.log('Autoplay prevented:', e));
+                        }
+                    }, { once: true });
+                });
+            }
+        }
+        
+        // Try autoplay immediately
+        attemptAutoplay();
+        
+        // Also try when page becomes visible (for mobile browsers)
+        function handleVisibilityChange() {
+            if (!document.hidden && bgMusic && bgMusic.paused && !musicStarted) {
+                attemptAutoplay();
+            }
+            // Remove listener once music has started
+            if (musicStarted) {
+                document.removeEventListener('visibilitychange', handleVisibilityChange);
+            }
+        }
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+
         // Create floating particles
         const particles = document.getElementById('particles');
         const symbols = ['❤️', '🌹', '💝', '💕', '🌺'];
