@@ -53,6 +53,18 @@ if (bgMusic) {
 - ✅ Mobile-friendly (works on iOS and Android)
 - ✅ Properly encoded file names for browser compatibility
 
+### Browser Autoplay Policies
+Modern browsers have restrictions on autoplay to improve user experience:
+
+- **Desktop browsers**: Autoplay typically works after the user has interacted with the site (e.g., clicking a button on the main page to navigate to a day page)
+- **Mobile browsers**: May require an explicit user interaction on the page itself before allowing audio playback
+- **Safari/iOS**: Generally requires user gesture for audio playback
+- **Chrome/Edge**: May allow autoplay if the user has previously interacted with the site
+
+The implementation handles these scenarios by:
+1. Attempting immediate autoplay when the page loads (works in most desktop browsers after navigation)
+2. Falling back to play on the first click/tap if autoplay is blocked (ensures music plays on mobile)
+
 ## Music Selection Rationale
 
 1. **Rose Day**: "Perfect" - Romantic and tender, perfect for the first day
