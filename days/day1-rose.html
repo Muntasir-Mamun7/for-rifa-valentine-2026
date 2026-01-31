@@ -1463,16 +1463,42 @@
         // Auto-play background music
         const bgMusic = document.getElementById('bgMusic');
         
-        // Try to play immediately on page load
+        // Set start time to 10 seconds
         if (bgMusic) {
-            bgMusic.play().catch(function(error) {
-                console.log('Initial autoplay prevented, will try on user interaction:', error);
-                // If autoplay fails, play on first user interaction
-                document.addEventListener('click', function playOnce() {
-                    bgMusic.play().catch(e => console.log('Autoplay prevented:', e));
-                }, { once: true });
-            });
+            bgMusic.currentTime = 10;
         }
+        
+        // Try to play immediately on page load
+        function attemptAutoplay() {
+            if (bgMusic) {
+                bgMusic.currentTime = 10; // Ensure we start at 10 seconds
+                bgMusic.play().catch(function(error) {
+                    console.log('Initial autoplay prevented, will try on user interaction:', error);
+                    // If autoplay fails, play on first user interaction
+                    document.addEventListener('click', function playOnce() {
+                        bgMusic.currentTime = 10;
+                        bgMusic.play().catch(e => console.log('Autoplay prevented:', e));
+                        document.removeEventListener('click', playOnce);
+                    }, { once: true });
+                    // Also try on touch for mobile
+                    document.addEventListener('touchstart', function playOnceTouch() {
+                        bgMusic.currentTime = 10;
+                        bgMusic.play().catch(e => console.log('Autoplay prevented:', e));
+                        document.removeEventListener('touchstart', playOnceTouch);
+                    }, { once: true });
+                });
+            }
+        }
+        
+        // Try autoplay immediately
+        attemptAutoplay();
+        
+        // Also try when page becomes visible (for mobile browsers)
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden && bgMusic && bgMusic.paused) {
+                attemptAutoplay();
+            }
+        });
 
         // 3D rose interaction - toggle animation on click
         const rose3d = document.getElementById('rose3d');
