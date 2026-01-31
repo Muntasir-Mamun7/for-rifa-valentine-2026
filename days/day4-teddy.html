@@ -774,6 +774,20 @@
             const teddy = document.getElementById('teddy');
             teddy.style.transform = 'scale(' + (0.95 + Math.random() * 0.1) + ')';
         }, 3000);
+
+        // Auto-play background music (user interaction required for most browsers)
+        document.addEventListener('click', function playOnce() {
+            const bgMusic = document.getElementById('bgMusic');
+            if (bgMusic && bgMusic.src) {
+                bgMusic.play().catch(e => console.log('Autoplay prevented:', e));
+            }
+            document.removeEventListener('click', playOnce);
+        }, { once: true });
     </script>
+
+    <!-- Background Music (Hidden) -->
+    <audio id="bgMusic" loop style="display: none;">
+        <source src="../assets/music/You Are My Sunshine (Piano Cover by Riyandi Kusuma).mp3" type="audio/mpeg">
+    </audio>
 </body>
 </html>
