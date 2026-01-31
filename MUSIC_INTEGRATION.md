@@ -18,30 +18,37 @@ This document shows which background music has been integrated into each Valenti
 ## Implementation Details
 
 ### Audio Element Structure
-Each day page now includes a hidden audio element that automatically plays on user interaction:
+Each day page now includes a hidden audio element with autoplay enabled:
 
 ```html
-<audio id="bgMusic" loop style="display: none;">
+<audio id="bgMusic" loop autoplay style="display: none;">
     <source src="../assets/music/[MUSIC_FILE_NAME].mp3" type="audio/mpeg">
 </audio>
 ```
 
 ### Auto-play Functionality
-The music automatically starts playing after the user's first click/tap on the page (required by modern browser policies):
+The music attempts to play automatically when the page loads. If the browser blocks autoplay, it will play on the user's first interaction:
 
 ```javascript
-document.addEventListener('click', function playOnce() {
-    const bgMusic = document.getElementById('bgMusic');
-    if (bgMusic && bgMusic.src) {
-        bgMusic.play().catch(e => console.log('Autoplay prevented:', e));
-    }
-    document.removeEventListener('click', playOnce);
-}, { once: true });
+// Auto-play background music
+const bgMusic = document.getElementById('bgMusic');
+
+// Try to play immediately on page load
+if (bgMusic) {
+    bgMusic.play().catch(function(error) {
+        console.log('Initial autoplay prevented, will try on user interaction:', error);
+        // If autoplay fails, play on first user interaction
+        document.addEventListener('click', function playOnce() {
+            bgMusic.play().catch(e => console.log('Autoplay prevented:', e));
+        }, { once: true });
+    });
+}
 ```
 
 ### Features
 - ✅ Background music loops continuously
-- ✅ Auto-plays on first user interaction
+- ✅ Attempts to auto-play immediately when page loads
+- ✅ Falls back to playing on first user interaction if autoplay is blocked
 - ✅ Hidden controls (seamless experience)
 - ✅ Mobile-friendly (works on iOS and Android)
 - ✅ Properly encoded file names for browser compatibility
