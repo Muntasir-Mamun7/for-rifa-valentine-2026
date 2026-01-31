@@ -857,29 +857,25 @@
 
         // Auto-play background music
         const bgMusic = document.getElementById('bgMusic');
-        
-        // Set start time to 10 seconds
-        if (bgMusic) {
-            bgMusic.currentTime = 10;
-        }
+        let musicStarted = false;
         
         // Try to play immediately on page load
         function attemptAutoplay() {
-            if (bgMusic) {
-                bgMusic.currentTime = 10; // Ensure we start at 10 seconds
-                bgMusic.play().catch(function(error) {
+            if (bgMusic && !musicStarted) {
+                bgMusic.currentTime = 10; // Start at 10 seconds
+                bgMusic.play().then(function() {
+                    musicStarted = true;
+                }).catch(function(error) {
                     console.log('Initial autoplay prevented, will try on user interaction:', error);
                     // If autoplay fails, play on first user interaction
                     document.addEventListener('click', function playOnce() {
                         bgMusic.currentTime = 10;
-                        bgMusic.play().catch(e => console.log('Autoplay prevented:', e));
-                        document.removeEventListener('click', playOnce);
+                        bgMusic.play().then(() => musicStarted = true).catch(e => console.log('Autoplay prevented:', e));
                     }, { once: true });
                     // Also try on touch for mobile
                     document.addEventListener('touchstart', function playOnceTouch() {
                         bgMusic.currentTime = 10;
-                        bgMusic.play().catch(e => console.log('Autoplay prevented:', e));
-                        document.removeEventListener('touchstart', playOnceTouch);
+                        bgMusic.play().then(() => musicStarted = true).catch(e => console.log('Autoplay prevented:', e));
                     }, { once: true });
                 });
             }
@@ -890,10 +886,10 @@
         
         // Also try when page becomes visible (for mobile browsers)
         document.addEventListener('visibilitychange', function() {
-            if (!document.hidden && bgMusic && bgMusic.paused) {
+            if (!document.hidden && bgMusic && bgMusic.paused && !musicStarted) {
                 attemptAutoplay();
             }
-        });
+        }, { once: true });
     </script>
 
     <!-- Background Music (Hidden) -->
