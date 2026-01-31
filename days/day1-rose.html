@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Destiny</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css">
     <style>
         * {
             margin: 0;
@@ -1088,6 +1087,22 @@
             text-align: left;
         }
 
+        /* GIF Section Styles */
+        .gif-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+            padding: 1rem;
+        }
+
+        .love-gif {
+            max-width: 100%;
+            max-height: 400px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(220, 20, 60, 0.4);
+        }
+
         /* Page Title */
         .page-title {
             font-family: 'Playfair Display', serif;
@@ -1146,25 +1161,8 @@
             color: rgba(139, 0, 0, 0.5);
             font-size: 3rem;
             border: 1px solid #ddd;
-            cursor: pointer;
             position: relative;
             overflow: hidden;
-        }
-
-        .polaroid-image:hover::after {
-            content: '📷 Click to upload';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            font-family: 'Cormorant Garamond', serif;
         }
 
         .polaroid-image img {
@@ -1249,25 +1247,8 @@
             font-size: 2.5rem;
             border-radius: 5px;
             border: 1px dashed rgba(139, 0, 0, 0.3);
-            cursor: pointer;
             position: relative;
             overflow: hidden;
-        }
-
-        .photo-placeholder:hover::after {
-            content: '📷 Click to upload';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            font-family: 'Cormorant Garamond', serif;
         }
 
         .photo-placeholder img {
@@ -1280,107 +1261,6 @@
             background: none;
             border: none;
             padding: 0;
-        }
-
-        .photo-frame.has-photo:hover .change-btn {
-            opacity: 1;
-        }
-
-        .change-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(139, 0, 0, 0.9);
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.9rem;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 10;
-        }
-
-        .change-btn:hover {
-            background: rgba(139, 0, 0, 1);
-        }
-
-        /* Crop modal */
-        .crop-modal {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            align-items: center;
-            justify-content: center;
-        }
-
-        .crop-modal.active {
-            display: flex;
-        }
-
-        .crop-container {
-            max-width: 90%;
-            max-height: 80%;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            position: relative;
-        }
-
-        .crop-container img {
-            max-width: 100%;
-            max-height: 60vh;
-        }
-
-        .crop-controls {
-            margin-top: 20px;
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-        }
-
-        .crop-controls button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1rem;
-            transition: background 0.3s ease;
-        }
-
-        .crop-controls .btn-save {
-            background: rgba(139, 0, 0, 0.9);
-            color: white;
-        }
-
-        .crop-controls .btn-save:hover {
-            background: rgba(139, 0, 0, 1);
-        }
-
-        .crop-controls .btn-cancel {
-            background: #666;
-            color: white;
-        }
-
-        .crop-controls .btn-cancel:hover {
-            background: #444;
-        }
-
-        .frame-label {
-            text-align: center;
-            margin-top: 10px;
-            font-family: 'Cormorant Garamond', serif;
-            color: #BC2020;
-            font-size: 0.9rem;
-            font-style: italic;
         }
     </style>
 </head>
@@ -1395,8 +1275,13 @@
         <div class="letter-section">
             <p class="letter-greeting">My dear Rifa,</p>
             <p class="letter-content">
-                Missing u too much. not because it's Rose day or anything related to valentine day. becasue u r not with me these days. Ar matro koyekta din tarporei abar dekha hobe tomar sathe eita vebe onek khusi ami. Ajker rose ta reserve kora thaklo tomar jonno. Onek valobashi tomake
+                Missing u too much. not because it's Rose day or anything related to valentine day. because u r not with me these days. Ar matro koyekta din tarporei abar dekha hobe tomar sathe eita vebe onek khusi ami. Ajker rose ta reserve kora thaklo tomar jonno. Onek valobashi tomake
             </p>
+        </div>
+
+        <!-- Flowers Love GIF Section -->
+        <div class="gif-section">
+            <img src="../assets/images/flowers love GIF by Chippy the Dog.gif" alt="Flowers Love" class="love-gif">
         </div>
 
         <div class="rose-container">
@@ -1515,13 +1400,11 @@
 
         <!-- Polaroid Section for Single Photo -->
         <div class="polaroid-section">
-            <h2>Captured Moment</h2>
+            <h2>Captured Moments</h2>
             <div class="polaroid-container">
                 <div class="polaroid">
-                    <div class="polaroid-image" id="polaroid-image" onclick="uploadPhoto('polaroid')">[Photo]</div>
-                    <div class="polaroid-caption">
-                        <div contenteditable="true" style="outline: none; cursor: text;">Rose Day 2026</div>
-                        <div class="polaroid-date" contenteditable="true" style="outline: none; cursor: text;">February 7, 2026 • A Rose for You</div>
+                    <div class="polaroid-image" id="polaroid-image">
+                        <img src="../assets/images/captured-moment-1.jpg" alt="Captured Moment">
                     </div>
                 </div>
             </div>
@@ -1534,172 +1417,39 @@
         <div class="gallery-section">
             <h2>Magical Memory Gallery</h2>
             <p style="text-align: center; color: rgba(255, 255, 255, 0.8); margin-bottom: 20px;">
-                Our enchanted collection of moments, waiting to be filled with love
+                Our enchanted collection of moments
             </p>
             <div class="gallery-grid">
                 <div class="photo-frame" id="frame-0">
-                    <button class="change-btn" onclick="uploadPhoto('gallery-0')" style="display: none;">Change</button>
-                    <div class="photo-placeholder" onclick="uploadPhoto('gallery-0')">[Photo]</div>
-                    <div class="frame-label">Memory 1</div>
+                    <div class="photo-placeholder">
+                        <img src="../assets/images/memory-1.jpg" alt="Memory 1">
+                    </div>
                 </div>
                 <div class="photo-frame" id="frame-1">
-                    <button class="change-btn" onclick="uploadPhoto('gallery-1')" style="display: none;">Change</button>
-                    <div class="photo-placeholder" onclick="uploadPhoto('gallery-1')">[Photo]</div>
-                    <div class="frame-label">Memory 2</div>
+                    <div class="photo-placeholder">
+                        <img src="../assets/images/memory-2.jpg" alt="Memory 2">
+                    </div>
                 </div>
                 <div class="photo-frame" id="frame-2">
-                    <button class="change-btn" onclick="uploadPhoto('gallery-2')" style="display: none;">Change</button>
-                    <div class="photo-placeholder" onclick="uploadPhoto('gallery-2')">[Photo]</div>
-                    <div class="frame-label">Memory 3</div>
+                    <div class="photo-placeholder">
+                        <img src="../assets/images/memory-3.jpg" alt="Memory 3">
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Background Music (Hidden) -->
-        <audio id="bgMusic" loop style="display: none;">
-            <!-- Add ur music files here -->
-            <!-- <source src="../assets/music/rose-day.mp3" type="audio/mpeg"> -->
-        </audio>
+    <!-- Background Music (Hidden) -->
+    <audio id="bgMusic" loop style="display: none;">
+        <!-- Add ur music files here -->
+        <!-- <source src="../assets/music/rose-day.mp3" type="audio/mpeg"> -->
+    </audio>
     </div>
 
     <div class="swipe-indicator">← Swipe left to go back</div>
 
-    <!-- Crop Modal -->
-    <div class="crop-modal" id="cropModal">
-        <div class="crop-container">
-            <img id="cropImage" src="" alt="Crop">
-            <div class="crop-controls">
-                <button class="btn-save" onclick="saveCroppedImage()">Save</button>
-                <button class="btn-cancel" onclick="cancelCrop()">Cancel</button>
-            </div>
-        </div>
-    </div>
-
-    <input type="file" id="fileInput" accept="image/*" style="display: none;">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
     <script>
         // Constants
         const NAVIGATION_URL = '../main.html';
-        
-        // Photo upload and cropping functionality
-        let cropper = null;
-        let currentTarget = null;
-        const fileInput = document.getElementById('fileInput');
-        const cropModal = document.getElementById('cropModal');
-        const cropImage = document.getElementById('cropImage');
-
-        function uploadPhoto(target) {
-            currentTarget = target;
-            fileInput.click();
-        }
-
-        fileInput.addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file && file.type.startsWith('image/')) {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    cropImage.src = event.target.result;
-                    cropModal.classList.add('active');
-                    
-                    // Initialize cropper
-                    if (cropper) {
-                        cropper.destroy();
-                    }
-                    
-                    const aspectRatio = currentTarget === 'polaroid' ? 1 : 3/4;
-                    cropper = new Cropper(cropImage, {
-                        aspectRatio: aspectRatio,
-                        viewMode: 1,
-                        autoCropArea: 1,
-                        responsive: true,
-                        background: false
-                    });
-                };
-                reader.readAsDataURL(file);
-            }
-            fileInput.value = ''; // Reset input
-        });
-
-        function saveCroppedImage() {
-            if (cropper) {
-                const canvas = cropper.getCroppedCanvas({
-                    maxWidth: 800,
-                    maxHeight: 800
-                });
-                
-                // Check if canvas was successfully created
-                if (!canvas) {
-                    console.error('Failed to create canvas from cropped image');
-                    cancelCrop();
-                    return;
-                }
-                
-                canvas.toBlob(function(blob) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        const imageData = e.target.result;
-                        
-                        // Save to localStorage
-                        localStorage.setItem(`day1-${currentTarget}`, imageData);
-                        
-                        // Display image
-                        displayImage(currentTarget, imageData);
-                        
-                        // Close modal
-                        cancelCrop();
-                    };
-                    reader.readAsDataURL(blob);
-                }, 'image/jpeg', 0.9);
-            }
-        }
-
-        function cancelCrop() {
-            cropModal.classList.remove('active');
-            if (cropper) {
-                cropper.destroy();
-                cropper = null;
-            }
-        }
-
-        function displayImage(target, imageData) {
-            if (target === 'polaroid') {
-                const polaroidImage = document.getElementById('polaroid-image');
-                polaroidImage.innerHTML = `<img src="${imageData}" alt="Photo">`;
-                polaroidImage.onclick = function() { uploadPhoto('polaroid'); };
-            } else {
-                // Gallery frame
-                const frameIndex = target.split('-')[1];
-                const frame = document.getElementById(`frame-${frameIndex}`);
-                const placeholder = frame.querySelector('.photo-placeholder');
-                placeholder.innerHTML = `<img src="${imageData}" alt="Memory ${parseInt(frameIndex) + 1}">`;
-                placeholder.onclick = function() { uploadPhoto(target); };
-                
-                // Show change button
-                const changeBtn = frame.querySelector('.change-btn');
-                changeBtn.style.display = 'block';
-                frame.classList.add('has-photo');
-            }
-        }
-
-        function loadSavedPhotos() {
-            // Load polaroid
-            const polaroidData = localStorage.getItem('day1-polaroid');
-            if (polaroidData) {
-                displayImage('polaroid', polaroidData);
-            }
-            
-            // Load gallery photos
-            for (let i = 0; i < 3; i++) {
-                const galleryData = localStorage.getItem(`day1-gallery-${i}`);
-                if (galleryData) {
-                    displayImage(`gallery-${i}`, galleryData);
-                }
-            }
-        }
-
-        // Load saved photos on page load
-        document.addEventListener('DOMContentLoaded', loadSavedPhotos);
         
         // Reveal hidden messages
         function revealMessage(element) {
