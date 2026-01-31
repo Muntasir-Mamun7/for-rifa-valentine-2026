@@ -805,11 +805,15 @@
         attemptAutoplay();
         
         // Also try when page becomes visible (for mobile browsers)
-        document.addEventListener('visibilitychange', function() {
+        document.addEventListener('visibilitychange', function tryOnVisibility() {
             if (!document.hidden && bgMusic && bgMusic.paused && !musicStarted) {
                 attemptAutoplay();
             }
-        }, { once: true });
+            // Remove listener once music has started
+            if (musicStarted) {
+                document.removeEventListener('visibilitychange', tryOnVisibility);
+            }
+        });
     </script>
 
     <!-- Background Music (Hidden) -->
