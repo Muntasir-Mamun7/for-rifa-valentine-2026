@@ -977,11 +977,12 @@
         // Auto-play background music
         const bgMusic = document.getElementById('bgMusic');
         let musicStarted = false;
+        const MUSIC_START_TIME = 10; // Start music at 10 seconds
         
         // Function to start music playback
         function startMusic() {
             if (bgMusic && !musicStarted) {
-                bgMusic.currentTime = 10;
+                bgMusic.currentTime = MUSIC_START_TIME;
                 bgMusic.play().then(() => {
                     musicStarted = true;
                     console.log('Music started successfully');
@@ -997,7 +998,7 @@
         // Try to play immediately on page load
         function attemptAutoplay() {
             if (bgMusic && !musicStarted) {
-                bgMusic.currentTime = 10; // Start at 10 seconds
+                bgMusic.currentTime = MUSIC_START_TIME;
                 bgMusic.play().then(function() {
                     musicStarted = true;
                     console.log('Autoplay succeeded');
