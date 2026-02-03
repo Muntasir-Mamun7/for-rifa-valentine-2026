@@ -646,28 +646,31 @@
         const bgMusic = document.getElementById('bgMusic');
         let musicStarted = false;
         
+        // Function to start music playback
+        function startMusic() {
+            if (bgMusic && !musicStarted) {
+                bgMusic.currentTime = 10;
+                bgMusic.play().then(() => {
+                    musicStarted = true;
+                    console.log('Music started successfully');
+                }).catch(e => console.log('Music play prevented:', e));
+            }
+        }
+        
+        // Set up user interaction listeners immediately (before autoplay attempt)
+        // This ensures they're ready for the first touch/click
+        document.addEventListener('click', startMusic, { once: true });
+        document.addEventListener('touchstart', startMusic, { once: true });
+        
         // Try to play immediately on page load
         function attemptAutoplay() {
             if (bgMusic && !musicStarted) {
                 bgMusic.currentTime = 10; // Start at 10 seconds
                 bgMusic.play().then(function() {
                     musicStarted = true;
+                    console.log('Autoplay succeeded');
                 }).catch(function(error) {
-                    console.log('Initial autoplay prevented, will try on user interaction:', error);
-                    // If autoplay fails, play on first user interaction
-                    document.addEventListener('click', function playOnce() {
-                        if (!musicStarted) {
-                            bgMusic.currentTime = 10;
-                            bgMusic.play().then(() => musicStarted = true).catch(e => console.log('Autoplay prevented:', e));
-                        }
-                    }, { once: true });
-                    // Also try on touch for mobile
-                    document.addEventListener('touchstart', function playOnceTouch() {
-                        if (!musicStarted) {
-                            bgMusic.currentTime = 10;
-                            bgMusic.play().then(() => musicStarted = true).catch(e => console.log('Autoplay prevented:', e));
-                        }
-                    }, { once: true });
+                    console.log('Initial autoplay prevented, waiting for user interaction:', error);
                 });
             }
         }
