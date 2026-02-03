@@ -779,6 +779,11 @@
         const bgMusic = document.getElementById('bgMusic');
         let musicStarted = false;
         
+        // Load the audio file immediately
+        if (bgMusic) {
+            bgMusic.load();
+        }
+        
         // Function to start music playback (starts from beginning for better mobile experience)
         function startMusic() {
             if (bgMusic && !musicStarted) {
