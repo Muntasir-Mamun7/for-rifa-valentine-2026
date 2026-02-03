@@ -775,15 +775,14 @@
             teddy.style.transform = 'scale(' + (0.95 + Math.random() * 0.1) + ')';
         }, 3000);
 
-        // Auto-play background music
+        // Auto-play background music - optimized for mobile
         const bgMusic = document.getElementById('bgMusic');
         let musicStarted = false;
-        const MUSIC_START_TIME = 10; // Start music at 10 seconds
         
-        // Function to start music playback
+        // Function to start music playback (starts from beginning for better mobile experience)
         function startMusic() {
             if (bgMusic && !musicStarted) {
-                bgMusic.currentTime = MUSIC_START_TIME;
+                bgMusic.currentTime = 0; // Start from beginning
                 bgMusic.play().then(() => {
                     musicStarted = true;
                     console.log('Music started successfully');
@@ -792,14 +791,15 @@
         }
         
         // Set up user interaction listeners immediately (before autoplay attempt)
-        // This ensures they're ready for the first touch/click
+        // This ensures music plays on first touch/click on mobile devices
         document.addEventListener('click', startMusic, { once: true });
         document.addEventListener('touchstart', startMusic, { once: true });
+        document.addEventListener('touchend', startMusic, { once: true });
         
         // Try to play immediately on page load
         function attemptAutoplay() {
             if (bgMusic && !musicStarted) {
-                bgMusic.currentTime = MUSIC_START_TIME;
+                bgMusic.currentTime = 0;
                 bgMusic.play().then(function() {
                     musicStarted = true;
                     console.log('Autoplay succeeded');
@@ -809,8 +809,12 @@
             }
         }
         
-        // Try autoplay immediately
-        attemptAutoplay();
+        // Try autoplay on page load
+        if (document.readyState === 'complete') {
+            attemptAutoplay();
+        } else {
+            window.addEventListener('load', attemptAutoplay);
+        }
         
         // Also try when page becomes visible (for mobile browsers)
         function handleVisibilityChange() {
