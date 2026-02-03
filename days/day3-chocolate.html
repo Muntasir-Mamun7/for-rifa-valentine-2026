@@ -553,6 +553,11 @@
         </div>
     </div>
 
+    <!-- Background Music (Hidden) -->
+    <audio id="bgMusic" loop autoplay style="display: none;">
+        <source src="../assets/music/ENHYPEN (엔하이픈) - Bite Me  Piano Cover by Pianella Piano.mp3" type="audio/mpeg">
+    </audio>
+
     <script>
         const messages = [
             "Ur smile is sweeter than the finest Belgian chocolate!",
@@ -646,6 +651,11 @@
         const bgMusic = document.getElementById('bgMusic');
         let musicStarted = false;
         
+        // Ensure audio source is loaded
+        if (bgMusic) {
+            bgMusic.load();
+        }
+        
         // Function to start music playback (starts from beginning for better mobile experience)
         function startMusic() {
             if (bgMusic && !musicStarted) {
@@ -695,10 +705,5 @@
         }
         document.addEventListener('visibilitychange', handleVisibilityChange);
     </script>
-
-    <!-- Background Music (Hidden) -->
-    <audio id="bgMusic" loop autoplay style="display: none;">
-        <source src="../assets/music/ENHYPEN (엔하이픈) - Bite Me  Piano Cover by Pianella Piano.mp3" type="audio/mpeg">
-    </audio>
 </body>
 </html>
