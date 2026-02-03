@@ -29,19 +29,34 @@ Each day page now includes a hidden audio element with autoplay enabled:
 ### Auto-play Functionality
 The music attempts to play automatically when the page loads. If the browser blocks autoplay, it will play on the user's first interaction:
 
-```javascript
-// Auto-play background music
-const bgMusic = document.getElementById('bgMusic');
+**Note:** Days 3-6 and 8 (Chocolate, Teddy, Promise, Hug, Kiss) use an **optimized mobile-first implementation** that starts music from the beginning (0 seconds) and includes enhanced touch event support.
 
-// Try to play immediately on page load
-if (bgMusic) {
-    bgMusic.play().catch(function(error) {
-        console.log('Initial autoplay prevented, will try on user interaction:', error);
-        // If autoplay fails, play on first user interaction
-        document.addEventListener('click', function playOnce() {
-            bgMusic.play().catch(e => console.log('Autoplay prevented:', e));
-        }, { once: true });
-    });
+```javascript
+// Auto-play background music - optimized for mobile
+const bgMusic = document.getElementById('bgMusic');
+let musicStarted = false;
+
+// Function to start music playback
+function startMusic() {
+    if (bgMusic && !musicStarted) {
+        bgMusic.currentTime = 0; // Start from beginning
+        bgMusic.play().then(() => {
+            musicStarted = true;
+            console.log('Music started successfully');
+        }).catch(e => console.log('Music play prevented:', e));
+    }
+}
+
+// Set up user interaction listeners for mobile devices
+document.addEventListener('click', startMusic, { once: true });
+document.addEventListener('touchstart', startMusic, { once: true });
+document.addEventListener('touchend', startMusic, { once: true });
+
+// Try autoplay on page load
+if (document.readyState === 'complete') {
+    attemptAutoplay();
+} else {
+    window.addEventListener('load', attemptAutoplay);
 }
 ```
 
@@ -49,6 +64,9 @@ if (bgMusic) {
 - ✅ Background music loops continuously
 - ✅ Attempts to auto-play immediately when page loads
 - ✅ Falls back to playing on first user interaction if autoplay is blocked
+- ✅ **Enhanced touch event support** (touchstart, touchend, click)
+- ✅ **Starts from beginning** for days 3-6, 8 (better mobile experience)
+- ✅ **Smart page load detection** for optimal music start timing
 - ✅ Hidden controls (seamless experience)
 - ✅ Mobile-friendly (works on iOS and Android)
 - ✅ Properly encoded file names for browser compatibility
@@ -63,7 +81,8 @@ Modern browsers have restrictions on autoplay to improve user experience:
 
 The implementation handles these scenarios by:
 1. Attempting immediate autoplay when the page loads (works in most desktop browsers after navigation)
-2. Falling back to play on the first click/tap if autoplay is blocked (ensures music plays on mobile)
+2. Falling back to play on the first click/tap/touch if autoplay is blocked (ensures music plays on mobile)
+3. Using multiple touch event listeners (touchstart, touchend) for maximum mobile compatibility
 
 ## Music Selection Rationale
 
