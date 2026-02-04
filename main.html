@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To my beloved Rifa</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/instagram-share.css">
     <style>
         * {
             margin: 0;
@@ -175,6 +176,18 @@
     </style>
 </head>
 <body>
+    <!-- Instagram Share Button -->
+    <button class="share-button">
+        <span class="icon">📷</span>
+        <span class="button-text">Share to Instagram</span>
+    </button>
+
+    <!-- Loading Overlay -->
+    <div class="share-loading" id="shareLoading">
+        <div class="loader"></div>
+        <p>Creating your story...</p>
+    </div>
+
     <div class="logout-btn" id="logoutBtn" onclick="logout()">Logout</div>
 
     <div class="header">
@@ -357,6 +370,9 @@
         // Update countdown every minute
         setInterval(renderDays, 60000);
     </script>
+
+    <!-- Instagram Share Script -->
+    <script src="assets/instagram-share.js"></script>
 
     <!-- Footer -->
     <footer style="text-align: center; padding: 2rem 1rem; margin-top: 4rem; color: rgba(212, 175, 55, 0.6); font-size: 0.9rem; border-top: 1px solid rgba(212, 175, 55, 0.2);">
