@@ -459,8 +459,21 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="../assets/instagram-share.css">
 </head>
 <body>
+    <!-- Loading Overlay -->
+    <button class="share-button">
+        <span class="icon">📷</span>
+        <span class="button-text">Share to Instagram</span>
+    </button>
+
+    <!-- Loading Overlay -->
+    <div class="share-loading" id="shareLoading">
+        <div class="loader"></div>
+        <p>Creating your story...</p>
+    </div>
+
     <div class="container">
         <header>
             <div class="date-badge">February 9, 2026</div>
@@ -707,8 +720,19 @@
     </script>
 
     <!-- Footer -->
+    <!-- Instagram Share Button -->
+    <div class="share-button-container">
+        <button class="share-button">
+            <span class="icon">📷</span>
+            <span class="button-text">Share to Instagram</span>
+        </button>
+    </div>
+
     <footer style="text-align: center; padding: 2rem 1rem; margin-top: 4rem; color: rgba(212, 175, 55, 0.6); font-size: 0.9rem; border-top: 1px solid rgba(212, 175, 55, 0.2);">
         Copyright © 2026 MoRN. All Rights Reserved.
     </footer>
+    <!-- Instagram Share Script -->
+    <script src="../assets/instagram-share.js"></script>
+
 </body>
 </html>

@@ -1,0 +1,85 @@
+/* Instagram Share Button Styles - Minimal Bottom Placement */
+.share-button-container {
+    text-align: center;
+    padding: 2rem 1rem 1rem 1rem;
+}
+
+.share-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: rgba(212, 175, 55, 0.7);
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+}
+
+.share-button:hover {
+    color: rgba(212, 175, 55, 0.9);
+    border-color: rgba(212, 175, 55, 0.5);
+    background: rgba(212, 175, 55, 0.05);
+}
+
+.share-button:active {
+    transform: scale(0.98);
+}
+
+.share-button .icon {
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .share-button {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+    
+    .share-button .icon {
+        font-size: 1rem;
+    }
+}
+
+/* Loading overlay for share generation */
+.share-loading {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.share-loading.active {
+    display: flex;
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #d4af37;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.share-loading p {
+    color: #d4af37;
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
