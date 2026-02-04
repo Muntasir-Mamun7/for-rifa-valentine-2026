@@ -492,8 +492,8 @@ function initShareButton() {
         return;
     }
 
-    // Check if share button exists
-    const shareButton = document.querySelector('.share-button');
+    // Select the share button inside the container (before footer)
+    const shareButton = document.querySelector('.share-button-container .share-button');
     if (shareButton) {
         shareButton.onclick = () => shareToInstagram(dayKey);
     }
