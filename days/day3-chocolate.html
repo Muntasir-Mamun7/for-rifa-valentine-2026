@@ -112,166 +112,6 @@
             color: rgba(212, 175, 55, 0.9);
         }
 
-        .chocolate-box-container {
-            perspective: 1000px;
-            display: flex;
-            justify-content: center;
-            margin: 3rem 0;
-        }
-
-        .chocolate-box {
-            width: 400px;
-            height: 400px;
-            position: relative;
-            transform-style: preserve-3d;
-            animation: rotate3d 10s infinite linear;
-            cursor: pointer;
-        }
-
-        @keyframes rotate3d {
-            0% { transform: rotateY(0deg) rotateX(5deg); }
-            100% { transform: rotateY(360deg) rotateX(5deg); }
-        }
-
-        .chocolate-box:hover {
-            animation-play-state: paused;
-        }
-
-        .box-lid {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #C41E3A, #8B0000);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-            transform-origin: top;
-            transition: transform 1s;
-        }
-
-        .chocolate-box.opened .box-lid {
-            transform: rotateX(-120deg);
-        }
-
-        .box-base {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #8B4513, #654321);
-            border-radius: 20px;
-            box-shadow: inset 0 10px 40px rgba(0,0,0,0.5);
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(3, 1fr);
-            gap: 10px;
-            padding: 20px;
-        }
-
-        .chocolate-piece {
-            background: linear-gradient(135deg, #654321, #3D2817);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .chocolate-piece:hover {
-            transform: scale(1.1);
-            background: linear-gradient(135deg, #8B4513, #654321);
-        }
-
-        .unwrap-button {
-            background: linear-gradient(135deg, #C41E3A, #8B0000);
-            color: white;
-            border: none;
-            padding: 1.5rem 3rem;
-            border-radius: 50px;
-            font-size: 1.3rem;
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(196, 30, 58, 0.4);
-            margin: 2rem auto;
-            display: block;
-        }
-
-        .unwrap-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(196, 30, 58, 0.6);
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: linear-gradient(135deg, #FFF5E1, #FFE4C4);
-            padding: 3rem;
-            border-radius: 20px;
-            max-width: 500px;
-            text-align: center;
-            animation: popIn 0.5s ease;
-        }
-
-        @keyframes popIn {
-            from {
-                transform: scale(0.5);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        .modal-content h3 {
-            font-family: 'Playfair Display', serif;
-            color: #3D2817;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .modal-content p {
-            color: #654321;
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .close-modal {
-            background: linear-gradient(135deg, #8B4513, #654321);
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1.1rem;
-            font-family: 'Cormorant Garamond', serif;
-        }
-
         .polaroid-section {
             background: rgba(20, 10, 15, 0.6);
             border: 1px solid rgba(212, 175, 55, 0.2);
@@ -448,15 +288,6 @@
             .message-card p {
                 font-size: 1.1rem;
             }
-
-            .chocolate-box {
-                width: 300px;
-                height: 300px;
-            }
-
-            .chocolate-piece {
-                font-size: 1.5rem;
-            }
         }
     </style>
     <link rel="stylesheet" href="../assets/instagram-share.css">
@@ -481,25 +312,8 @@
             <p>I know how much u love chocolate! Each piece in this virtual box represents a sweet memory, a loving thought, a moment that made my heart melt just like chocolate on a warm day.</p>
         </div>
 
-        <button class="unwrap-button" onclick="openBox()">Unwrap the Box</button>
-
-        <div class="chocolate-box-container">
-            <div class="chocolate-box" id="chocolateBox">
-                <div class="box-lid">
-                    <span></span>
-                </div>
-                <div class="box-base">
-                    <div class="chocolate-piece" onclick="showMessage(0)"></div>
-                    <div class="chocolate-piece" onclick="showMessage(1)"></div>
-                    <div class="chocolate-piece" onclick="showMessage(2)"></div>
-                    <div class="chocolate-piece" onclick="showMessage(3)"></div>
-                    <div class="chocolate-piece" onclick="showMessage(4)"></div>
-                    <div class="chocolate-piece" onclick="showMessage(5)"></div>
-                    <div class="chocolate-piece" onclick="showMessage(6)"></div>
-                    <div class="chocolate-piece" onclick="showMessage(7)"></div>
-                    <div class="chocolate-piece" onclick="showMessage(8)"></div>
-                </div>
-            </div>
+        <div style="text-align: center; margin: 3rem 0;">
+            <img src="../assets/images/Chocolate Candy Sticker by SPINNS.gif" alt="Chocolate Candy" style="max-width: 400px; width: 100%;">
         </div>
 
         <div class="content-section">
@@ -507,6 +321,10 @@
             <div class="message-card">
                 <p>Chocolate releases endorphins in the brain, the same chemicals that make u feel happy when u're in love. That's why u make me feel like I'm on a constant chocolate high!</p>
             </div>
+        </div>
+
+        <div style="text-align: center; margin: 3rem 0;">
+            <img src="../assets/images/Chocolate Candy Sticker by myChoco.gif" alt="Chocolate Candy" style="max-width: 400px; width: 100%;">
         </div>
 
         <div class="polaroid-section">
@@ -517,8 +335,6 @@
                         <img src="../assets/images/pic (8).jpg" alt="Captured Moment">
                     </div>
                     <div class="polaroid-caption">
-                        Chocolate Day 2026
-                        <div class="polaroid-date">February 9, 2026 • Sweet Moments</div>
                     </div>
                 </div>
             </div>
@@ -552,54 +368,12 @@
         </div>
     </div>
 
-    <div class="modal" id="messageModal">
-        <div class="modal-content">
-            <h3 id="modalTitle">Sweet Message</h3>
-            <p id="modalMessage"></p>
-            <button class="close-modal" onclick="closeModal()">Close</button>
-        </div>
-    </div>
-
     <!-- Background Music (Hidden) -->
     <audio id="bgMusic" loop autoplay style="display: none;">
         <source src="../assets/music/ENHYPEN (엔하이픈) - Bite Me  Piano Cover by Pianella Piano.mp3" type="audio/mpeg">
     </audio>
 
     <script>
-        const messages = [
-            "Ur smile is sweeter than the finest Belgian chocolate!",
-            "Like cocoa beans need time to become chocolate, our love grows richer every day.",
-            "U're the perfect blend - sweet, warm, and absolutely irresistible!",
-            "Just like chocolate, u make everything better!",
-            "Missing u is bittersweet, like dark chocolate - intense but beautiful.",
-            "When we're together again, it'll be sweeter than any dessert in the world!",
-            "U're my favorite flavor in this life - pure sweetness!",
-            "Like chocolate melts on the tongue, u melt my heart every single day.",
-            "No chocolate can compete with the joy u bring to my life!"
-        ];
-
-        function openBox() {
-            document.getElementById('chocolateBox').classList.toggle('opened');
-        }
-
-        function showMessage(index) {
-            const modal = document.getElementById('messageModal');
-            const message = document.getElementById('modalMessage');
-            message.textContent = messages[index];
-            modal.classList.add('active');
-        }
-
-        function closeModal() {
-            document.getElementById('messageModal').classList.remove('active');
-        }
-
-        // Close modal when clicking outside
-        document.getElementById('messageModal').addEventListener('click', function(e) {
-            if(e.target === this) {
-                closeModal();
-            }
-        });
-
         // Random love quotes for polaroid
         const loveQuotes = [
             "U're sweeter than chocolate, more precious than gold",
