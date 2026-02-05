@@ -648,6 +648,25 @@
                 transform: scale(1);
             }
         }
+
+        /* GIF Section Styles */
+        .gif-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+            padding: 1rem;
+        }
+
+        .love-gif {
+            max-width: 100%;
+            max-height: 400px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(220, 20, 60, 0.4);
+            object-fit: cover;
+            object-position: center top;
+            height: 360px; /* 90% of max-height to crop 10% from bottom */
+        }
     </style>
     <link rel="stylesheet" href="../assets/instagram-share.css">
 </head>
@@ -681,6 +700,10 @@
             <p>In that moment, watching the sunset together, I realized that I wanted to witness every sunrise and sunset with u for the rest of my life.</p>
         </div>
 
+        <div class="gif-section">
+            <img src="../assets/images/marry-me-cat.gif" alt="Marry Me Cat" class="love-gif">
+        </div>
+
         <div class="content-section">
             <h2>A Promise Written in the Stars</h2>
             <p>From our first meeting to this moment - every step has led us here. U've turned my ordinary days into extraordinary memories.</p>
@@ -688,6 +711,10 @@
             <div class="message-card">
                 <p>Distance may separate us now as u're in Bangladesh for winter holidays, but our hearts beat as one. No ocean, no miles, no time zone can diminish what we share.</p>
             </div>
+        </div>
+
+        <div class="gif-section">
+            <img src="../assets/images/i-love-you-wedding.gif" alt="I Love You Wedding" class="love-gif">
         </div>
 
         <!-- Interactive Proposal Section -->
