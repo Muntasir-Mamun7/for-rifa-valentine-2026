@@ -246,8 +246,8 @@
     <div class="logout-btn" id="logoutBtn" onclick="logout()">Logout</div>
 
     <!-- Notification Bell Button -->
-    <div class="notification-btn" id="notificationBtn" onclick="toggleNotifications()">
-        <span class="bell-icon">🔔</span>
+    <div class="notification-btn" id="notificationBtn" onclick="toggleNotifications()" role="button" aria-label="Notification settings" tabindex="0">
+        <span class="bell-icon" aria-hidden="true">🔔</span>
         <span id="notificationStatus">Enable Reminders</span>
     </div>
 
@@ -486,6 +486,10 @@
 
         // ===== NOTIFICATION REMINDER SYSTEM =====
         
+        // Constants
+        const NOTIFICATION_AUTO_CLOSE_MS = 10000; // 10 seconds
+        const ONE_HOUR_MS = 60 * 60 * 1000; // 1 hour in milliseconds
+        
         // Request notification permission on page load
         function requestNotificationPermission() {
             // Skip for admin users
@@ -537,10 +541,10 @@
                 try {
                     const notification = new Notification(title, options);
                     
-                    // Auto close after 10 seconds
+                    // Auto close after configured time
                     setTimeout(() => {
                         notification.close();
-                    }, 10000);
+                    }, NOTIFICATION_AUTO_CLOSE_MS);
                     
                     // Handle notification click - open the website
                     notification.onclick = function() {
@@ -564,26 +568,27 @@
                 
                 // Only schedule for future days
                 if (timeUntilUnlock > 0) {
+                    // Get day number from title (e.g., "February 7th" -> "Day 7")
+                    const dayNumber = index + 1;
+                    const dayName = `Day ${dayNumber}`;
+                    
                     // Show notification when day unlocks
                     setTimeout(() => {
-                        const dayName = day.title.replace('February', 'Day');
                         showNotification(`${dayName} is now unlocked! 🎉`, {
                             body: 'A new special day is waiting for you. Click to view!',
                             icon: '💝',
-                            tag: `day-${index + 1}`,
-                            requireInteraction: true
+                            tag: `day-${dayNumber}`
                         });
                     }, timeUntilUnlock);
                     
                     // Also show a reminder 1 hour before unlock
-                    const oneHourBefore = timeUntilUnlock - (60 * 60 * 1000);
+                    const oneHourBefore = timeUntilUnlock - ONE_HOUR_MS;
                     if (oneHourBefore > 0) {
                         setTimeout(() => {
-                            const dayName = day.title.replace('February', 'Day');
                             showNotification(`${dayName} unlocks in 1 hour! ⏰`, {
                                 body: 'Get ready! A special surprise is coming soon.',
                                 icon: '🌹',
-                                tag: `reminder-${index + 1}`
+                                tag: `reminder-${dayNumber}`
                             });
                         }, oneHourBefore);
                     }
@@ -601,12 +606,12 @@
                 
                 if (isUnlocked(day.date) && !wasNotified) {
                     // Day just unlocked, send notification
-                    const dayName = day.title.replace('February', 'Day');
+                    const dayNumber = index + 1;
+                    const dayName = `Day ${dayNumber}`;
                     showNotification(`${dayName} is now available! 💖`, {
                         body: 'Check out what\'s waiting for you!',
                         icon: '❤️',
-                        tag: `unlock-${index + 1}`,
-                        requireInteraction: true
+                        tag: `unlock-${dayNumber}`
                     });
                     
                     // Mark as notified
