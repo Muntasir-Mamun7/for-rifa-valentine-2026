@@ -72,7 +72,7 @@ https://muntasir-mamun7.github.io/for-rifa-valentine-2026/
 
 ### Test 1: Login as Admin (All Days Unlocked)
 1. Go to your live URL
-2. Enter name: **Muntasir**
+2. Enter name: **AmiMuntasir**
 3. You should see all 7 days unlocked ✨
 4. Click any day to explore!
 
@@ -159,7 +159,7 @@ Use this checklist to track your progress:
 - [ ] Merged Pull Request to main branch
 - [ ] Watched workflow complete (green ✅)
 - [ ] Visited live site URL
-- [ ] Tested login with "Muntasir"
+- [ ] Tested login with "AmiMuntasir"
 - [ ] Tested login with "Rifa"
 - [ ] All 7 day pages work
 - [ ] Interactive features work (fireworks, petals, etc.)

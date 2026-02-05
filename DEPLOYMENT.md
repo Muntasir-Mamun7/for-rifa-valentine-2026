@@ -135,9 +135,9 @@ npx http-server -p 8080
 
 ### Test Different Users:
 
-1. **Test as Admin (Muntasir):**
+1. **Test as Admin (AmiMuntasir):**
    - Open in browser
-   - Enter name: `Muntasir`
+   - Enter name: `AmiMuntasir`
    - All 7 days should be unlocked ✨
 
 2. **Test as Regular User (Rifa):**
@@ -210,7 +210,7 @@ Before sharing with Rifa, make sure:
 
 - [ ] Site loads correctly at GitHub Pages URL
 - [ ] Login page works (can enter name)
-- [ ] Time-lock system works (test with "Rifa" and "Muntasir")
+- [ ] Time-lock system works (test with "Rifa" and "AmiMuntasir")
 - [ ] All 7 day pages are accessible when unlocked
 - [ ] Interactive features work (fireworks, petals, polaroid, etc.)
 - [ ] Polaroid upload works (test with a sample photo)
