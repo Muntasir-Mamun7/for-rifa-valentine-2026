@@ -14,7 +14,7 @@ Or read the [Complete Deployment Guide](DEPLOYMENT.md) for detailed instructions
 
 ### Login System
 - Simple name-based authentication
-- **Admin Mode**: Username "Muntasir" → All days instantly accessible (no time locks)
+- **Admin Mode**: Username "AmiMuntasir" → All days instantly accessible (no time locks)
 - **Time-Locked Mode**: Username "Rifa" or others → Days unlock at midnight Bangladesh Time (BST/UTC+6)
 
 ### 7 Themed Days
@@ -184,7 +184,7 @@ The website uses Bangladesh Time (BST/UTC+6) to unlock days:
 - Feb 8, 2026 00:00 BST → Day 2 unlocks
 - ... and so on until Feb 14
 
-**Admin Bypass**: Login as "Muntasir" to access all days immediately for testing.
+**Admin Bypass**: Login as "AmiMuntasir" to access all days immediately for testing.
 
 ## 🌐 Browser Compatibility
 

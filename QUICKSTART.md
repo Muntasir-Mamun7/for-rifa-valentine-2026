@@ -46,7 +46,7 @@ Works on:
 ## 🔐 Login Tips
 
 **For Full Access (All Days Unlocked):**
-- Enter name: `Muntasir`
+- Enter name: `AmiMuntasir`
 - All 7 days will be accessible immediately
 
 **For Time-Locked Experience:**
