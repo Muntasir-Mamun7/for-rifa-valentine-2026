@@ -12,15 +12,6 @@ Or read the [Complete Deployment Guide](DEPLOYMENT.md) for detailed instructions
 
 ## 🌹 Features
 
-### 🔔 Notification Reminder System (NEW!)
-- **Automatic reminders** when each day unlocks
-- **1-hour advance notifications** before unlock time
-- **iOS Safari & Chrome compatible** - perfect for iPhone users
-- **Visual status indicator** with animated bell icon
-- **Smart scheduling** based on Bangladesh Time (BST/UTC+6)
-- **Privacy-focused** - no data collection, browser-only
-- **[See How to Enable Notifications](HOW_TO_ENABLE_NOTIFICATIONS.md)**
-
 ### Login System
 - Simple name-based authentication
 - **Admin Mode**: Username "AmiMuntasir" → All days instantly accessible (no time locks)
@@ -225,8 +216,6 @@ All pages are self-contained HTML files with inline CSS and JavaScript. To custo
 
 - ✅ Login system with admin bypass
 - ✅ Time-lock mechanism (Bangladesh timezone)
-- ✅ **Notification reminder system for day unlocks (NEW!)**
-- ✅ **Browser notifications with 1-hour advance reminders (NEW!)**
 - ✅ 7 unique themed pages
 - ✅ Interactive Nanjing map
 - ✅ Polaroid photo upload & transformation
